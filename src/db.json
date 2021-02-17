@@ -4,112 +4,112 @@
         "title": "13.3 Apple MacBook Air (MGND3RU/A) gold",
         "price": 1399,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/15754066322136362b44ac34e18a0c2d/79cf752a671d23549f5a275b75965e9070556884905ce9197a5462866f3374ae.jpg",
-        "product-info": "[2560x1600, IPS, Apple M1, 8, RAM 8 ГБ, SSD 256 ГБ, M1 7-core , Wi-Fi, macOS]",
+        "info": "[2560x1600, IPS, Apple M1, 8, RAM 8 ГБ, SSD 256 ГБ, M1 7-core , Wi-Fi, macOS]",
         "id": 1
     },
     {
-        "title": "13.3 Ноутбук Apple MacBook Air (MGN73RU/A) gray",
+        "title": "13.3 Apple MacBook Air (MGN73RU/A) gray",
         "price": 1699,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/9ea5a6976e9087475889fc906a890f25/caa6c4d395d537093ddea3d4650e6d0ea1266b8ce943742cbc60351dba98dcde.jpg",
-        "product-info": "[2560x1600, IPS, Apple M1, 8, RAM 8 ГБ, SSD 512 ГБ, M1 8-core , Wi-Fi, macOS]",
+        "info": "[2560x1600, IPS, Apple M1, 8, RAM 8 ГБ, SSD 512 ГБ, M1 8-core , Wi-Fi, macOS]",
         "id": 2
     },
     {
-        "title": "13.3 Ноутбук Apple MacBook Pro Retina TB (MYD82RU/A) gray",
+        "title": "13.3 Apple MacBook Pro Retina TB (MYD82RU/A) gray",
         "price": 1799,
         "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/28420899eb826e2b05c329771af689e4/6aad9d257be3cc0a1f8614090c9ee42d2b8127f5479858f10283e5dadf7b111e.jpg",
-        "product-info": "[2560x1600, IPS, Apple M1, 8, RAM 8 ГБ, SSD 256 ГБ, M1 8-core , Wi-Fi, macOS]",
+        "info": "[2560x1600, IPS, Apple M1, 8, RAM 8 ГБ, SSD 256 ГБ, M1 8-core , Wi-Fi, macOS]",
         "id": 3
     },
     {
-        "title": "13.3 Ноутбук Apple MacBook Pro Retina TB (MWP72RU/A) silver",
+        "title": "13.3 Apple MacBook Pro Retina TB (MWP72RU/A) silver",
         "price": 2459,
         "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/82d24b7582b9d358b58fa746df443e8a/785285a809ec9bff928e0ff64894ff91922ff499d7cfa5745240ab144dd7d763.jpg",
-        "product-info": "[2560x1600, IPS, Intel Core i5, 4 х 2 ГГц, RAM 16 ГБ, SSD 512 ГБ, Intel Iris Plus , Wi-Fi, macOS]",
+        "info": "[2560x1600, IPS, Intel Core i5, 4 х 2 ГГц, RAM 16 ГБ, SSD 512 ГБ, Intel Iris Plus , Wi-Fi, macOS]",
         "id": 4
     },
     {
         "title": "15.6 Acer Nitro 5 AN515-54-51NJ black",
         "price": 999,
         "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/766ca095825a46bcc540ab4f62043c17/748679b36b245e205a48634f3da84505f56794039928e761e67179981467c089.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i5 9300H, 4 х 2.4 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce GTX 1650 4 Гб, Wi-Fi, DOS]",
+        "info": "[1920x1080, IPS, Intel Core i5 9300H, 4 х 2.4 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce GTX 1650 4 Гб, Wi-Fi, DOS]",
         "id": 5
     },
     {
         "title": "15.6 Acer Aspire 3 A315-22-45S5 black",
         "price": 499,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/6b2106abf43edfe2266774213e6695da/233950ffcb1766104ac3d9f4aa213866b8b5c03da3dcb34fd77af0ec713597fa.jpg",
-        "product-info": "[1366x768, TN+film, AMD A4 9120e, 2 х 1.5 ГГц, RAM 8 ГБ, SSD 256 ГБ, Radeon R3 , Wi-Fi, Windows 10 Home]",
+        "info": "[1366x768, TN+film, AMD A4 9120e, 2 х 1.5 ГГц, RAM 8 ГБ, SSD 256 ГБ, Radeon R3 , Wi-Fi, Windows 10 Home]",
         "id": 6
     },
     {
         "title": "15.6 ASUS TUF Gaming A15 FX506IV-HN292 black",
         "price": 1299,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/460a1eb2ec7352f9f9feec0a5f18da00/a14bfa28b5eba8cc22f36696f42a56ce8082ad5e7f4c76743ff7135d255e3466.jpg",
-        "product-info": "[1920x1080, IPS, AMD Ryzen 7 4800H, 8 х 2.9 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 2060 6 Гб, Wi-Fi, DOS]",
+        "info": "[1920x1080, IPS, AMD Ryzen 7 4800H, 8 х 2.9 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 2060 6 Гб, Wi-Fi, DOS]",
         "id": 7
     },
     {
         "title": "15.6 ASUS Laptop D509DA-BQ053 silver",
         "price": 599,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/9b37f8463a0e33d7c8931294d4c1d92b/03f862c40adf1675d54e4f6428e69ce9b338b35b59b693edf568ad06f8e9667a.jpg",
-        "product-info": "[1920x1080, IPS, AMD Ryzen 5 3500U, 4 х 2.1 ГГц, RAM 8 ГБ, SSD 256 ГБ, Radeon Vega 8 , Wi-Fi, DOS]",
+        "info": "[1920x1080, IPS, AMD Ryzen 5 3500U, 4 х 2.1 ГГц, RAM 8 ГБ, SSD 256 ГБ, Radeon Vega 8 , Wi-Fi, DOS]",
         "id": 8
     },
     {
         "title": "17.3 ASUS ROG Strix G GL731GT-H7118T black",
         "price": 1299,
         "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/1167c84716636fc74f93912f84f65864/4bba5055254dd15557039ea44c62bc82b4c577019072dfffa729d82a6be73fa9.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i7 9750H, 6 х 2.6 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce GTX 1650 4 Гб, Wi-Fi, BT, Windows 10 Home]",
+        "info": "[1920x1080, IPS, Intel Core i7 9750H, 6 х 2.6 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce GTX 1650 4 Гб, Wi-Fi, BT, Windows 10 Home]",
         "id": 9
     },
     {
         "title": "17.3 MSI GF75 9SCSR-454XRU black",
         "price": 999,
         "url": "https://c.dns-shop.ru/thumb/st4/fit/320/250/31fccc9fe02ae0e113f3bb4d2660203b/9dc2950d00401f626d92064a22616213668910cb682de10402a04d9ebac294ee.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i5 9300H, 4 х 2.4 ГГц, RAM 8 ГБ, SSD 256 ГБ, GeForce GTX 1650 Ti 4 Гб, Wi-Fi, DOS]",
+        "info": "[1920x1080, IPS, Intel Core i5 9300H, 4 х 2.4 ГГц, RAM 8 ГБ, SSD 256 ГБ, GeForce GTX 1650 Ti 4 Гб, Wi-Fi, DOS]",
         "id": 10
     },
     {
         "title": "15.6 MSI GP66 10UG-258XRU black",
         "price": 2099,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/c31d86adc5356d355438c60ef9083818/08af0b0ffb7231d04b848242a0c40773d3d8fd3782e059ae7b2f11fc4b1cfbff.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i7 10750H, 6 х 2.6 ГГц, RAM 16 ГБ, SSD 1024 ГБ, GeForce RTX 3070 для ноутбуков 8 Гб, Wi-Fi, DOS]",
+        "info": "[1920x1080, IPS, Intel Core i7 10750H, 6 х 2.6 ГГц, RAM 16 ГБ, SSD 1024 ГБ, GeForce RTX 3070 для ноутбуков 8 Гб, Wi-Fi, DOS]",
         "id": 11
     },
     {
         "title": "15.6 Lenovo IdeaPad 3 Gaming 15IMH05 black",
         "price": 899,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/d781fc47e9b93081face3e2b61b98cbf/2aea360b4ac330436b47f0f3edaae48d3a8bdac9ceb00fb4d1504c28a1c2821d.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i5 10300H, 4 х 2.5 ГГц, RAM 8 ГБ, SSD 256 ГБ, GeForce GTX 1650 4 Гб, Wi-Fi, DOS]",
+        "info": "[1920x1080, IPS, Intel Core i5 10300H, 4 х 2.5 ГГц, RAM 8 ГБ, SSD 256 ГБ, GeForce GTX 1650 4 Гб, Wi-Fi, DOS]",
         "id": 12
     },
     {
         "title": "15.6 Dell G315-6541 white",
         "price": 1499,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/e5056c254e4f72d3da5d1640b178a6b7/2938a56bda48430509a24cec0bff76ed4c600047a1d9ebd43d661d2004255d06.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i7 9750H, 6 х 2.6 ГГц, RAM 16 ГБ, HDD 1000 ГБ, SSD 256 ГБ, GeForce GTX 1660 Ti 6 Гб, Wi-Fi, Windows 10 Home]",
+        "info": "[1920x1080, IPS, Intel Core i7 9750H, 6 х 2.6 ГГц, RAM 16 ГБ, HDD 1000 ГБ, SSD 256 ГБ, GeForce GTX 1660 Ti 6 Гб, Wi-Fi, Windows 10 Home]",
         "id": 13
     },
     {
         "title": "13.3 Dell XPS 7390-7087 silver",
         "price": 1899,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/9c1c1972cc71858169f2dc4bdafc9202/e4200d3d5b96fd943038196f32ba45f4007d54324690c2c83743805763d1f1ca.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i5 10210U, 4 х 1.6 ГГц, RAM 8 ГБ, SSD 256 ГБ, Intel UHD Graphics 620 , Wi-Fi, Windows 10 Home]",
+        "info": "[1920x1080, IPS, Intel Core i5 10210U, 4 х 1.6 ГГц, RAM 8 ГБ, SSD 256 ГБ, Intel UHD Graphics 620 , Wi-Fi, Windows 10 Home]",
         "id": 14
     },
     {
         "title": "15.6 Dell G315-6510 black",
         "price": 1399,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/a8b2a7f4bcc727570225eb3016ce9eb0/4a6b9a50c1427afa51a291f612e499cf743498b25a9ae716e55dc67ebb900745.jpg",
-        "product-info": "[1920x1080, IPS, Intel Core i7 9750H, 6 х 2.6 ГГц, RAM 8 ГБ, SSD 512 ГБ, GeForce GTX 1660 Ti 6 Гб, Wi-Fi, Windows 10 Home]",
+        "info": "[1920x1080, IPS, Intel Core i7 9750H, 6 х 2.6 ГГц, RAM 8 ГБ, SSD 512 ГБ, GeForce GTX 1660 Ti 6 Гб, Wi-Fi, Windows 10 Home]",
         "id": 15
     },
     {
         "title": "15.6 Huawei MateBook D 15 Boh-WAP9R gray",
         "price": 799,
         "url": "https://c.dns-shop.ru/thumb/st1/fit/320/250/113b7d122c1fbfbd9673bf594bb74749/f1823e11237cc02bb95131c2dc10e62a9e859833dad1687075aabea86ba994e9.jpg",
-        "product-info": "[1920x1080, IPS, AMD Ryzen 7 3700U, 4 х 2.3 ГГц, RAM 8 ГБ, SSD 512 ГБ, Radeon Vega 10 , Wi-Fi, Windows 10 Home]",
+        "info": "[1920x1080, IPS, AMD Ryzen 7 3700U, 4 х 2.3 ГГц, RAM 8 ГБ, SSD 512 ГБ, Radeon Vega 10 , Wi-Fi, Windows 10 Home]",
         "id": 16
     }
   ],

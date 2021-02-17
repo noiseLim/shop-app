@@ -1,18 +1,41 @@
-import React, {useEffect, useState} from 'react';
+// import React, {useEffect, useState} from 'react';
+// import Error from '../error';
+
+// const ErrorBoundry = () => {
+
+//     const [error, setError] = useState(false);
+
+//     useEffect(() => {
+//         setError(true)
+//     }, [error])
+
+//     if (error) {
+//         return <Error/>
+//     }
+
+// }
+
+// export default ErrorBoundry;
+
+
+import React, {Component} from 'react';
 import Error from '../error';
 
-const ErrorBoundry = () => {
+export default class ErrorBoundry extends Component {
 
-    const [error, setError] = useState(false);
-
-    useEffect(() => {
-        setError(true)
-    }, [error])
-
-    if (error) {
-        return <Error/>
+    state = {
+        error: false
     }
 
-}
+    componentDidCatch() {
+        this.setState({error: true});
+    }
 
-export default ErrorBoundry;
+    render() {
+        if (this.state.error) {
+            return <Error/>
+        }
+
+        return this.props.children;
+    }
+}

@@ -1,0 +1,12 @@
+.product {
+    &__list {
+        min-height: 100vh;
+        padding: 50px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        display: flex;
+        margin-block-end: 0;
+        margin-block-start: 0;
+        list-style-type: none;
+    }
+}
