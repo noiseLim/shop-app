@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 const MainPage = () => {
     return (
-        <Grid container sacing={3}>
+        <Grid container>
             <Grid item xs={3}>
                 Hello
             </Grid>

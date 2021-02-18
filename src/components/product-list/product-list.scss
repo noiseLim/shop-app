@@ -1,12 +1,27 @@
 .product {
     &__list {
         min-height: 100vh;
-        padding: 50px;
+        padding: 50px 50px 0 50px;
         justify-content: flex-start;
         flex-wrap: wrap;
         display: flex;
         margin-block-end: 0;
         margin-block-start: 0;
         list-style-type: none;
+    }
+    &__btn {
+        width: 100px;
+        height: 40px;
+        border: none;
+        background-color: #29a745;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    &__more {
+        display: block;
+        padding: 0 62px 50px 50px;
+        float: right;
     }
 }

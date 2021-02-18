@@ -40,7 +40,12 @@ const ProductList = ({ShopService}) => {
     console.log(productItems);
 
     return (
-        <View items={items}/>
+        <>
+            <View items={items}/>
+            <div className="product__more">
+                <button className="product__btn">More</button>
+            </div>
+        </>
     )
 }
 
