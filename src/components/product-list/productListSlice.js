@@ -1,17 +1,22 @@
 import {createSlice} from '@reduxjs/toolkit';
+import * as R from 'ramda';
 
 const productListSlice = createSlice({
     name: 'productList',
     initialState: {
         products: [],
+        ids: [],
         loading: true,
         error: false
         
     },
     reducers: {
         productLoaded: (state, action) => {
+            // const newValues = R.indexBy(R.prop('id'), action.payload)
             return {
                 ...state,
+                // products: R.indexBy(R.prop('id'), action.payload),
+                ids: R.pluck('id', action.payload),
                 products: action.payload,
                 loading: false
             };
@@ -32,6 +37,7 @@ const productListSlice = createSlice({
         }
     }
 })
+
 
 export const {productLoaded, productRequested, productError} = productListSlice.actions
 

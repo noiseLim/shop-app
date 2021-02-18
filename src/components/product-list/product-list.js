@@ -37,6 +37,7 @@ const ProductList = ({ShopService}) => {
         key={productItem.id}
         productItem={productItem}/>
     })
+    console.log(productItems);
 
     return (
         <View items={items}/>
