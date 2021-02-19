@@ -4,9 +4,11 @@ import Grid from '@material-ui/core/Grid';
 import SortPanel from '../sort-panel';
 import SearchPanel from '../search-panel';
 
+import './main-pages.scss';
+
 const MainPage = () => {
     return (
-        <Grid container>
+        <Grid container className="container__wrapper">
             <Grid item xs={12}>
                 <SortPanel/>
             </Grid>

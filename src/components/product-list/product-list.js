@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import Grid from '@material-ui/core/Grid';
 
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount} from './productListSlice';
@@ -66,10 +67,18 @@ const ProductList = ({ShopService}) => {
 }
 
 const View =({items}) => {
-    return(
-        <ul className="product__list">
+    return (
+        // <ul className="product__list">
+        //     {items}
+        // </ul>
+        <Grid 
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="flex-start" 
+            className="product__list">
             {items}
-        </ul>
+        </Grid>
     )
 }
 

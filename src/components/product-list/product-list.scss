@@ -1,13 +1,6 @@
 .product {
     &__list {
-        max-width: 1180px;
         padding: 0 10px;
-        min-height: 100vh;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        display: flex;
-        margin-block-end: 0;
-        margin-block-start: 0;
         list-style-type: none;
     }
     &__btn {
