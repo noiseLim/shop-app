@@ -1,7 +1,8 @@
 .product {
     &__list {
+        max-width: 1180px;
+        padding: 0 10px;
         min-height: 100vh;
-        padding: 50px 50px 0 50px;
         justify-content: flex-start;
         flex-wrap: wrap;
         display: flex;
@@ -20,8 +21,25 @@
         cursor: pointer;
     }
     &__more {
-        display: block;
-        padding: 0 62px 50px 50px;
-        float: right;
+        padding: 50px 50px;
+        // float: right;
+    }
+    &__pages {
+        margin: 20px 0 80px 0;
+    }
+    &__page, &__page_current {
+        border: 1px solid #29a745;
+        color: #29a745;
+        border-radius: 10%;
+        padding: 5px 10px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+    &__page_current {
+        border: 2px solid #29a745;
+        background-color: #29a745;
+        color: #fff;
+        font-weight: 500;
+        font-size: 18px;
     }
 }

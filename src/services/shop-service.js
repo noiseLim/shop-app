@@ -12,7 +12,10 @@ export default class ShopService {
         return await res.json();
     }
 
-    async getProductItems() {
-        return await this.getResource(`/products/`);
+    async getProductItems(currentPage, limitPage) {
+        return await this.getResource(`/products?_limit=${limitPage}&_page=${currentPage}`);
+    }
+    async getTotalCount() {
+        return await this.getResource(`/total_count/`);
     }
 }
