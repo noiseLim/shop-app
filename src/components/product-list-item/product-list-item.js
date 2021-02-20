@@ -1,22 +1,26 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 
 import './product-list-item.scss';
 
 const ProductListItem = ({productItem}) => {
 
     const {title, price, url, info} = productItem;
+    const listView = useSelector(state => state.sortPanel.listView);
 
     return (
-        <li className="product__item">
+        <li className={listView ? "product__item_current" : "product__item"}>
             {/* <Link to = {`/${productItem.id}`}> */}
-            <div className="product__img_wrapper">
-                <img className="product__img" src={url} alt={title}></img>
+            <div className={listView ? "product__img_wrapper_current" : "product__img_wrapper"}>
+                <img className={listView ? "product__img_current" : "product__img"} src={url} alt={title}></img>
             </div>
-            <div className="product__title">{title}</div>
-            <div className="product__info">{info}</div>
-            <div className="product__btn_wrapper">
-                <button className="product__btn">Add to cart</button>
-                <div className="product__price">{price}$</div>
+            <div className={listView ? "product__info_wrapper" : ''}>
+                <div className={listView ? "product__title_current" : "product__title"}>{title}</div>
+                <div className={listView ? "product__info_current" : "product__info"}>{info}</div>
+            </div>
+            <div className={listView ? "product__btn_wrapper_current" : "product__btn_wrapper"}>
+                <button className={listView ? "product__btn_current" : "product__btn"}>Add to cart</button>
+                <div className={listView ? "product__price_current" : "product__price"}>{price}$</div>
             </div>
             {/* </Link>       */}
         </li>

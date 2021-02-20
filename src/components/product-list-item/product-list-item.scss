@@ -1,5 +1,5 @@
 .product {
-    &__item {
+    &__item, &__item_current {
         width: 270px;
         min-height: 400px;
         background-color: #fff;
@@ -9,26 +9,91 @@
         margin-bottom: 20px;
         max-height: 460px;
     }
-    &__title {
+    &__item_current {
+        width: 100%;
+        display: flex;
+        min-height: 200px;
+        // background-color: #fff;
+        // box-shadow: 5px 5px 45px rgba(0,0,0,.1);
+        // border-radius: 8px;
+        // padding: 20px;
+        // margin-bottom: 20px;
+        // max-height: 460px;
+    }
+
+    &__info_wrapper {
+        display: block;
+        width: 50%;
+        padding: 5px;
+        margin: auto;
+        align-items: center;
+    }
+
+
+
+    &__title, &__title_current {
         font-size: 18px;
         font-weight: 400;
         text-align: center;
         height: 80px;
         color: #171717;
     }
-    &__img_wrapper {
+    &__title_current {
+        display: flex;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: left;
+        height: 50px;
+        color: #171717;
+    }
+
+
+
+
+    &__info, &__info_current {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        height: 80px;
+    }
+    &__info_current {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        height: 20px;
+    }
+
+
+
+    &__img_wrapper, &__img_wrapper_current {
         width: auto;
         height: 200px;
         text-align: center
     }
-    &__img {
+    &__img_wrapper_current {
+        width: 25%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+    }
+
+
+
+    &__img, &__img_current {
         max-width: 100%;
         object-fit: cover;
         margin-bottom: 10px;
         text-align: center;
         max-height: 100%;
     }
-    &__price {
+    &__img_current {
+        margin-bottom: 0;
+    }
+
+
+
+    &__price, &__price_current {
         font-size: 18px;
         font-weight: 600;
         display: flex;
@@ -36,16 +101,32 @@
         margin: 0 auto;
         text-align: center;
     }
-    &__info {
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 20px;
-        height: 80px;
+    &__price_current {
+        font-size: 18px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        text-align: center;
     }
-    &__btn_wrapper {
+
+
+
+    
+
+
+
+    &__btn_wrapper, &__btn_wrapper_current {
         display: flex;
     }
-    &__btn {
+    &__btn_wrapper_current {
+        display: block;
+        padding: 5px;
+    }
+
+
+
+    &__btn, &__btn_current {
         width: 100px;
         height: 40px;
         border: none;
@@ -54,6 +135,9 @@
         color: #fff;
         font-size: 14px;
         cursor: pointer;
+    }
+    &__btn_current {
+        margin-bottom: 40px;
     }
 }
 

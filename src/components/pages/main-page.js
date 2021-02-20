@@ -1,6 +1,7 @@
 import React from 'react';
-import ProductList from '../product-list';
 import Grid from '@material-ui/core/Grid';
+
+import ProductList from '../product-list';
 import SortPanel from '../sort-panel';
 import SearchPanel from '../search-panel';
 

@@ -5,9 +5,8 @@ const productListSlice = createSlice({
     initialState: {
         products: [],
         currentPage: 1,
-        limitPage: 16,
+        limitPage: 15,
         totalCount: [],
-        listView: false,
         loading: true,
         error: false
     },
@@ -46,18 +45,10 @@ const productListSlice = createSlice({
                 totalCount: action.payload,
                 loading: false
             };
-        },
-        setListView: (state) => {
-            return {
-                ...state,
-                listView: !state.listView,
-                loading: false
-            }
         }
     }
 })
 
-
-export const {productLoaded, productRequested, productError, setCurrentPage, getTotalCount, setListView} = productListSlice.actions
+export const {productLoaded, productRequested, productError, setCurrentPage, getTotalCount} = productListSlice.actions
 
 export default productListSlice.reducer

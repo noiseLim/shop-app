@@ -3,14 +3,13 @@ import {useSelector, useDispatch} from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 
 import WithShopService from '../hoc';
-import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount} from './productListSlice';
+import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount} from './product-list-slice';
 import Error from '../error';
 import Spinner from '../spinner';
 import ProductListItem from '../product-list-item';
 import createPages from '../utils';
 
 import './product-list.scss';
-
 
 const ProductList = ({ShopService}) => {
 
@@ -20,9 +19,10 @@ const ProductList = ({ShopService}) => {
     const currentPage = useSelector(state => state.productList.currentPage);
     const totalCount = useSelector(state => state.productList.totalCount);
     const limitPage = useSelector(state => state.productList.limitPage);
+    const listView = useSelector(state => state.sortPanel.listView);
     const loading = useSelector(state => state.productList.loading);
-    const pages = []
     const error = useSelector(state => state.productList.error);
+    const pages = []
 
     const pagesCount = Math.ceil(totalCount/limitPage)
     createPages(pages, pagesCount, currentPage);
@@ -53,6 +53,19 @@ const ProductList = ({ShopService}) => {
         productItem={productItem}/>
     })
 
+    const View =({items}) => {
+        return (
+            <Grid 
+                container
+                direction={listView ? "column" : "row"}
+                justify="space-between"
+                alignItems={listView ? "stretch" : "flex-start"} 
+                className="product__list">
+                {items}
+            </Grid>
+        )
+    }
+
     return (
         <>
             <View items={items}/>
@@ -63,22 +76,6 @@ const ProductList = ({ShopService}) => {
                 onClick={() => dispatch(setCurrentPage(page))}>{page}</span>)}
             </div>
         </>
-    )
-}
-
-const View =({items}) => {
-    return (
-        // <ul className="product__list">
-        //     {items}
-        // </ul>
-        <Grid 
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="flex-start" 
-            className="product__list">
-            {items}
-        </Grid>
     )
 }
 
