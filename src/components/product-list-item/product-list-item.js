@@ -19,8 +19,8 @@ const ProductListItem = ({productItem}) => {
                 <div className={listView ? "product__info_current" : "product__info"}>{info}</div>
             </div>
             <div className={listView ? "product__btn_wrapper_current" : "product__btn_wrapper"}>
-                <button className={listView ? "product__btn_current" : "product__btn"}>Add to cart</button>
                 <div className={listView ? "product__price_current" : "product__price"}>{price}$</div>
+                <button className={listView ? "product__btn_current" : "product__btn"}>Add to cart</button>
             </div>
             {/* </Link>       */}
         </li>
