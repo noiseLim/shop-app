@@ -1,17 +1,19 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Grid from '@material-ui/core/Grid';
+import Pagination from '@material-ui/lab/Pagination';
 
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount} from './product-list-slice';
 import Error from '../error';
 import Spinner from '../spinner';
 import ProductListItem from '../product-list-item';
-import createPages from '../utils';
 
 import './product-list.scss';
 
 const ProductList = ({ShopService}) => {
+
+    const [searchValue, setSearchValue] = useState('');
 
     const dispatch = useDispatch();
 
@@ -22,14 +24,12 @@ const ProductList = ({ShopService}) => {
     const listView = useSelector(state => state.sortPanel.listView);
     const loading = useSelector(state => state.productList.loading);
     const error = useSelector(state => state.productList.error);
-    const pages = []
 
     const pagesCount = Math.ceil(totalCount/limitPage)
-    createPages(pages, pagesCount, currentPage);
 
     useEffect(() => {
         dispatch(productRequested());
-        ShopService.getProductItems(currentPage, limitPage)
+        ShopService.getProductItems(searchValue, currentPage, limitPage)
             .then(res => dispatch(productLoaded(res)))
             .catch(error => dispatch(productError()))
     }, [currentPage])
@@ -38,7 +38,7 @@ const ProductList = ({ShopService}) => {
         ShopService.getTotalCount()
             .then(res => dispatch(getTotalCount(res)))
             .catch(error => dispatch(productError()))
-    }, [currentPage])
+    }, [])
 
     if (loading) {
         return <Spinner/>
@@ -66,15 +66,36 @@ const ProductList = ({ShopService}) => {
         )
     }
 
+    const handleChange = (event, value) => {
+        dispatch(setCurrentPage(value));
+    }
+
+    function searchHandler() {
+        ShopService.getProductItems(searchValue, currentPage, limitPage)
+            .then(res => dispatch(productLoaded(res)))
+            .catch(error => dispatch(productError()))
+    }
+
     return (
         <>
-            <View items={items}/>
-            <div className="product__pages">
-                {pages.map((page, index) => <span
-                key={index} 
-                className={currentPage === page ? "product__page_current" : "product__page"}
-                onClick={() => dispatch(setCurrentPage(page))}>{page}</span>)}
+            <div className="search__search">
+                <input 
+                    value={searchValue} 
+                    onChange={(e) => setSearchValue(e.target.value)} 
+                    type="text" placeholder="search site" className="search__input"/>
+                <button 
+                    onClick={() => searchHandler()}
+                    className="search__btn">Search</button>
             </div>
+            <View items={items}/>
+            <Pagination
+                count={pagesCount} 
+                variant="outlined" 
+                shape="rounded"
+                page={currentPage}
+                onChange={handleChange}
+                className="product__page">
+            </Pagination>
         </>
     )
 }

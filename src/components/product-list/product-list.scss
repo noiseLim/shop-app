@@ -20,19 +20,20 @@
     &__pages {
         margin: 20px 0 80px 0;
     }
-    &__page, &__page_current {
-        border: 1px solid #29a745;
-        color: #29a745;
-        border-radius: 10%;
-        padding: 5px 10px;
-        margin: 0 10px;
-        cursor: pointer;
+    &__page {
+        margin: 10px 0 50px 10px;
     }
-    &__page_current {
-        border: 2px solid #29a745;
-        background-color: #29a745;
-        color: #fff;
-        font-weight: 500;
-        font-size: 18px;
+}
+.search {
+    &__search {
+        display: flex;
+        margin: 10px 0;
+    }
+    &__input {
+        padding: 5px;
+        width: 100%;
+    }
+    &__btn {
+        padding: 5px;
     }
 }

@@ -12,8 +12,8 @@ export default class ShopService {
         return await res.json();
     }
 
-    async getProductItems(currentPage, limitPage) {
-        return await this.getResource(`/products?_limit=${limitPage}&_page=${currentPage}`);
+    async getProductItems(searchValue, currentPage, limitPage) {
+        return await this.getResource(`/products?q=${searchValue}&_sort=price&_order=ASC&_limit=${limitPage}&_page=${currentPage}`);
     }
     async getTotalCount() {
         return await this.getResource(`/total_count/`);
