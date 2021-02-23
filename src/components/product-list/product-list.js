@@ -13,7 +13,7 @@ import './product-list.scss';
 
 const ProductList = ({ShopService}) => {
 
-    const [searchValue, setSearchValue] = useState('');
+    const [searchValue] = useState('');
 
     const dispatch = useDispatch();
 
@@ -70,23 +70,8 @@ const ProductList = ({ShopService}) => {
         dispatch(setCurrentPage(value));
     }
 
-    function searchHandler() {
-        ShopService.getProductItems(searchValue, currentPage, limitPage)
-            .then(res => dispatch(productLoaded(res)))
-            .catch(error => dispatch(productError()))
-    }
-
     return (
         <>
-            <div className="search__search">
-                <input 
-                    value={searchValue} 
-                    onChange={(e) => setSearchValue(e.target.value)} 
-                    type="text" placeholder="search site" className="search__input"/>
-                <button 
-                    onClick={() => searchHandler()}
-                    className="search__btn">Search</button>
-            </div>
             <View items={items}/>
             <Pagination
                 count={pagesCount} 

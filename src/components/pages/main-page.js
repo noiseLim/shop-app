@@ -4,12 +4,16 @@ import Grid from '@material-ui/core/Grid';
 import ProductList from '../product-list';
 import SortPanel from '../sort-panel';
 import SearchPanel from '../search-panel';
+import Header from '../header';
 
 import './main-pages.scss';
 
 const MainPage = () => {
     return (
         <Grid container className="container__wrapper">
+            <Grid item xs={12}>
+                <Header/>
+            </Grid>
             <Grid item xs={12}>
                 <SortPanel/>
             </Grid>
