@@ -58,10 +58,11 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     searchIcon: {
-        padding: theme.spacing(0, 2),
+        // padding: theme.spacing(0, 2),
         height: '100%',
         position: 'absolute',
-        pointerEvents: 'none',
+        zIndex: 1,
+        // pointerEvents: 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -95,8 +96,6 @@ const useStyles = makeStyles((theme) => ({
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
-        right: 0,
-        // top: 13,
         border: `2px solid rgb(41, 167, 69)`,
         backgroundColor: 'white',
         padding: '0 4px',
@@ -114,7 +113,7 @@ const PrimarySearchAppBar = ({ShopService}) => {
         ShopService.getProductItems(searchValue)
             .then(res => dispatch(productLoaded(res)))
             .catch(error => dispatch(productError()))
-    }, [searchValue])
+    }, [])
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -225,7 +224,10 @@ const PrimarySearchAppBar = ({ShopService}) => {
                     </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
-                            <SearchIcon />
+                            <IconButton aria-label="search" color="inherit">
+                                <SearchIcon 
+                                    onClick={() => searchHandler()}/>
+                            </IconButton>
                         </div>
                         <InputBase
                             placeholder="Search…"
@@ -242,8 +244,7 @@ const PrimarySearchAppBar = ({ShopService}) => {
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show favotites" color="inherit">
                             <StyledBadge badgeContent={4} color="secondary">
-                                <FavoriteIcon
-                                    onClick={() => searchHandler()}/>
+                                <FavoriteIcon />
                             </StyledBadge>
                         </IconButton>
                         <IconButton aria-label="cart" color="inherit">
