@@ -21,7 +21,6 @@ const ProductList = ({ShopService}) => {
     const currentPage = useSelector(state => state.productList.currentPage);
     const totalCount = useSelector(state => state.productList.totalCount);
     const limitPage = useSelector(state => state.productList.limitPage);
-    const listView = useSelector(state => state.sortPanel.listView);
     const loading = useSelector(state => state.productList.loading);
     const error = useSelector(state => state.productList.error);
 
@@ -57,9 +56,9 @@ const ProductList = ({ShopService}) => {
         return (
             <Grid 
                 container
-                direction={listView ? "column" : "row"}
+                direction="row"
                 justify="space-between"
-                alignItems={listView ? "stretch" : "flex-start"} 
+                alignItems="flex-start" 
                 className="product__list">
                 {items}
             </Grid>

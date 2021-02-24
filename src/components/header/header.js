@@ -167,9 +167,8 @@ const PrimarySearchAppBar = ({ShopService}) => {
             <MenuItem>
                 <IconButton 
                     aria-label="show favotites" 
-                    color="inherit" 
                     className={classes.badge}>
-                    <StyledBadge badgeContent={4} color="secondary">
+                    <StyledBadge badgeContent={4}>
                         <FavoriteIcon/>
                     </StyledBadge>
                 </IconButton>
@@ -178,9 +177,8 @@ const PrimarySearchAppBar = ({ShopService}) => {
             <MenuItem>
                 <IconButton 
                     aria-label="cart" 
-                    color="inherit" 
                     className={classes.badge}>
-                    <StyledBadge badgeContent={2} color="inherit">
+                    <StyledBadge badgeContent={2}>
                         <ShoppingCartIcon />
                     </StyledBadge>
                 </IconButton>
@@ -191,7 +189,6 @@ const PrimarySearchAppBar = ({ShopService}) => {
                     aria-label="account of current user"
                     aria-controls="primary-search-account-menu"
                     aria-haspopup="true"
-                    color="inherit"
                     className={classes.badge}>
                     <AccountCircle />
                 </IconButton>
@@ -204,6 +201,12 @@ const PrimarySearchAppBar = ({ShopService}) => {
         ShopService.getProductItems(searchValue)
             .then(res => dispatch(productLoaded(res)))
             .catch(error => dispatch(productError()))
+    }
+
+    function clickPress(e) {
+        if (e.key === 'Enter') {
+            searchHandler()
+        }
     }
 
     return (
@@ -224,9 +227,11 @@ const PrimarySearchAppBar = ({ShopService}) => {
                     </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
-                            <IconButton aria-label="search" color="inherit">
-                                <SearchIcon 
-                                    onClick={() => searchHandler()}/>
+                            <IconButton 
+                                aria-label="search" 
+                                color="inherit" 
+                                onClick={() => searchHandler()}>
+                                <SearchIcon />
                             </IconButton>
                         </div>
                         <InputBase
@@ -237,18 +242,19 @@ const PrimarySearchAppBar = ({ShopService}) => {
                             }}
                             inputProps={{ 'aria-label': 'search' }}
                             value={searchValue} 
-                            onChange={(e) => setSearchValue(e.target.value)} 
-                            type="text"/>
+                            onChange={(e) => setSearchValue(e.target.value)}
+                            type="text"
+                            onKeyPress={clickPress}/>
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show favotites" color="inherit">
-                            <StyledBadge badgeContent={4} color="secondary">
+                            <StyledBadge badgeContent={4}>
                                 <FavoriteIcon />
                             </StyledBadge>
                         </IconButton>
                         <IconButton aria-label="cart" color="inherit">
-                            <StyledBadge badgeContent={2} color="inherit">
+                            <StyledBadge badgeContent={2}>
                                 <ShoppingCartIcon />
                             </StyledBadge>
                         </IconButton>
