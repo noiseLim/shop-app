@@ -18,4 +18,7 @@ export default class ShopService {
     async getTotalCount() {
         return await this.getResource(`/total_count/`);
     }
+    async getCategoryIdCount() {
+        return await this.getResource(`/products/`);
+    }
 }

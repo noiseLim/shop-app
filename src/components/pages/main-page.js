@@ -18,7 +18,8 @@ const MainPage = () => {
                 <SortPanel/>
             </Grid>
             <Grid item xs={3}>
-                <SearchPanel/>
+                <SearchPanel />
+                <SearchPanel />
             </Grid>
             <Grid item xs={9}>
                 <ProductList/>

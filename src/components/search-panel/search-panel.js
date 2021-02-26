@@ -1,19 +1,5 @@
-// import React from 'react';
-
-// import './search-panel.scss';
-
-// const SearchPanel = () => {
-//     return (
-//         <div className="search__panel">
-//             <button className="search__btn">Search</button>
-//         </div>
-//     )
-// }
-
-// export default SearchPanel;
-
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -32,7 +18,36 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
     },
+    accordion: {
+        boxShadow: '0 0 0 0',
+        minHeight: 0,
+        margin: 0,
+    },
+    summary: {
+        minHeight: 0,
+        '&:hover': {
+            backgroundColor: 'rgba(41, 167, 69, 0.1)',
+            // borderRadius: 4,
+        },
+    },
+    details: {
+        padding: '0 16px',
+    }
 }));
+
+// const GlobalCSS = withStyles({
+//     '@global': {
+//         '.MuiAccordionSummary-content': {
+//             margin: 0,
+//             display: 'flex',
+//             flexGrow: 1,
+//             transition: 'margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+//         },
+//         // 'Mui-expanded': {
+//         //     margin: '22px 0',
+//         // }
+//     },
+// })(() => null);
 
 export default function SimpleAccordion() {
     const classes = useStyles();
@@ -40,14 +55,15 @@ export default function SimpleAccordion() {
     return (
         <div className="search__panel">
             <div className={classes.root}>
-                <Accordion>
-                    <AccordionSummary
+                <Accordion className={classes.accordion}>
+                    {/* <GlobalCSS /> */}
+                    <AccordionSummary className={classes.summary}
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header">
                         <Typography className={classes.heading}>Brand</Typography>
                     </AccordionSummary>
-                    <AccordionDetails>
+                    <AccordionDetails className={classes.details}>
                         <Typography>
                             <SearchPanelItem />
                         </Typography>
