@@ -1,13 +1,21 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 
-import MainPage from '../pages/main-page';
+import { authRoutes, publickRoutes } from '../../routes';
+import { SHOP_ROUTE } from '../../utils/consts';
 
 const App = () => {
+    const isAuth = false
     return (
         <>
             <Switch>
-                <Route path='/' exact component={MainPage}/>
+                {isAuth && authRoutes.map(({path, Component}) => 
+                    <Route key={path} path={path} component={Component} exact/>
+                )}
+                {publickRoutes.map(({path, Component}) => 
+                    <Route key={path} path={path} component={Component} exact/>
+                )}
+                <Redirect to={SHOP_ROUTE}/>
             </Switch>
         </>
     )
