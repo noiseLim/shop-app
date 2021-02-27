@@ -71,7 +71,7 @@ function SearchPanelItem({ShopService}) {
 
     return (
         <List className={classes.root}>
-            {[categoryId].map((value) => {
+            {[1, 2, 3, 4].map((value) => {
                 const labelId = `checkbox-list-label-${value}`;
 
                 return (

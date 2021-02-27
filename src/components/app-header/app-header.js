@@ -103,7 +103,7 @@ const StyledBadge = withStyles((theme) => ({
     },
 }))(Badge);
 
-const PrimarySearchAppBar = ({ShopService}) => {
+const AppHeader = ({ShopService}) => {
 
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
@@ -286,4 +286,4 @@ const PrimarySearchAppBar = ({ShopService}) => {
     );
 }
 
-export default WithShopService()(PrimarySearchAppBar);
+export default WithShopService()(AppHeader);

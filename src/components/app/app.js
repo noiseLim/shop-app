@@ -1,13 +1,19 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {Switch, Route, Redirect} from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 
 import { authRoutes, publickRoutes } from '../../routes';
 import { SHOP_ROUTE } from '../../utils/consts';
+import AppHeader from '../app-header';
 
 const App = () => {
-    const isAuth = false
+    const isAuth = useSelector(state => state.app._isAuth);
     return (
         <>
+            <Grid container className="container__wrapper">
+                <AppHeader/>
+            </Grid>
             <Switch>
                 {isAuth && authRoutes.map(({path, Component}) => 
                     <Route key={path} path={path} component={Component} exact/>

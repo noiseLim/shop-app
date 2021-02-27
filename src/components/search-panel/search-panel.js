@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -61,10 +61,10 @@ export default function SimpleAccordion() {
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header">
-                        <Typography className={classes.heading}>Brand</Typography>
+                        <Typography component={'span'} className={classes.heading}>Brand</Typography>
                     </AccordionSummary>
                     <AccordionDetails className={classes.details}>
-                        <Typography>
+                        <Typography component={'span'}>
                             <SearchPanelItem />
                         </Typography>
                     </AccordionDetails>
