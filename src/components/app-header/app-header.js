@@ -4,7 +4,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,9 +15,11 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Link from '@material-ui/core/Link';
 
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError} from '../product-list/product-list-slice';
+import {SHOP_ROUTE} from '../../utils/consts';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
     [theme.breakpoints.up('sm')]: {
         display: 'block',
+        color: '#fff',
         },
     },
     search: {
@@ -222,9 +224,14 @@ const AppHeader = ({ShopService}) => {
                         aria-label="open drawer">
                         <MenuIcon />
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
+                    <Link 
+                        href={SHOP_ROUTE} 
+                        underline='none' 
+                        className={classes.title} 
+                        variant="h6" 
+                        noWrap>
                         Shop App
-                    </Typography>
+                    </Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <IconButton 
