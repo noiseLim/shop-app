@@ -13,11 +13,14 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import {SHOP_ROUTE} from '../../utils/consts';
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="http://localhost:3001/">
+      <Link color="inherit" href={SHOP_ROUTE}>
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -28,14 +31,14 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(15),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: 'rgb(41, 167, 69)',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -43,7 +46,20 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: 'rgb(41, 167, 69)',
   },
+  link: {
+      color: 'rgb(17, 117, 39)',
+  },
+  checked: {
+    '&$checked': {
+        color: 'rgb(41, 167, 69)',
+    },
+    textField: {
+        // border: '2px solid rgb(41, 167, 69)'
+        backgroundColor: '#fff',
+    }
+  }
 }));
 
 export default function AuthPage() {
@@ -70,6 +86,7 @@ export default function AuthPage() {
             name="email"
             autoComplete="email"
             autoFocus
+            className={classes.textField}
           />
           <TextField
             variant="outlined"
@@ -83,7 +100,7 @@ export default function AuthPage() {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" className={classes.checked} />}
             label="Remember me"
           />
           <Button
@@ -97,12 +114,12 @@ export default function AuthPage() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" className={classes.link}>
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" className={classes.link}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

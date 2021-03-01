@@ -47,7 +47,7 @@ function SearchPanelItem({ShopService}) {
 
     const dispatch = useDispatch();
     
-    const categoryId = useSelector(state => state.searchPanel.categoryId);
+    // const categoryId = useSelector(state => state.searchPanel.categoryId);
     const classes = useStyles();
     const [checked, setChecked] = useState([0]);
 

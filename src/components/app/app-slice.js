@@ -7,10 +7,10 @@ const  appSlice = createSlice({
         _user: {}
     },
     reducers: {
-        getIsAuth: (state, action) => {
+        setIsAuth: (state, action) => {
             return {
                 ...state,
-                _isAuth: state._isAuth
+                _isAuth: !state._isAuth
             };
         },
         getUser: (state, action) => {
@@ -22,6 +22,6 @@ const  appSlice = createSlice({
     }
 })
 
-export const {getIsAuth, getUser} = appSlice.actions
+export const {setIsAuth, getUser} = appSlice.actions
 
 export default appSlice.reducer

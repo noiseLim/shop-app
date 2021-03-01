@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,6 +19,7 @@ import Link from '@material-ui/core/Link';
 
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError} from '../product-list/product-list-slice';
+import {setIsAuth} from '../app/app-slice';
 import {SHOP_ROUTE} from '../../utils/consts';
 
 
@@ -109,6 +110,7 @@ const AppHeader = ({ShopService}) => {
 
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
+    const isAuth = useSelector(state => state.app._isAuth)
 
     useEffect(() => {
         dispatch(productRequested());
@@ -116,6 +118,10 @@ const AppHeader = ({ShopService}) => {
             .then(res => dispatch(productLoaded(res)))
             .catch(error => dispatch(productError()))
     }, [])
+
+    // useEffect(() => {
+    //     setIsAuth()
+    // }, [isAuth])
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -151,8 +157,16 @@ const AppHeader = ({ShopService}) => {
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={isMenuOpen}
             onClose={handleMenuClose}>
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            {isAuth ?
+                <div>
+                    <MenuItem onClick={handleMenuClose}>Admin</MenuItem>
+                    <MenuItem onClick={handleMenuClose}>Sign In</MenuItem>
+                </div>
+                :
+                <MenuItem onClick={() => dispatch(setIsAuth())}>Sign Out</MenuItem>
+            }
+            
+            
         </Menu>
     );
 
