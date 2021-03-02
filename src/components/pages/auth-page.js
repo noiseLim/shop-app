@@ -10,10 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {createMuiTheme} from '@material-ui/core'
 
-import {SHOP_ROUTE} from '../../utils/consts';
+import {REGISTRATION_ROUTE, SHOP_ROUTE} from '../../utils/consts';
 
 
 function Copyright() {
@@ -28,6 +29,14 @@ function Copyright() {
     </Typography>
   );
 }
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: 'rgb(41, 167, 69)'
+        }
+    },
+})
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,20 +56,23 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: 'rgb(41, 167, 69)',
+    '&:hover': {
+        backgroundColor: 'rgb(17, 117, 39)',
+    },
   },
   link: {
       color: 'rgb(17, 117, 39)',
-  },
-  checked: {
-    '&$checked': {
-        color: 'rgb(41, 167, 69)',
-    },
-    textField: {
-        // border: '2px solid rgb(41, 167, 69)'
-        backgroundColor: '#fff',
-    }
   }
 }));
+
+const GreenCheckbox = withStyles({
+    root: {
+        '&$checked': {
+            color: 'rgb(41, 167, 69)',
+        },
+    },
+    checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
 export default function AuthPage() {
   const classes = useStyles();
@@ -76,31 +88,32 @@ export default function AuthPage() {
           Sign in
         </Typography>
         <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            className={classes.textField}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
+          <ThemeProvider theme={theme}>
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+            />
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+            />
+          </ThemeProvider>
           <FormControlLabel
-            control={<Checkbox value="remember" className={classes.checked} />}
+            control={<GreenCheckbox value="remember" />}
             label="Remember me"
           />
           <Button
@@ -119,7 +132,7 @@ export default function AuthPage() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2" className={classes.link}>
+              <Link href={REGISTRATION_ROUTE} variant="body2" className={classes.link}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

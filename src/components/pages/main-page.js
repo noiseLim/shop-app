@@ -5,7 +5,7 @@ import ProductList from '../product-list';
 import SortPanel from '../sort-panel';
 import SearchPanel from '../search-panel';
 
-import './main-pages.scss';
+import './main-page.scss';
 
 const MainPage = () => {
     return (

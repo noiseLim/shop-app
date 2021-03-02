@@ -20,7 +20,7 @@ import Link from '@material-ui/core/Link';
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError} from '../product-list/product-list-slice';
 import {setIsAuth} from '../app/app-slice';
-import {SHOP_ROUTE} from '../../utils/consts';
+import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from '../../utils/consts';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -163,7 +163,7 @@ const AppHeader = ({ShopService}) => {
                     <MenuItem onClick={handleMenuClose}>Sign In</MenuItem>
                 </div>
                 :
-                <MenuItem onClick={() => dispatch(setIsAuth())}>Sign Out</MenuItem>
+                <MenuItem onClick={() => dispatch(setIsAuth())}>Log in</MenuItem>
             }
             
             

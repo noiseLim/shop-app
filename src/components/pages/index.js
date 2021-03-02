@@ -3,11 +3,13 @@ import AuthPage from './auth-page';
 import CartPage from './cart-page';
 import ItemPage from './item-page';
 import MainPage from './main-page';
+import RegistrationPage from './registration-page';
 
 export {
     AdminPage,
     AuthPage,
     CartPage,
     ItemPage,
-    MainPage
+    MainPage,
+    RegistrationPage
 }

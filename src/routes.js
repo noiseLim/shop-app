@@ -1,4 +1,4 @@
-import { AuthPage, AdminPage, ItemPage, MainPage, CartPage } from './components/pages';
+import { AuthPage, AdminPage, ItemPage, MainPage, CartPage, RegistrationPage } from './components/pages';
 import { ADMIN_ROUTE, CART_ROUTE, DEVICE_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from './utils/consts';
 
 export const authRoutes = [
@@ -23,7 +23,7 @@ export const publickRoutes = [
     },
     {
         path: REGISTRATION_ROUTE,
-        Component: AuthPage
+        Component: RegistrationPage
     },
     {
         path: DEVICE_ROUTE + '/:id',
