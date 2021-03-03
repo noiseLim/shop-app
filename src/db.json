@@ -2,6 +2,24 @@
   "total_count": [
       "51"
   ],
+  "category": [
+    {
+        "id": 1,
+        "title": "Laptops & Netbooks"
+    },
+    {
+        "id": 2,
+        "title": "Cell Phones"
+    },
+    {
+        "id": 3,
+        "title": "Smart Watches"
+    },
+    {
+        "id": 4,
+        "title": "Video Game Consoles"
+    }
+  ],
   "products": [
     {
         "id": 1,

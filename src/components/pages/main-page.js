@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 
 import ProductList from '../product-list';
 import SortPanel from '../sort-panel';
-import SearchPanel from '../search-panel';
+import NavPanel from '../nav-panel';
 
 import './main-page.scss';
 
@@ -14,8 +14,7 @@ const MainPage = () => {
                 <SortPanel/>
             </Grid>
             <Grid item xs={3}>
-                <SearchPanel />
-                <SearchPanel />
+                <NavPanel />
             </Grid>
             <Grid item xs={9}>
                 <ProductList/>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+// import {useSelector, useDispatch} from 'react-redux';
 import WithShopService from '../hoc';
 import { makeStyles , withStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -8,9 +8,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
-import {getCategoryId} from '../search-panel/search-panel-slice';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,18 +40,17 @@ const GreenCheckbox = withStyles({
     checked: {},
   })((props) => <Checkbox color="default" {...props} />);
 
-function SearchPanelItem({ShopService}) {
+function NavPanelItem({ShopService}) {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     
-    // const categoryId = useSelector(state => state.searchPanel.categoryId);
     const classes = useStyles();
     const [checked, setChecked] = useState([0]);
 
-    useEffect(() => {
-        ShopService.getCategoryIdCount()
-            .then(res => dispatch(getCategoryId(res)))
-    }, [])
+    // useEffect(() => {
+    //     ShopService.getCategoryItems()
+    //         .then(res => dispatch(getCategory(res)))
+    // }, [])
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -75,7 +71,7 @@ function SearchPanelItem({ShopService}) {
                 const labelId = `checkbox-list-label-${value}`;
 
                 return (
-                    <ListItem className={classes.item} key={value} role={undefined} dense button onClick={handleToggle(value)}>
+                    <ListItem className={classes.item} role={undefined} dense button onClick={handleToggle(value)}>
                         <ListItemIcon className={classes.listIcon}>
                             <FormControlLabel className={classes.form} control={<GreenCheckbox
                                 edge="start"
@@ -93,4 +89,4 @@ function SearchPanelItem({ShopService}) {
     );
 }
 
-export default WithShopService()(SearchPanelItem); 
+export default WithShopService()(NavPanelItem); 
