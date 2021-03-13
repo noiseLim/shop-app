@@ -21,4 +21,7 @@ export default class ShopService {
     async getCategoryItems() {
         return await this.getResource(`/category/`);
     }
+    async getOneItem(id) {
+        return await this.getResource(`/products/` + id);
+    }
 }
