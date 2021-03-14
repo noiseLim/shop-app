@@ -1,9 +1,36 @@
 .device {
+    &__title {
+        margin: 20px 10px;
+        padding: 20px;
+        font-size: 22px;
+        font-weight: 400;
+    }
     &__page {
         background-color: #fff;
         box-shadow: 5px 5px 45px rgba(0,0,0,.1);
         border-radius: 8px;
         margin: 20px 10px;
         padding: 20px;
+    }
+    &__price {
+        padding: 20px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    &__info {
+        padding: 20px;
+    }
+    &__cart {
+        padding: 20px;
+    }
+    &__btn {
+        width: 180px;
+        height: 60px;
+        border: none;
+        background-color: #29a745;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
     }
 }

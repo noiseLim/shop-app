@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 
 import WithShopService from '../hoc';
 import Spinner from '../spinner';
@@ -10,7 +11,7 @@ import './device-page.scss';
 
 const DevicePage = ({ShopService}) => {
 
-    const [products, setProducts] = useState({info:[]})
+    const [product, setProduct] = useState({info:[]})
     // const dispatch = useDispatch();
     const loading = useSelector(state => state.productList.loading);
     const error = useSelector(state => state.productList.error);
@@ -21,11 +22,8 @@ const DevicePage = ({ShopService}) => {
         // dispatch(productRequested())
         ShopService.getOneItem(id)
             // .then(res => dispatch(productLoaded(res)))
-            .then(res => setProducts(res))
+            .then(res => setProduct(res))
     }, [])
-    console.log(products);
-    console.log(products.title);
-    console.log(id);
 
     if (loading) {
         return <Spinner/>
@@ -33,11 +31,33 @@ const DevicePage = ({ShopService}) => {
     if (error) {
         return <Error/>
     }
+    const {title, price, url, info} = product;
     
     return (
-        <div className="device__page">
-            {products.title}
-        </div>
+        <>
+            <div className="device__title">
+                {title}
+            </div>
+            <div className="device__page">
+                <Grid container>
+                    <Grid item xs={4}>
+                        <img src={url} alt={title}></img>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Grid className="device__price">
+                            {price} $
+                        </Grid>
+                        <Grid className="device__info">
+                            {info}
+                        </Grid>
+                        <Grid className="device__cart">
+                            <button className="device__btn">Add to cart</button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </div>
+        </>
+        
     )
 }
 
