@@ -44,15 +44,26 @@
         align-items: center;
     }
     &__title, &__title_current {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 18px;
         font-weight: 400;
         text-align: center;
         height: 80px;
         color: #171717;
+        cursor: pointer;
     }
     &__title_current {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
         text-align: left;
         height: 50px;
+    }
+    &__title:hover, &__title_current:hover {
+        color: rgb(17, 117, 39);
+        transition: 0.5s;
     }
     &__info, &__info_current {
         font-size: 14px;
