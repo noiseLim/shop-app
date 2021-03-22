@@ -5,12 +5,29 @@
         font-size: 22px;
         font-weight: 400;
     }
+    &__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     &__page {
+        position: relative;
         background-color: #fff;
         box-shadow: 5px 5px 45px rgba(0,0,0,.1);
         border-radius: 8px;
         margin: 20px 10px;
-        padding: 20px;
+        padding: 100px 20px;
+    }
+    &__logo button {
+        position: absolute;
+        top: -40px;
+        right: 40px;
+        background-color: #fff;
+        border: 1px solid rgb(246,246,246);
+        box-shadow: 5px 5px 45px rgba(0,0,0,.1);
+        border-radius: 8px;
+        margin: 20px 10px;
+        padding: 20px 80px;
     }
     &__price {
         padding: 20px;

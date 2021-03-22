@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import WithShopService from '../hoc';
 import Spinner from '../spinner';
 import Error from '../error';
+import {currentLogo} from '../../utils/currentLogo';
 
 import './device-page.scss';
 
@@ -31,7 +32,7 @@ const DevicePage = ({ShopService}) => {
     if (error) {
         return <Error/>
     }
-    const {title, price, url, info} = product;
+    const {title, price, url, info, categoryId} = product;
     
     return (
         <>
@@ -40,10 +41,13 @@ const DevicePage = ({ShopService}) => {
             </div>
             <div className="device__page">
                 <Grid container>
-                    <Grid item xs={4}>
+                    <Grid item xs={4} className="device__img">
                         <img src={url} alt={title}></img>
                     </Grid>
                     <Grid item xs={8}>
+                        <Grid className="device__logo">
+                            <button>{currentLogo(categoryId)}</button>
+                        </Grid>
                         <Grid className="device__price">
                             {price} $
                         </Grid>
