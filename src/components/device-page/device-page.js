@@ -46,7 +46,7 @@ const DevicePage = ({ShopService}) => {
                     </Grid>
                     <Grid item xs={8}>
                         <Grid className="device__logo">
-                            <button>{currentLogo(categoryId)}</button>
+                            <img src={currentLogo(categoryId)} alt={title}></img>
                         </Grid>
                         <Grid className="device__price">
                             {price} $
