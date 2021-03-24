@@ -20,7 +20,7 @@ import Link from '@material-ui/core/Link';
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError} from '../product-list/product-list-slice';
 import {setIsAuth} from '../app/app-slice';
-import {LOGIN_ROUTE, SHOP_ROUTE} from '../../utils/consts';
+import {LOGIN_ROUTE, SHOP_ROUTE, CART_ROUTE} from '../../utils/consts';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -194,14 +194,16 @@ const AppHeader = ({ShopService}) => {
                 <p>Favorites</p>
             </MenuItem>
             <MenuItem>
-                <IconButton 
-                    aria-label="cart" 
-                    className={classes.badge}>
-                    <StyledBadge badgeContent={2}>
-                        <ShoppingCartIcon />
-                    </StyledBadge>
-                </IconButton>
-                <p>Cart</p>
+                <Link href={CART_ROUTE} underline='none' className={classes.link}>
+                    <IconButton 
+                        aria-label="cart" 
+                        className={classes.badge}>
+                        <StyledBadge badgeContent={2}>
+                            <ShoppingCartIcon />
+                        </StyledBadge>
+                    </IconButton>
+                    Cart
+                </Link>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
@@ -277,11 +279,13 @@ const AppHeader = ({ShopService}) => {
                                 <FavoriteIcon />
                             </StyledBadge>
                         </IconButton>
-                        <IconButton aria-label="cart" color="inherit">
-                            <StyledBadge badgeContent={2}>
-                                <ShoppingCartIcon />
-                            </StyledBadge>
-                        </IconButton>
+                        <Link href={CART_ROUTE} underline='none' color="inherit">
+                            <IconButton aria-label="cart" color="inherit">
+                                <StyledBadge badgeContent={2}>
+                                    <ShoppingCartIcon />
+                                </StyledBadge>
+                            </IconButton>
+                        </Link>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
