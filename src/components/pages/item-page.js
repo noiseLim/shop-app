@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import DevicePage from '../device-page';
-import './main-page.scss';
+import './page.scss';
 
 const ItemPage = () => {
     return (

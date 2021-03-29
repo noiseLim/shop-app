@@ -1,8 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+
 // import {useHistory} from 'react-router-dom';
 
 // import { DEVICE_ROUTE } from '../../utils/consts';
+import './cart-table.scss';
 
 
 const CartTable = () => {
@@ -12,12 +15,28 @@ const CartTable = () => {
     // const history = useHistory();
     if (items.length === 0) {
         return (
-            <div>Your shopping cart is empty</div>
+            <>
+
+                <Grid className="cart__page">
+                    Your shopping cart is empty
+                </Grid>
+
+                <Grid className="cart__wrapper">
+                    <Grid className="cart__page">
+                        Your shopping cart is empty
+                    </Grid>
+                </Grid>
+            </>
+            
         )
     }
 
     return (
-        []
+        <div className="cart__page">
+            <Grid container>
+
+            </Grid>
+        </div>
         // <li 
         //     className="product__item_current">
         //     <div className="product__img_wrapper_current">
