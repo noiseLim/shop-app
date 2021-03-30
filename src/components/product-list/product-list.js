@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Pagination from '@material-ui/lab/Pagination';
 
 import WithShopService from '../hoc';
-import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount} from './product-list-slice';
+import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount, addedToCart} from './product-list-slice';
 import Error from '../error';
 import Spinner from '../spinner';
 import ProductListItem from '../product-list-item';
@@ -49,7 +49,8 @@ const ProductList = ({ShopService}) => {
     const items = productItems.map(productItem => {
         return <ProductListItem
         key={productItem.id}
-        productItem={productItem}/>
+        productItem={productItem}
+        onAddToCart={() => dispatch(addedToCart(productItem.id))}/>
     })
 
     const View =({items}) => {

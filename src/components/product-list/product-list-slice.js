@@ -8,7 +8,9 @@ const productListSlice = createSlice({
         limitPage: 15,
         totalCount: [],
         loading: true,
-        error: false
+        error: false,
+        items: [],
+        totalPrice: 0,
     },
     reducers: {
         productLoaded: (state, action) => {
@@ -45,10 +47,49 @@ const productListSlice = createSlice({
                 totalCount: action.payload,
                 loading: false
             };
+        },
+        addedToCart: (state, action) => {
+            const id = action.payload;
+            const itemInd = state.items.findIndex(item => item.id === id);
+            if (itemInd >= 0) {
+                const itemInState = state.items.find(item => item.id === id);
+                const newItem = {
+                    ...itemInState,
+                    qtty: itemInState.qtty
+                }
+                return {
+                    ...state,
+                    items: [
+                        ...state.items.slice(0, itemInd),
+                        newItem,
+                        ...state.items.slice(itemInd + 1)
+                    ],
+                    totalPrice: state.totalPrice
+                };
+            }
+
+            const item = state.products.find(item => item.id === id);
+            const newItem = {
+                id: item.id,
+                title: item.title,
+                price: item.price,
+                url: item.url,
+                info: item.info,
+                qtty: 1
+            };
+            console.log(newItem);
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                    newItem
+                ],
+                totalPrice: state.totalPrice + newItem.price
+            };
         }
     }
 })
 
-export const {productLoaded, productRequested, productError, setCurrentPage, getTotalCount} = productListSlice.actions
+export const {productLoaded, productRequested, productError, setCurrentPage, getTotalCount, addedToCart} = productListSlice.actions
 
 export default productListSlice.reducer

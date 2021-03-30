@@ -16,11 +16,14 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Link from '@material-ui/core/Link';
+import {useHistory} from 'react-router-dom';
+
 
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError} from '../product-list/product-list-slice';
 import {setIsAuth} from '../app/app-slice';
 import {LOGIN_ROUTE, SHOP_ROUTE, CART_ROUTE} from '../../utils/consts';
+import { Typography } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
         display: 'block',
         color: '#fff',
+        cursor: 'pointer',
         },
     },
     search: {
@@ -111,6 +115,7 @@ const StyledBadge = withStyles((theme) => ({
 
 const AppHeader = ({ShopService}) => {
 
+    const history = useHistory();
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.app._isAuth)
@@ -193,17 +198,15 @@ const AppHeader = ({ShopService}) => {
                 </IconButton>
                 <p>Favorites</p>
             </MenuItem>
-            <MenuItem>
-                <Link href={CART_ROUTE} underline='none' className={classes.link}>
-                    <IconButton 
-                        aria-label="cart" 
-                        className={classes.badge}>
-                        <StyledBadge badgeContent={2}>
-                            <ShoppingCartIcon />
-                        </StyledBadge>
-                    </IconButton>
-                    Cart
-                </Link>
+            <MenuItem onClick={() => history.push(CART_ROUTE)}>
+                <IconButton 
+                    aria-label="cart" 
+                    className={classes.badge}>
+                    <StyledBadge badgeContent={2}>
+                        <ShoppingCartIcon />
+                    </StyledBadge>
+                </IconButton>
+                Cart
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
@@ -243,14 +246,15 @@ const AppHeader = ({ShopService}) => {
                         aria-label="open drawer">
                         <MenuIcon />
                     </IconButton>
-                    <Link 
+                    <Typography 
                         href={SHOP_ROUTE} 
                         underline='none' 
                         className={classes.title} 
                         variant="h6" 
-                        noWrap>
+                        noWrap
+                        onClick={() => history.push(SHOP_ROUTE)}>
                         Shop App
-                    </Link>
+                    </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <IconButton 
@@ -279,13 +283,14 @@ const AppHeader = ({ShopService}) => {
                                 <FavoriteIcon />
                             </StyledBadge>
                         </IconButton>
-                        <Link href={CART_ROUTE} underline='none' color="inherit">
-                            <IconButton aria-label="cart" color="inherit">
-                                <StyledBadge badgeContent={2}>
-                                    <ShoppingCartIcon />
-                                </StyledBadge>
-                            </IconButton>
-                        </Link>
+                        <IconButton 
+                            aria-label="cart" 
+                            color="inherit"
+                            onClick={() => history.push(CART_ROUTE)}>
+                            <StyledBadge badgeContent={2}>
+                                <ShoppingCartIcon />
+                            </StyledBadge>
+                        </IconButton>
                         <IconButton
                             edge="end"
                             aria-label="account of current user"

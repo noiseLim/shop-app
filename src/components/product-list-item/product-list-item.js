@@ -5,14 +5,14 @@ import { DEVICE_ROUTE } from '../../utils/consts';
 
 import './product-list-item.scss';
 
-const ProductListItem = ({productItem}) => {
+const ProductListItem = ({productItem, onAddToCart}) => {
 
     const {title, price, url, info} = productItem;
     const history = useHistory();
     const listView = useSelector(state => state.sortPanel.listView);
 
     return (
-        <li 
+        <li
             className={listView ? "product__item_current" : "product__item"}>
             <div className={listView ? "product__img_wrapper_current" : "product__img_wrapper"}>
                 <img className={listView ? "product__img_current" : "product__img"} src={url} alt={title}></img>
@@ -27,7 +27,13 @@ const ProductListItem = ({productItem}) => {
             </div>
             <div className={listView ? "product__btn_wrapper_current" : "product__btn_wrapper"}>
                 <div className={listView ? "product__price_current" : "product__price"}>{price}$</div>
-                <button className={listView ? "product__btn_current" : "product__btn"}>Add to cart</button>
+                <button 
+                    className={listView ? "product__btn_current" : "product__btn"}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        onAddToCart();
+                    }}
+                    >Add to cart</button>
             </div>
         </li>
     )
