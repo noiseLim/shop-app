@@ -77,7 +77,6 @@ const productListSlice = createSlice({
                 info: item.info,
                 qtty: 1
             };
-            console.log(newItem);
             return {
                 ...state,
                 items: [

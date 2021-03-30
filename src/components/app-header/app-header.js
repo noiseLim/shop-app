@@ -17,13 +17,12 @@ import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Link from '@material-ui/core/Link';
 import {useHistory} from 'react-router-dom';
-
+import { Typography } from '@material-ui/core';
 
 import WithShopService from '../hoc';
 import {productLoaded, productRequested, productError} from '../product-list/product-list-slice';
 import {setIsAuth} from '../app/app-slice';
 import {LOGIN_ROUTE, SHOP_ROUTE, CART_ROUTE} from '../../utils/consts';
-import { Typography } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
