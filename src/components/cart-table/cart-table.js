@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
+import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@material-ui/icons/Add';
 
 import { DEVICE_ROUTE } from '../../utils/consts';
 
@@ -41,12 +43,17 @@ const CartTable = () => {
                                 <img className="cart__img" src={url} alt={title}></img>
                             </Grid>
                             <Grid 
-                                xs={6}
+                                xs={5}
                                 className="cart__title" 
                                 onClick={() => history.push(DEVICE_ROUTE + '/' + item.id)}>
                                 {title}
                             </Grid>
-                            <Grid xs={3} className="cart__price">
+                            <Grid xs={2} className="cart__count">
+                                <RemoveIcon className="cart__minus"/>
+                                {1}
+                                <AddIcon className="cart__plus"/>
+                            </Grid>
+                            <Grid xs={2} className="cart__price">
                                 {price}$
                             </Grid>
                         </Grid>

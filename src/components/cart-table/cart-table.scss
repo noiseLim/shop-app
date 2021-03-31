@@ -18,7 +18,7 @@
         border-radius: 8px;
         padding: 20px;
         margin-bottom: 20px;
-        height: 200px;
+        height: 180px;
 
     }
     &__img_wrapper {
@@ -27,7 +27,6 @@
         align-items: center;
     }
     &__img {
-        
         max-width: 100%;
         object-fit: cover;
         text-align: center;
@@ -48,4 +47,28 @@
         color: rgb(17, 117, 39);
         transition: 0.5s;
     }
+    &__count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 20px;
+        margin: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        height: 40px;
+    }
+    &__minus {
+        margin: 0 5px;
+        color: #ababab;
+    }
+    &__plus {
+        margin: 0 5px;
+        color: #ababab;
+    }
+    &__price {
+        font-size: 18px;
+        font-weight: 600;
+        padding: 20px;
+    }  
 }
