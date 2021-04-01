@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import { DEVICE_ROUTE } from '../../utils/consts';
+import CheckIcon from '@material-ui/icons/Check';
 
 import './product-list-item.scss';
 
@@ -10,10 +11,15 @@ const ProductListItem = ({productItem, onAddToCart}) => {
     const {title, price, url, info} = productItem;
     const history = useHistory();
     const listView = useSelector(state => state.sortPanel.listView);
+    // const btnView = useSelector(state => state.productList.btnView);
+    const [btnView, setBtnView] = useState(false);
+
+    const onBtnView = () => {
+            setBtnView(true);
+    }
 
     return (
-        <li
-            className={listView ? "product__item_current" : "product__item"}>
+        <li className={listView ? "product__item_current" : "product__item"}>
             <div className={listView ? "product__img_wrapper_current" : "product__img_wrapper"}>
                 <img className={listView ? "product__img_current" : "product__img"} src={url} alt={title}></img>
             </div>
@@ -32,8 +38,13 @@ const ProductListItem = ({productItem, onAddToCart}) => {
                     onClick={(e) => {
                         e.preventDefault();
                         onAddToCart();
-                    }}
-                    >Add to cart</button>
+                        onBtnView();
+                    }}>
+                    <div className={btnView ? "product__btn_change_show" : "product__btn_change_hide"}>
+                        <CheckIcon/>
+                    </div>
+                    {`Add${btnView ? 'ed' : ''} to cart`}
+                </button>
             </div>
         </li>
     )

@@ -19,7 +19,6 @@
         padding: 20px;
         margin-bottom: 20px;
         height: 180px;
-
     }
     &__img_wrapper {
         display: flex;
@@ -54,17 +53,56 @@
         box-sizing: border-box;
         padding: 20px;
         margin: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
         height: 40px;
     }
-    &__minus {
-        margin: 0 5px;
+    &__count_button, 
+    &__count_button_minus, 
+    &__count_button_plus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
         color: #ababab;
+        background: #fff;
+        font-size: 24px;
+        border: 1px solid #ababab;
+        width: 38px;
+        line-height: 1.5;
+        outline: none;
+        cursor: pointer;
     }
-    &__plus {
-        margin: 0 5px;
-        color: #ababab;
+    &__count_button_minus {
+        border-radius: 8px 0 0 8px;
+        padding: 5px 0 5px 5px;
+        border-right: none;
+    }
+    &__count_button_plus {
+        border-radius: 0 8px 8px 0;
+        padding: 5px 5px 5px 0;
+        border-left: none;
+    }
+    &__count_qtty {
+        border: 1px solid #ababab;
+        padding: 5px 10px;
+        font-size: 16px;
+        border-left: none;
+        border-right: none;
+        line-height: 1.5;
+        color: #666;
+        cursor: auto;
+    }
+    &__count_button:hover, 
+    &__count_button_minus:hover {
+        border: 1px solid #666;
+        border-right: none;
+        transition: 0.3s;
+        color: #666;
+    }
+    &__count_button_plus:hover {
+        border: 1px solid #666;
+        border-left: none;
+        transition: 0.3s;
+        color: #666;
     }
     &__price {
         font-size: 18px;

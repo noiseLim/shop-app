@@ -49,12 +49,12 @@ const CartTable = () => {
                                 {title}
                             </Grid>
                             <Grid xs={2} className="cart__count">
-                                <RemoveIcon className="cart__minus"/>
-                                {1}
-                                <AddIcon className="cart__plus"/>
+                                <button className="cart__count_button_minus"><RemoveIcon/></button>
+                                <div className="cart__count_qtty">1</div>
+                                <button className="cart__count_button_plus"><AddIcon/></button>
                             </Grid>
                             <Grid xs={2} className="cart__price">
-                                {price}$
+                                {price} $
                             </Grid>
                         </Grid>
                     )
