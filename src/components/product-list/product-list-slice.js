@@ -85,10 +85,67 @@ const productListSlice = createSlice({
                 ],
                 totalPrice: state.totalPrice + newItem.price
             };
+        },
+        addedCountToMinus: (state, action) => {
+            const idCountToMinus = action.payload;
+            const itemCountToMinus = state.items.find(item => item.id === idCountToMinus);
+
+            if(itemCountToMinus > 1) {
+                const newCountToMinus = {
+                    ...itemCountToMinus,
+                    qtty: --itemCountToMinus.qtty
+                }
+                return {
+                    ...state,
+                    items: [
+                        ...state.items,
+                    ],
+                    newCountToMinus,
+                    totalPrice: state.totalPrice - itemCountToMinus['price']
+                }
+            }
+
+            const newCountToMinus = {
+                ...itemCountToMinus,
+                qtty: itemCountToMinus.qtty
+            }
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                ],
+                newCountToMinus,
+                totalPrice: state.totalPrice
+            }
+        },
+        addedCountToPlus: (state, action) => {
+            const idCountToPlus = action.payload;
+            const itemCountToPlus = state.items.find(item => item.id === idCountToPlus);
+            const newCountToPlus = {
+                ...itemCountToPlus,
+                qtty: ++itemCountToPlus.qtty
+            }
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                ],
+                newCountToPlus,
+                totalPrice: state.totalPrice + itemCountToPlus['price']
+            }
         }
     }
 })
 
-export const {productLoaded, productRequested, productError, setCurrentPage, getTotalCount, addedToCart} = productListSlice.actions
+export const {
+        productLoaded, 
+        productRequested, 
+        productError, 
+        setCurrentPage, 
+        getTotalCount, 
+        addedToCart,
+        addedCountToMinus,
+        addedCountToPlus
+    } = productListSlice.actions
 
 export default productListSlice.reducer

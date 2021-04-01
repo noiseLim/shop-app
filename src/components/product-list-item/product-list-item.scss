@@ -18,7 +18,15 @@
         background-color: rgb(17, 117, 39);
         transition: 0.3s;
     }
+    &__item:hover &__btn_change_show {
+        background-color: rgb(17, 117, 39);
+        transition: 0.3s;
+    }
     &__item_current:hover &__btn_current {
+        background-color: rgb(17, 117, 39);
+        transition: 0.3s;
+    }
+    &__item_current:hover &__btn_change_show {
         background-color: rgb(17, 117, 39);
         transition: 0.3s;
     }

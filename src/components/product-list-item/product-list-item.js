@@ -32,7 +32,7 @@ const ProductListItem = ({productItem, onAddToCart}) => {
                 <div className={listView ? "product__info_current" : "product__info"}>{info}</div>
             </div>
             <div className={listView ? "product__btn_wrapper_current" : "product__btn_wrapper"}>
-                <div className={listView ? "product__price_current" : "product__price"}>{price}$</div>
+                <div className={listView ? "product__price_current" : "product__price"}>{price} $</div>
                 <button 
                     className={listView ? "product__btn_current" : "product__btn"}
                     onClick={(e) => {
@@ -43,7 +43,9 @@ const ProductListItem = ({productItem, onAddToCart}) => {
                     <div className={btnView ? "product__btn_change_show" : "product__btn_change_hide"}>
                         <CheckIcon/>
                     </div>
-                    {`Add${btnView ? 'ed' : ''} to cart`}
+                    <div className={btnView ? "product__btn_change_hide" : "product__btn_change_show"}>
+                        Add to cart
+                    </div>
                 </button>
             </div>
         </li>
