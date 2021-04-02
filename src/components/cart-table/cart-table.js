@@ -38,7 +38,6 @@ const CartTable = () => {
             {
                 items.map(item => {
                     const {title, url, price, id, qtty} = item;
-                    console.log(qtty)
                     return (
                         <Grid item xs={12} key={id} className="cart__item">
                             <Grid xs={3} className="cart__img_wrapper">

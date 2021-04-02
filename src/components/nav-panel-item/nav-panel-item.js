@@ -67,11 +67,11 @@ function NavPanelItem({ShopService}) {
 
     return (
         <List className={classes.root}>
-            {[1, 2, 3, 4].map((value) => {
+            {[1, 2, 3, 4].map((value, index) => {
                 const labelId = `checkbox-list-label-${value}`;
 
                 return (
-                    <ListItem className={classes.item} role={undefined} dense button onClick={handleToggle(value)}>
+                    <ListItem key={index} className={classes.item} role={undefined} dense button onClick={handleToggle(value)}>
                         <ListItemIcon className={classes.listIcon}>
                             <FormControlLabel className={classes.form} control={<GreenCheckbox
                                 edge="start"

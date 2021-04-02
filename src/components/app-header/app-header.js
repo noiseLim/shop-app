@@ -118,6 +118,7 @@ const AppHeader = ({ShopService}) => {
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.app._isAuth)
+    const totalPrice = useSelector(state => state.productList.totalPrice)
 
     useEffect(() => {
         dispatch(productRequested());
@@ -290,6 +291,7 @@ const AppHeader = ({ShopService}) => {
                                 <ShoppingCartIcon />
                             </StyledBadge>
                         </IconButton>
+                        {totalPrice}
                         <IconButton
                             edge="end"
                             aria-label="account of current user"

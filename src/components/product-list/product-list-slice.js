@@ -10,7 +10,7 @@ const productListSlice = createSlice({
         loading: true,
         error: false,
         items: [],
-        totalPrice: 0,
+        totalPrice: 0
     },
     reducers: {
         productLoaded: (state, action) => {
@@ -77,6 +77,7 @@ const productListSlice = createSlice({
                 info: item.info,
                 qtty: 1
             };
+            console.log(newItem);
             return {
                 ...state,
                 items: [
@@ -102,13 +103,14 @@ const productListSlice = createSlice({
                     ],
                     newCountToMinus,
                     totalPrice: state.totalPrice - itemCountToMinus['price']
-                }
+                };
             }
 
             const newCountToMinus = {
                 ...itemCountToMinus,
                 qtty: itemCountToMinus.qtty
             }
+            console.log(newCountToMinus);
             return {
                 ...state,
                 items: [
@@ -116,7 +118,7 @@ const productListSlice = createSlice({
                 ],
                 newCountToMinus,
                 totalPrice: state.totalPrice
-            }
+            };
         },
         addedCountToPlus: (state, action) => {
             const idCountToPlus = action.payload;
@@ -132,7 +134,7 @@ const productListSlice = createSlice({
                 ],
                 newCountToPlus,
                 totalPrice: state.totalPrice + itemCountToPlus['price']
-            }
+            };
         }
     }
 })
