@@ -77,7 +77,6 @@ const productListSlice = createSlice({
                 info: item.info,
                 qtty: 1
             };
-            console.log(newItem);
             return {
                 ...state,
                 items: [
@@ -91,50 +90,27 @@ const productListSlice = createSlice({
             const idCountToMinus = action.payload;
             const itemCountToMinus = state.items.find(item => item.id === idCountToMinus);
 
-            if(itemCountToMinus > 1) {
-                const newCountToMinus = {
-                    ...itemCountToMinus,
-                    qtty: --itemCountToMinus.qtty
-                }
+            if(itemCountToMinus.qtty > 1) {
                 return {
                     ...state,
-                    items: [
-                        ...state.items,
-                    ],
-                    newCountToMinus,
+                    items: state.items.map((item) => item.id === idCountToMinus
+                    ? {...item, qtty: itemCountToMinus.qtty - 1}
+                    : item),
                     totalPrice: state.totalPrice - itemCountToMinus['price']
-                };
-            }
-
-            const newCountToMinus = {
-                ...itemCountToMinus,
-                qtty: itemCountToMinus.qtty
-            }
-            console.log(newCountToMinus);
-            return {
-                ...state,
-                items: [
-                    ...state.items,
-                ],
-                newCountToMinus,
-                totalPrice: state.totalPrice
-            };
+                }
+            }            
         },
         addedCountToPlus: (state, action) => {
             const idCountToPlus = action.payload;
             const itemCountToPlus = state.items.find(item => item.id === idCountToPlus);
-            const newCountToPlus = {
-                ...itemCountToPlus,
-                qtty: ++itemCountToPlus.qtty
-            }
+
             return {
                 ...state,
-                items: [
-                    ...state.items,
-                ],
-                newCountToPlus,
+                items: state.items.map((item) => item.id === idCountToPlus
+                ? {...item, qtty: itemCountToPlus.qtty + 1}
+                : item),
                 totalPrice: state.totalPrice + itemCountToPlus['price']
-            };
+            }
         }
     }
 })

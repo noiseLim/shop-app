@@ -34,22 +34,22 @@ const CartTable = () => {
         )
     }
     return (
-        <Grid item xs={9} className="cart__page">
+        <Grid container xs={9} className="cart__page">
             {
                 items.map(item => {
                     const {title, url, price, id, qtty} = item;
                     return (
-                        <Grid item xs={12} key={id} className="cart__item">
-                            <Grid xs={3} className="cart__img_wrapper">
+                        <Grid container xs={12} key={id} className="cart__item">
+                            <Grid item xs={3} className="cart__img_wrapper">
                                 <img className="cart__img" src={url} alt={title}></img>
                             </Grid>
-                            <Grid 
+                            <Grid item
                                 xs={5}
                                 className="cart__title" 
                                 onClick={() => history.push(DEVICE_ROUTE + '/' + item.id)}>
                                 {title}
                             </Grid>
-                            <Grid xs={2} className="cart__count">
+                            <Grid item xs={2} className="cart__count">
                                 <button 
                                     className="cart__count_button_minus"
                                     onClick={() => dispatch(addedCountToMinus(id))}>
@@ -62,7 +62,7 @@ const CartTable = () => {
                                     <AddIcon/>
                                 </button>
                             </Grid>
-                            <Grid xs={2} className="cart__price">
+                            <Grid item xs={2} className="cart__price">
                                 {price} $
                             </Grid>
                         </Grid>
