@@ -27,12 +27,21 @@ import {LOGIN_ROUTE, SHOP_ROUTE, CART_ROUTE} from '../../utils/consts';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
-        flexGrow: 1,
-        marginLeft: 10,
-        marginRight: 10,
+        position: 'fixed',
+        right: 0,
+        left: 0,
+        zIndex: 1,
+        backgroundColor: 'rgb(41, 167, 69)',
+        boxShadow: '5px 5px 10px rgba(0,0,0,.2)'
     },
     app: {
         backgroundColor: 'rgb(41, 167, 69)',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        maxWidth: 1180,
+        boxShadow: 'none',
+        paddingLeft: 10,
+        paddingRight: 10,
     },
     badge: {
         color: 'rgb(41, 167, 69)',
@@ -90,16 +99,26 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
         [theme.breakpoints.up('md')]: {
         display: 'flex',
+        marginLeft: 'auto'
         },
     },
     sectionMobile: {
         display: 'flex',
+        marginLeft: 'auto',
         [theme.breakpoints.up('md')]: {
             display: 'none',
         },
     },
     link: {
         color: '#000000DE',
+    },
+    price: {
+        marginLeft: 8
+    },
+    icon: {
+        '&:hover': {
+            backgroundColor: 'rgb(41, 167, 69)'
+        }
     }
 }));
 
@@ -108,7 +127,7 @@ const StyledBadge = withStyles((theme) => ({
         border: `2px solid rgb(41, 167, 69)`,
         backgroundColor: 'white',
         padding: '0 4px',
-        color: 'rgb(41, 167, 69)',
+        color: 'rgb(41, 167, 69)'
     },
 }))(Badge);
 
@@ -117,8 +136,9 @@ const AppHeader = ({ShopService}) => {
     const history = useHistory();
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
-    const isAuth = useSelector(state => state.app._isAuth)
-    const totalPrice = useSelector(state => state.productList.totalPrice)
+    const isAuth = useSelector(state => state.app._isAuth);
+    const totalPrice = useSelector(state => state.productList.totalPrice);
+    const totalQuantityProducts = useSelector(state => state.productList.totalQuantityProducts);
 
     useEffect(() => {
         dispatch(productRequested());
@@ -202,7 +222,7 @@ const AppHeader = ({ShopService}) => {
                 <IconButton 
                     aria-label="cart" 
                     className={classes.badge}>
-                    <StyledBadge badgeContent={2}>
+                    <StyledBadge badgeContent={totalQuantityProducts}>
                         <ShoppingCartIcon />
                     </StyledBadge>
                 </IconButton>
@@ -278,7 +298,7 @@ const AppHeader = ({ShopService}) => {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show favotites" color="inherit">
+                        <IconButton aria-label="show favotites" color="inherit" className={classes.icon}>
                             <StyledBadge badgeContent={4}>
                                 <FavoriteIcon />
                             </StyledBadge>
@@ -286,12 +306,15 @@ const AppHeader = ({ShopService}) => {
                         <IconButton 
                             aria-label="cart" 
                             color="inherit"
+                            className={classes.icon}
                             onClick={() => history.push(CART_ROUTE)}>
-                            <StyledBadge badgeContent={2}>
+                            <StyledBadge badgeContent={totalQuantityProducts}>
                                 <ShoppingCartIcon />
                             </StyledBadge>
+                            <Typography className={classes.price}>
+                                {totalPrice} $
+                            </Typography>
                         </IconButton>
-                        {totalPrice}
                         <IconButton
                             edge="end"
                             aria-label="account of current user"

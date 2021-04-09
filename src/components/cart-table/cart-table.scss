@@ -1,6 +1,6 @@
 .cart {
-    &__page {
-        padding: 100px 10px;
+    &__page, &__total {
+        margin-top: 10px;
     }
     &__empty {
         background-color: #fff;
@@ -9,22 +9,21 @@
         margin: 20px 10px;
         padding: 100px 10px;
     }
-    &__item {
-        display: flex;
-        // justify-content: center;
-        // align-items: center;
+    &__item, &__total {
         background-color: #fff;
         box-shadow: 5px 5px 45px rgba(0,0,0,.1);
         border-radius: 8px;
         padding: 20px;
-        margin-bottom: 20px;
+        margin: 10px 10px;
         // height: 180px;
+    }
+    &__total {
+        height: 200px;
     }
     &__img_wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
-        
     }
     &__img {
         max-width: 100%;
@@ -34,11 +33,9 @@
         padding: 10px;
     }
     &__title {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: block;
         text-align: left;
-        // height: 20px;
+        height: 20px;
         padding: 10px;
         margin: 20px;
         font-size: 18px;
@@ -48,6 +45,15 @@
     &__title:hover, &__title_current:hover {
         color: rgb(17, 117, 39);
         transition: 0.5s;
+    }
+    &__remove {
+        display: block;
+        text-align: left;
+        padding: 10px;
+        // margin: 20px;
+        font-size: 18px;
+        color: #171717;
+        cursor: pointer;
     }
     &__count {
         display: flex;

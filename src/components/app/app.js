@@ -11,7 +11,7 @@ const App = () => {
     const isAuth = useSelector(state => state.app._isAuth);
     return (
         <>
-            <Grid container className="container__wrapper">
+            <Grid container >
                 <AppHeader/>
             </Grid>
             <Switch>

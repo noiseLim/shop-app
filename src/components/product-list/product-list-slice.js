@@ -10,7 +10,8 @@ const productListSlice = createSlice({
         loading: true,
         error: false,
         items: [],
-        totalPrice: 0
+        totalPrice: 0,
+        totalQuantityProducts: 0
     },
     reducers: {
         productLoaded: (state, action) => {
@@ -64,7 +65,8 @@ const productListSlice = createSlice({
                         newItem,
                         ...state.items.slice(itemInd + 1)
                     ],
-                    totalPrice: state.totalPrice
+                    totalPrice: state.totalPrice,
+                    totalQuantityProducts: state.totalQuantityProducts
                 };
             }
 
@@ -83,8 +85,23 @@ const productListSlice = createSlice({
                     ...state.items,
                     newItem
                 ],
-                totalPrice: state.totalPrice + newItem.price
+                totalPrice: state.totalPrice + newItem.price,
+                totalQuantityProducts: state.totalQuantityProducts + newItem.qtty
             };
+        },
+        removeFromCart: (state, action) => {
+            const idRemoveFromCart = action.payload;
+            const itemRemoveFromCart = state.items.findIndex(item => item.id === idRemoveFromCart);
+            const price = state.items[itemRemoveFromCart]['price'] * state.items[itemRemoveFromCart]['qtty'];
+            return {
+                ...state,
+                items: [
+                    ...state.items.slice(0, itemRemoveFromCart),
+                    ...state.items.slice(itemRemoveFromCart + 1)
+                ],
+                totalPrice: state.totalPrice - price,
+                totalQuantityProducts: state.totalQuantityProducts - state.items[itemRemoveFromCart]['qtty']
+            }
         },
         addedCountToMinus: (state, action) => {
             const idCountToMinus = action.payload;
@@ -96,7 +113,8 @@ const productListSlice = createSlice({
                     items: state.items.map((item) => item.id === idCountToMinus
                     ? {...item, qtty: itemCountToMinus.qtty - 1}
                     : item),
-                    totalPrice: state.totalPrice - itemCountToMinus['price']
+                    totalPrice: state.totalPrice - itemCountToMinus['price'],
+                    totalQuantityProducts: state.totalQuantityProducts - 1
                 }
             }            
         },
@@ -109,7 +127,8 @@ const productListSlice = createSlice({
                 items: state.items.map((item) => item.id === idCountToPlus
                 ? {...item, qtty: itemCountToPlus.qtty + 1}
                 : item),
-                totalPrice: state.totalPrice + itemCountToPlus['price']
+                totalPrice: state.totalPrice + itemCountToPlus['price'],
+                totalQuantityProducts: state.totalQuantityProducts + 1
             }
         }
     }
@@ -123,7 +142,8 @@ export const {
         getTotalCount, 
         addedToCart,
         addedCountToMinus,
-        addedCountToPlus
+        addedCountToPlus,
+        removeFromCart
     } = productListSlice.actions
 
 export default productListSlice.reducer
