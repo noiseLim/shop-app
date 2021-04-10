@@ -52,12 +52,6 @@ const ProductListItem = ({productItem, onAddToCart}) => {
                         Add to cart
                     </div>
                     }
-                    {/* <div className={checked ? "product__btn_change_show" : "product__btn_change_hide"}>
-                        <CheckIcon/>
-                    </div>
-                    <div className={checked ? "product__btn_change_hide" : "product__btn_change_show"}>
-                        Add to cart
-                    </div> */}
                 </button>
             </div>
         </li>

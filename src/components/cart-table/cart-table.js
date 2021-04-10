@@ -38,7 +38,7 @@ const CartTable = () => {
         )
     }
     return (
-        <>
+        <Grid container xs={12}>
             <Grid container xs={8} className="cart__page">
                 {
                     items.map(item => {
@@ -80,22 +80,23 @@ const CartTable = () => {
                     })
                 }
             </Grid>
-            <Grid container xs={4} className="cart__page">
-                <Grid container xs={12} className="cart__total">
-                    {`Итого: ${totalQuantityProducts} товаров на сумму ${totalPrice} $`}
+            <Grid container xs={4} className="cart__total">
+                <Grid item xs={6}>
+                    {`Item (${totalQuantityProducts})`}
                 </Grid>
-                <button 
-                    className="product__btn"
+                <Grid item xs={6}>
+                    {`US $${totalPrice}`}
+                </Grid>
+                <Grid className="cart__btn_cart"
                     onClick={(e) => {
                         e.preventDefault();
                     }}>
-                    <div className="product__btn_change">
-                        Go to checkout
-                    </div>
-                </button>
+                    Place an order
+                </Grid>
+                
             </Grid>
             
-        </>
+        </Grid>
         
     )
 }
