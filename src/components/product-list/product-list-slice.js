@@ -139,7 +139,7 @@ export const {
         productRequested, 
         productError, 
         setCurrentPage, 
-        getTotalCount, 
+        getTotalCount,
         addedToCart,
         addedCountToMinus,
         addedCountToPlus,

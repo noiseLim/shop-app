@@ -18,7 +18,7 @@
         background-color: rgb(17, 117, 39);
         transition: 0.3s;
     }
-    &__item:hover &__btn_change_show {
+    &__item:hover &__btn_change {
         background-color: rgb(17, 117, 39);
         transition: 0.3s;
     }
@@ -26,7 +26,7 @@
         background-color: rgb(17, 117, 39);
         transition: 0.3s;
     }
-    &__item_current:hover &__btn_change_show {
+    &__item_current:hover &__btn_change {
         background-color: rgb(17, 117, 39);
         transition: 0.3s;
     }
@@ -125,7 +125,7 @@
     &__btn_current {
         margin: 20px 0 0 0;
     }
-    &__btn_change_show {
+    &__btn_change {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -135,9 +135,6 @@
         border-radius: 4px;
         font-size: 14px;
         outline: none;
-    }
-    &__btn_change_hide {
-        display: none;
     }
 }
 

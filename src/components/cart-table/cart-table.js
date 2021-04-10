@@ -6,6 +6,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
+
 import { DEVICE_ROUTE } from '../../utils/consts';
 import {addedCountToMinus, addedCountToPlus, removeFromCart} from '../product-list/product-list-slice';
 
@@ -13,12 +14,13 @@ import './cart-table.scss';
 
 const CartTable = () => {
 
-    const items = useSelector(state => state.productList.items);
-    const totalPrice = useSelector(state => state.productList.totalPrice);
-    const totalQuantityProducts = useSelector(state => state.productList.totalQuantityProducts);
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const items = useSelector(state => state.productList.items);
+    const totalPrice = useSelector(state => state.productList.totalPrice);
+    const totalQuantityProducts = useSelector(state => state.productList.totalQuantityProducts);
+    
     if (items.length === 0) {
         return (
             <>
@@ -33,7 +35,6 @@ const CartTable = () => {
                     </Grid>
                 </Grid>
             </>
-            
         )
     }
     return (
@@ -83,7 +84,17 @@ const CartTable = () => {
                 <Grid container xs={12} className="cart__total">
                     {`Итого: ${totalQuantityProducts} товаров на сумму ${totalPrice} $`}
                 </Grid>
+                <button 
+                    className="product__btn"
+                    onClick={(e) => {
+                        e.preventDefault();
+                    }}>
+                    <div className="product__btn_change">
+                        Go to checkout
+                    </div>
+                </button>
             </Grid>
+            
         </>
         
     )

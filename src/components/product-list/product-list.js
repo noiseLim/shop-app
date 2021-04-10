@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Pagination from '@material-ui/lab/Pagination';
 
 import WithShopService from '../hoc';
-import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount, addedToCart} from './product-list-slice';
+import {productLoaded, productRequested, productError, setCurrentPage, getTotalCount, addedToCart, setBtnView} from './product-list-slice';
 import Error from '../error';
 import Spinner from '../spinner';
 import ProductListItem from '../product-list-item';

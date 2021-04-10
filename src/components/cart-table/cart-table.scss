@@ -18,7 +18,10 @@
         // height: 180px;
     }
     &__total {
-        height: 200px;
+        height: 150px;
+        font-size: 18px;
+        font-weight: 600;
+        // background-color: rgb(233, 246, 236);
     }
     &__img_wrapper {
         display: flex;
@@ -52,7 +55,7 @@
         padding: 10px;
         // margin: 20px;
         font-size: 18px;
-        color: #171717;
+        color: rgb(193, 19, 83);
         cursor: pointer;
     }
     &__count {
