@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-
+import { Typography } from '@material-ui/core';
 
 import { DEVICE_ROUTE } from '../../utils/consts';
 import {addedCountToMinus, addedCountToPlus, removeFromCart} from '../product-list/product-list-slice';
@@ -73,29 +73,27 @@ const CartTable = () => {
                                     </button>
                                 </Grid>
                                 <Grid item xs={2} className="cart__price">
-                                    {price} $
+                                    ${price}
                                 </Grid>
                             </Grid>
                         )
                     })
                 }
             </Grid>
-            <Grid container xs={4} className="cart__total">
-                <Grid item xs={6}>
+            <Grid container xs={4} className="cart__total">                
+                <Grid item xs={6} className="cart__total_left">
                     {`Item (${totalQuantityProducts})`}
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} className="cart__total_right">
                     {`US $${totalPrice}`}
-                </Grid>
-                <Grid className="cart__btn_cart"
-                    onClick={(e) => {
-                        e.preventDefault();
-                    }}>
-                    Place an order
-                </Grid>
-                
+                </Grid>                
             </Grid>
-            
+            <Grid item xs={4} className="cart__btn_cart"
+                onClick={(e) => {
+                    e.preventDefault();
+                }}>
+                Place an order
+            </Grid>
         </Grid>
         
     )

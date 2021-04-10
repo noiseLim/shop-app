@@ -49,7 +49,7 @@ const DevicePage = ({ShopService}) => {
                             <img src={currentLogo(categoryId)} alt={title}></img>
                         </Grid>
                         <Grid className="device__price">
-                            {price} $
+                            ${price}
                         </Grid>
                         <Grid className="device__info">
                             {info}

@@ -149,4 +149,16 @@
         background-color: rgb(17, 117, 39);
         transition: 0.3s;
     }
+    &__total_left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+    }
+    &__total_right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+    }
 }

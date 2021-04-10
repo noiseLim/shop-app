@@ -312,7 +312,7 @@ const AppHeader = ({ShopService}) => {
                                 <ShoppingCartIcon />
                             </StyledBadge>
                             <Typography className={classes.price}>
-                                {totalPrice} $
+                                ${totalPrice}
                             </Typography>
                         </IconButton>
                         <IconButton
