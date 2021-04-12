@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { Typography } from '@material-ui/core';
 
 import { DEVICE_ROUTE } from '../../utils/consts';
 import {addedCountToMinus, addedCountToPlus, removeFromCart} from '../product-list/product-list-slice';
@@ -23,7 +22,7 @@ const CartTable = () => {
     
     if (items.length === 0) {
         return (
-            <>
+            <Grid container xs={12}>
                 <Grid item xs={9}>
                     <Grid className="cart__empty">
                         Your shopping cart is empty
@@ -34,12 +33,12 @@ const CartTable = () => {
                         Your shopping cart is empty
                     </Grid>
                 </Grid>
-            </>
+            </Grid>
         )
     }
     return (
-        <Grid container xs={12}>
-            <Grid container xs={8} className="cart__page">
+        <Grid container xs={12} className="cart__page">
+            <Grid container xs={8}>
                 {
                     items.map(item => {
                         const {title, url, price, id, qtty} = item;
@@ -80,22 +79,27 @@ const CartTable = () => {
                     })
                 }
             </Grid>
-            <Grid container xs={4} className="cart__total">                
-                <Grid item xs={6} className="cart__total_left">
-                    {`Item (${totalQuantityProducts})`}
+            <Grid container xs={4}>
+                <Grid container xs={12} className="cart__total">
+                    <Grid item xs={6} className="cart__total_left">
+                        {`Item (${totalQuantityProducts})`}
+                    </Grid>
+                    <Grid item xs={6} className="cart__total_right">
+                        {`US $${totalPrice}`}
+                    </Grid>
+                    <Grid item xs={12} className="cart__btn_cart_wrap">
+                        <Grid item xs={12} className="cart__btn_cart"
+                            onClick={(e) => {
+                                e.preventDefault();
+                            }}>
+                            Place an order
+                        </Grid>
+                    </Grid>
+                    
                 </Grid>
-                <Grid item xs={6} className="cart__total_right">
-                    {`US $${totalPrice}`}
-                </Grid>                
-            </Grid>
-            <Grid item xs={4} className="cart__btn_cart"
-                onClick={(e) => {
-                    e.preventDefault();
-                }}>
-                Place an order
+                
             </Grid>
         </Grid>
-        
     )
 }
 

@@ -79,33 +79,36 @@ const productListSlice = createSlice({
                 info: item.info,
                 qtty: 1
             };
+            const price = (state.totalPrice + newItem.price).toFixed(2)
             return {
                 ...state,
                 items: [
                     ...state.items,
                     newItem
                 ],
-                totalPrice: state.totalPrice + newItem.price,
+                totalPrice: ((Math.round(price * 100)) / 100),
+                // totalPrice: price,
                 totalQuantityProducts: state.totalQuantityProducts + newItem.qtty
             };
         },
         removeFromCart: (state, action) => {
             const idRemoveFromCart = action.payload;
             const itemRemoveFromCart = state.items.findIndex(item => item.id === idRemoveFromCart);
-            const price = state.items[itemRemoveFromCart]['price'] * state.items[itemRemoveFromCart]['qtty'];
+            const price = (state.items[itemRemoveFromCart]['price'] * state.items[itemRemoveFromCart]['qtty']).toFixed(2);
             return {
                 ...state,
                 items: [
                     ...state.items.slice(0, itemRemoveFromCart),
                     ...state.items.slice(itemRemoveFromCart + 1)
                 ],
-                totalPrice: state.totalPrice - price,
+                totalPrice: ((Math.round((state.totalPrice - price) * 100)) / 100),
                 totalQuantityProducts: state.totalQuantityProducts - state.items[itemRemoveFromCart]['qtty']
             }
         },
         addedCountToMinus: (state, action) => {
             const idCountToMinus = action.payload;
             const itemCountToMinus = state.items.find(item => item.id === idCountToMinus);
+            const price = (state.totalPrice - itemCountToMinus['price']).toFixed(2);
 
             if(itemCountToMinus.qtty > 1) {
                 return {
@@ -113,7 +116,7 @@ const productListSlice = createSlice({
                     items: state.items.map((item) => item.id === idCountToMinus
                     ? {...item, qtty: itemCountToMinus.qtty - 1}
                     : item),
-                    totalPrice: state.totalPrice - itemCountToMinus['price'],
+                    totalPrice: ((Math.round(price * 100)) / 100),
                     totalQuantityProducts: state.totalQuantityProducts - 1
                 }
             }            
@@ -121,13 +124,14 @@ const productListSlice = createSlice({
         addedCountToPlus: (state, action) => {
             const idCountToPlus = action.payload;
             const itemCountToPlus = state.items.find(item => item.id === idCountToPlus);
+            const price = (state.totalPrice + itemCountToPlus['price']).toFixed(2);
 
             return {
                 ...state,
                 items: state.items.map((item) => item.id === idCountToPlus
                 ? {...item, qtty: itemCountToPlus.qtty + 1}
                 : item),
-                totalPrice: state.totalPrice + itemCountToPlus['price'],
+                totalPrice: ((Math.round(price * 100)) / 100),
                 totalQuantityProducts: state.totalQuantityProducts + 1
             }
         }
