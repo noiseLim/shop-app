@@ -6,12 +6,14 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
-import { DEVICE_ROUTE } from '../../utils/consts';
-import {addedCountToMinus, addedCountToPlus, removeFromCart} from '../product-list/product-list-slice';
+import { DEVICE_ROUTE, SHOP_ROUTE } from '../../utils/consts';
+import {addedCountToMinus, addedCountToPlus, removeFromCart, cleanCartAfterOrder} from '../product-list/product-list-slice';
+import WithShopService from '../hoc';
+import Animation from '../../utils/animation';
 
 import './cart-table.scss';
 
-const CartTable = () => {
+const CartTable = ({ShopService}) => {
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -22,16 +24,15 @@ const CartTable = () => {
     
     if (items.length === 0) {
         return (
-            <Grid container xs={12}>
-                <Grid item xs={9}>
-                    <Grid className="cart__empty">
-                        Your shopping cart is empty
-                    </Grid>
+            <Grid container className="cart__empty">
+                <Grid item xs={6}>
+                    <Animation/>
                 </Grid>
-                <Grid item xs={3}>
-                    <Grid className="cart__empty">
-                        Your shopping cart is empty
-                    </Grid>
+                <Grid item xs={12} className="cart__empty_item">
+                    Your shopping cart is empty
+                </Grid>
+                <Grid item xs={3} className="cart__btn_cart" onClick={() => history.push(SHOP_ROUTE)}>
+                    Go back to the main page
                 </Grid>
             </Grid>
         )
@@ -82,25 +83,51 @@ const CartTable = () => {
             <Grid container xs={4}>
                 <Grid container xs={12} className="cart__total">
                     <Grid item xs={6} className="cart__total_left">
-                        {`Item (${totalQuantityProducts})`}
+                        {totalQuantityProducts > 1 ? `Items (${totalQuantityProducts})` : `Item (${totalQuantityProducts})`}
                     </Grid>
                     <Grid item xs={6} className="cart__total_right">
                         {`US $${totalPrice}`}
                     </Grid>
+                    <Grid item xs={6} className="cart__total_left">
+                        Shipping
+                    </Grid>
+                    <Grid item xs={6} className="cart__total_right">
+                        Free
+                    </Grid>
+                    <div className="cart__line">
+                        <hr className="cart__line_x"></hr>
+                    </div>
+                    <Grid container className="cart__subtotal">
+                        <Grid item xs={6} className="cart__total_left">
+                            Subtotal
+                        </Grid>
+                        <Grid item xs={6} className="cart__total_right">
+                            {`US $${totalPrice}`}
+                        </Grid>
+                    </Grid>
                     <Grid item xs={12} className="cart__btn_cart_wrap">
                         <Grid item xs={12} className="cart__btn_cart"
-                            onClick={(e) => {
-                                e.preventDefault();
+                            onClick={() => {
+                                dispatch(cleanCartAfterOrder(ShopService.setOrder(generateOrder(items))));
                             }}>
                             Place an order
                         </Grid>
                     </Grid>
-                    
                 </Grid>
-                
             </Grid>
         </Grid>
     )
 }
 
-export default CartTable;
+const generateOrder = (items) => {
+    const newOrder = items.map(item => {
+        return {
+            id: item.id,
+            title: item.title,
+            qtty: item.qtty
+        }
+    })
+    return newOrder;
+}
+
+export default WithShopService()(CartTable);

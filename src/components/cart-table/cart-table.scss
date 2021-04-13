@@ -3,11 +3,20 @@
         margin-top: 20px;
     }
     &__empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: #fff;
         box-shadow: 5px 5px 45px rgba(0,0,0,.1);
         border-radius: 8px;
         margin: 20px 10px;
-        padding: 100px 10px;
+        padding: 60px 20px;
+    }
+    &__empty_item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
     }
     &__item, &__total {
         background-color: #fff;
@@ -18,8 +27,9 @@
         // height: 180px;
     }
     &__total {
-        font-size: 18px;
-        height: 150px;
+        font-size: 14px;
+        max-height: 200px;
+        // height: 150px;
     }
     &__img_wrapper {
         display: flex;
@@ -123,6 +133,17 @@
         font-weight: 600;
         padding: 10px;
         margin: 20px
+    }
+    &__line {
+        margin: 16px 0;
+        width: 100%;
+    }
+    &__line_x {
+        border: 1px solid #ddd;
+    }
+    &__subtotal {
+        font-size: 20px;
+        margin-bottom: 16px;
     }
     &__btn_cart_wrap {
         display: flex;

@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { authRoutes, publickRoutes } from '../../routes';
 import { SHOP_ROUTE } from '../../utils/consts';
 import AppHeader from '../app-header';
+import AppFooter from '../app-footer';
 
 const App = () => {
     const isAuth = useSelector(state => state.app._isAuth);
@@ -23,6 +24,7 @@ const App = () => {
                 )}
                 <Redirect to={SHOP_ROUTE}/>
             </Switch>
+            <AppFooter/>
         </>
     )
 }

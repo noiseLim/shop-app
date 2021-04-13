@@ -105,6 +105,14 @@ const productListSlice = createSlice({
                 totalQuantityProducts: state.totalQuantityProducts - state.items[itemRemoveFromCart]['qtty']
             }
         },
+        cleanCartAfterOrder: (state) => {
+            return {
+                ...state,
+                items: [],
+                totalPrice: 0,
+                totalQuantityProducts: 0
+            }
+        },
         addedCountToMinus: (state, action) => {
             const idCountToMinus = action.payload;
             const itemCountToMinus = state.items.find(item => item.id === idCountToMinus);
@@ -147,7 +155,8 @@ export const {
         addedToCart,
         addedCountToMinus,
         addedCountToPlus,
-        removeFromCart
+        removeFromCart,
+        cleanCartAfterOrder
     } = productListSlice.actions
 
 export default productListSlice.reducer
