@@ -9,7 +9,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { DEVICE_ROUTE, SHOP_ROUTE } from '../../utils/consts';
 import {addedCountToMinus, addedCountToPlus, removeFromCart, cleanCartAfterOrder} from '../product-list/product-list-slice';
 import WithShopService from '../hoc';
-import Animation from '../../utils/animation';
+import AnimationCat from '../../utils/animation-cat';
 
 import './cart-table.scss';
 
@@ -26,7 +26,7 @@ const CartTable = ({ShopService}) => {
         return (
             <Grid container className="cart__empty">
                 <Grid item xs={6}>
-                    <Animation/>
+                    <AnimationCat/>
                 </Grid>
                 <Grid item xs={12} className="cart__empty_item">
                     Your shopping cart is empty

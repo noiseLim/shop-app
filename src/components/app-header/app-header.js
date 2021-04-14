@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         right: 0,
         left: 0,
-        zIndex: 1,
+        zIndex: 8,
         backgroundColor: 'rgb(41, 167, 69)',
         boxShadow: '5px 5px 10px rgba(0,0,0,.2)'
     },

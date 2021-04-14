@@ -9,7 +9,7 @@ import { SHOP_ROUTE } from '../../utils/consts';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary">
+    <Typography variant="body2">
       {'Copyright © '}
       <Link color="inherit" href={SHOP_ROUTE}>
         Shop App
@@ -21,28 +21,24 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
+  typography: {
+    color: '#fff'
   },
   footer: {
-    padding: theme.spacing(3, 2),
-    marginTop: 'auto',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+    padding: 15,
+    height: 50,
+    backgroundColor: '#333333',
   },
 }));
 
-export default function AppFooter() {
+export default function StickyFooter() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
       <footer className={classes.footer}>
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" className={classes.typography}>
           <Copyright />
         </Container>
       </footer>
-    </div>
   );
 }

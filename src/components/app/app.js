@@ -12,18 +12,20 @@ const App = () => {
     const isAuth = useSelector(state => state.app._isAuth);
     return (
         <>
-            <Grid container >
-                <AppHeader/>
-            </Grid>
-            <Switch>
-                {isAuth && authRoutes.map(({path, Component}) => 
-                    <Route key={path} path={path} component={Component} exact/>
-                )}
-                {publickRoutes.map(({path, Component}) => 
-                    <Route key={path} path={path} component={Component} exact/>
-                )}
-                <Redirect to={SHOP_ROUTE}/>
-            </Switch>
+            <div style={{minHeight: 'calc(100vh - 50px)'}}>
+                    <Grid container >
+                        <AppHeader/>
+                    </Grid>
+                    <Switch>
+                        {isAuth && authRoutes.map(({path, Component}) => 
+                            <Route key={path} path={path} component={Component} exact/>
+                        )}
+                        {publickRoutes.map(({path, Component}) => 
+                            <Route key={path} path={path} component={Component} exact/>
+                        )}
+                        <Redirect to={SHOP_ROUTE}/>
+                    </Switch>
+            </div>
             <AppFooter/>
         </>
     )
