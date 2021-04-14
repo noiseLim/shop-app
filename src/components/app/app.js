@@ -13,18 +13,18 @@ const App = () => {
     return (
         <>
             <div style={{minHeight: 'calc(100vh - 50px)'}}>
-                    <Grid container >
-                        <AppHeader/>
-                    </Grid>
-                    <Switch>
-                        {isAuth && authRoutes.map(({path, Component}) => 
-                            <Route key={path} path={path} component={Component} exact/>
-                        )}
-                        {publickRoutes.map(({path, Component}) => 
-                            <Route key={path} path={path} component={Component} exact/>
-                        )}
-                        <Redirect to={SHOP_ROUTE}/>
-                    </Switch>
+                <Grid container >
+                    <AppHeader/>
+                </Grid>
+                <Switch>
+                    {isAuth && authRoutes.map(({path, Component}) => 
+                        <Route key={path} path={path} component={Component} exact/>
+                    )}
+                    {publickRoutes.map(({path, Component}) => 
+                        <Route key={path} path={path} component={Component} exact/>
+                    )}
+                    <Redirect to={SHOP_ROUTE}/>
+                </Switch>
             </div>
             <AppFooter/>
         </>

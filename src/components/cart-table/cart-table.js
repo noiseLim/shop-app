@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { withStyles } from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
 
 import { DEVICE_ROUTE, SHOP_ROUTE } from '../../utils/consts';
 import {addedCountToMinus, addedCountToPlus, removeFromCart, cleanCartAfterOrder} from '../product-list/product-list-slice';
@@ -15,12 +17,25 @@ import './cart-table.scss';
 
 const CartTable = ({ShopService}) => {
 
+    const [selectedValue, setSelectedValue] = useState('a');
+
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
+    };
+
     const history = useHistory();
     const dispatch = useDispatch();
 
     const items = useSelector(state => state.productList.items);
     const totalPrice = useSelector(state => state.productList.totalPrice);
     const totalQuantityProducts = useSelector(state => state.productList.totalQuantityProducts);
+
+    const GreenRadio = withStyles({
+        root: {
+            color: 'rgb(41, 167, 69)',
+        },
+        checked: {},
+    })((props) => <Radio color="default" {...props} />);
     
     if (items.length === 0) {
         return (
@@ -74,6 +89,22 @@ const CartTable = ({ShopService}) => {
                                 </Grid>
                                 <Grid item xs={2} className="cart__price">
                                     ${price}
+                                </Grid>
+                                <Grid container xs={12}>
+                                <GreenRadio
+                                    checked={selectedValue === 'a'}
+                                    onChange={handleChange}
+                                    value="a"
+                                    name="radio-button"
+                                    inputProps={{ 'aria-label': 'A' }}
+                                />
+                                <GreenRadio
+                                    checked={selectedValue === 'b'}
+                                    onChange={handleChange}
+                                    value="b"
+                                    name="radio-button"
+                                    inputProps={{ 'aria-label': 'B' }}
+                                />
                                 </Grid>
                             </Grid>
                         )

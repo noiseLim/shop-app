@@ -22,7 +22,8 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   typography: {
-    color: '#fff'
+    color: '#fff',
+    maxWidth: 1180
   },
   footer: {
     padding: 15,
@@ -31,12 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function StickyFooter() {
+export default function AppFooter() {
   const classes = useStyles();
 
   return (
       <footer className={classes.footer}>
-        <Container maxWidth="sm" className={classes.typography}>
+        <Container className={classes.typography}>
           <Copyright />
         </Container>
       </footer>
