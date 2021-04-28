@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 
 import { DEVICE_ROUTE, SHOP_ROUTE } from '../../utils/consts';
-import {addedCountToMinus, addedCountToPlus, removeFromCart, cleanCartAfterOrder} from '../product-list/product-list-slice';
+import {addedCountToMinus, addedCountToPlus, removeFromCart, cleanCartAfterOrder, addedAdditionalWarranties} from '../product-list/product-list-slice';
 import WithShopService from '../hoc';
 import AnimationCat from '../../utils/animation-cat';
 
@@ -101,6 +101,7 @@ const CartTable = ({ShopService}) => {
                                 <GreenRadio
                                     checked={selectedValue === 'b'}
                                     onChange={handleChange}
+                                    onClick={() => dispatch(addedAdditionalWarranties(id))}
                                     value="b"
                                     name="radio-button"
                                     inputProps={{ 'aria-label': 'B' }}

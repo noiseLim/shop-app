@@ -142,6 +142,16 @@ const productListSlice = createSlice({
                 totalPrice: ((Math.round(price * 100)) / 100),
                 totalQuantityProducts: state.totalQuantityProducts + 1
             }
+        },
+        addedAdditionalWarranties: (state,action) => {
+            const id = action.payload;
+            const itemWarranties = state.items.find(item => item.id === id);
+            return {
+                ...state,
+                items: state.items.map((item) => item.id === id
+                ? {...item, price: itemWarranties.price + 50}
+                : item)
+            }
         }
     }
 })
@@ -156,7 +166,8 @@ export const {
         addedCountToMinus,
         addedCountToPlus,
         removeFromCart,
-        cleanCartAfterOrder
+        cleanCartAfterOrder,
+        addedAdditionalWarranties
     } = productListSlice.actions
 
 export default productListSlice.reducer
