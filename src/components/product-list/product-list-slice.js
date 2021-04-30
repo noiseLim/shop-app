@@ -11,7 +11,8 @@ const productListSlice = createSlice({
         error: false,
         items: [],
         totalPrice: 0,
-        totalQuantityProducts: 0
+        totalQuantityProducts: 0,
+        warrantiesPrice: 0
     },
     reducers: {
         productLoaded: (state, action) => {
@@ -143,14 +144,52 @@ const productListSlice = createSlice({
                 totalQuantityProducts: state.totalQuantityProducts + 1
             }
         },
-        addedAdditionalWarranties: (state,action) => {
+        addedAdditionalWarrantiesNo:(state,action) => {
             const id = action.payload;
-            const itemWarranties = state.items.find(item => item.id === id);
+            const item = state.items.find(item => item.id === id);
+            const warrantiesPriceItem = +(item.price).toFixed(2);
+
+            console.log(+(item.price * 0.05).toFixed(2));
+            console.log(warrantiesPriceItem);
+
             return {
                 ...state,
                 items: state.items.map((item) => item.id === id
-                ? {...item, price: itemWarranties.price + 50}
-                : item)
+                ? {...item, warrantiesPrice: 0}
+                : item),
+                totalPrice: ((Math.round(warrantiesPriceItem * 100)) / 100),
+            }
+        },
+        addedAdditionalWarranties12Month: (state,action) => {
+            const id = action.payload;
+            const item = state.items.find(item => item.id === id);
+            const warrantiesPriceItem = +(item.price + (item.price * 0.05)).toFixed(2);
+
+            console.log(+(item.price * 0.05).toFixed(2));
+            console.log(warrantiesPriceItem);
+
+            return {
+                ...state,
+                items: state.items.map((item) => item.id === id
+                ? {...item, warrantiesPrice: warrantiesPriceItem}
+                : item),
+                totalPrice: ((Math.round(warrantiesPriceItem * 100)) / 100),
+            }
+        },
+        addedAdditionalWarranties24Month: (state,action) => {
+            const id = action.payload;
+            const item = state.items.find(item => item.id === id);
+            const warrantiesPriceItem = +(item.price + (item.price * 0.1)).toFixed(2);
+
+            console.log(+(item.price * 0.1).toFixed(2));
+            console.log(warrantiesPriceItem);
+            
+            return {
+                ...state,
+                items: state.items.map((item) => item.id === id
+                ? {...item, warrantiesPrice: warrantiesPriceItem}
+                : item),
+                totalPrice: ((Math.round(warrantiesPriceItem * 100)) / 100),
             }
         }
     }
@@ -167,7 +206,9 @@ export const {
         addedCountToPlus,
         removeFromCart,
         cleanCartAfterOrder,
-        addedAdditionalWarranties
+        addedAdditionalWarrantiesNo,
+        addedAdditionalWarranties12Month,
+        addedAdditionalWarranties24Month
     } = productListSlice.actions
 
 export default productListSlice.reducer

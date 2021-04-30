@@ -7,9 +7,10 @@ import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
+import { FormControlLabel, Icon, RadioGroup } from '@material-ui/core';
 
 import { DEVICE_ROUTE, SHOP_ROUTE } from '../../utils/consts';
-import {addedCountToMinus, addedCountToPlus, removeFromCart, cleanCartAfterOrder, addedAdditionalWarranties} from '../product-list/product-list-slice';
+import {addedCountToMinus, addedCountToPlus, removeFromCart, cleanCartAfterOrder, addedAdditionalWarranties12Month, addedAdditionalWarranties24Month, addedAdditionalWarrantiesNo} from '../product-list/product-list-slice';
 import WithShopService from '../hoc';
 import AnimationCat from '../../utils/animation-cat';
 
@@ -17,7 +18,7 @@ import './cart-table.scss';
 
 const CartTable = ({ShopService}) => {
 
-    const [selectedValue, setSelectedValue] = useState('a');
+    const [selectedValue, setSelectedValue] = useState('No add warranty');
 
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
@@ -32,9 +33,12 @@ const CartTable = ({ShopService}) => {
 
     const GreenRadio = withStyles({
         root: {
-            color: 'rgb(41, 167, 69)',
-        },
-        checked: {},
+            color: '#ababab',
+            '&$checked': {
+                color: 'rgb(41, 167, 69)',
+            },
+          },
+          checked: {},
     })((props) => <Radio color="default" {...props} />);
     
     if (items.length === 0) {
@@ -91,21 +95,40 @@ const CartTable = ({ShopService}) => {
                                     ${price}
                                 </Grid>
                                 <Grid container xs={12}>
-                                <GreenRadio
-                                    checked={selectedValue === 'a'}
-                                    onChange={handleChange}
-                                    value="a"
-                                    name="radio-button"
-                                    inputProps={{ 'aria-label': 'A' }}
-                                />
-                                <GreenRadio
-                                    checked={selectedValue === 'b'}
-                                    onChange={handleChange}
-                                    onClick={() => dispatch(addedAdditionalWarranties(id))}
-                                    value="b"
-                                    name="radio-button"
-                                    inputProps={{ 'aria-label': 'B' }}
-                                />
+                                <RadioGroup row aria-label="warranty" name="warranty1" value={selectedValue} onChange={handleChange}>
+                                    <FormControlLabel 
+                                        value="Add warranty" control={<Icon />} label="Add warranty:" />
+                                    <FormControlLabel 
+                                        value="No add warranty" control={<GreenRadio />} label="No add warranty" 
+                                        onChange={() => dispatch(addedAdditionalWarrantiesNo(id))} />
+                                    <FormControlLabel 
+                                        value="+ 12 month" control={<GreenRadio />} label={`+12 month ($${(price * 0.05).toFixed(2)})`}
+                                        onChange={() => dispatch(addedAdditionalWarranties12Month(id))} />
+                                    <FormControlLabel 
+                                        value="+ 24 month" control={<GreenRadio />} label={`+24 month ($${(price * 0.1).toFixed(2)})`}
+                                        onChange={() => dispatch(addedAdditionalWarranties24Month(id))} />
+                                </RadioGroup>
+                                    {/* <GreenRadio
+                                        checked={selectedValue === 'a'}
+                                        onChange={(e) => {
+                                            handleChange(e);
+                                            handleChange2(id)
+                                        }}
+                                        value="a"
+                                        name="radio-button"
+                                        inputProps={{ 'aria-label': 'A' }}
+                                    />
+                                    <GreenRadio
+                                        checked={selectedValue === 'b' && selectedValue2 === id}
+                                        onChange={(e) => {
+                                            handleChange(e);
+                                            handleChange2(id)
+                                        }}
+                                        // onClick={() => dispatch(addedAdditionalWarranties(id))}
+                                        value="b"
+                                        name="radio-button"
+                                        inputProps={{ 'aria-label': 'B' }}
+                                    /> */}
                                 </Grid>
                             </Grid>
                         )
