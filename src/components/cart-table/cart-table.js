@@ -94,42 +94,21 @@ const CartTable = ({ShopService}) => {
                                 <Grid item xs={2} className="cart__price">
                                     ${price}
                                 </Grid>
-                                <Grid container xs={12}>
-                                <RadioGroup row aria-label="warranty" name="warranty1" value={selectedValue} onChange={handleChange}>
-                                    <FormControlLabel 
-                                        value="Add warranty" control={<Icon />} label="Add warranty:" />
-                                    <FormControlLabel 
-                                        value="No add warranty" control={<GreenRadio />} label="No add warranty" 
-                                        onChange={() => dispatch(addedAdditionalWarrantiesNo(id))} />
-                                    <FormControlLabel 
-                                        value="+ 12 month" control={<GreenRadio />} label={`+12 month ($${(price * 0.05).toFixed(2)})`}
-                                        onChange={() => dispatch(addedAdditionalWarranties12Month(id))} />
-                                    <FormControlLabel 
-                                        value="+ 24 month" control={<GreenRadio />} label={`+24 month ($${(price * 0.1).toFixed(2)})`}
-                                        onChange={() => dispatch(addedAdditionalWarranties24Month(id))} />
-                                </RadioGroup>
-                                    {/* <GreenRadio
-                                        checked={selectedValue === 'a'}
-                                        onChange={(e) => {
-                                            handleChange(e);
-                                            handleChange2(id)
-                                        }}
-                                        value="a"
-                                        name="radio-button"
-                                        inputProps={{ 'aria-label': 'A' }}
-                                    />
-                                    <GreenRadio
-                                        checked={selectedValue === 'b' && selectedValue2 === id}
-                                        onChange={(e) => {
-                                            handleChange(e);
-                                            handleChange2(id)
-                                        }}
-                                        // onClick={() => dispatch(addedAdditionalWarranties(id))}
-                                        value="b"
-                                        name="radio-button"
-                                        inputProps={{ 'aria-label': 'B' }}
-                                    /> */}
-                                </Grid>
+                                {/* <Grid container xs={12}>
+                                    <RadioGroup row aria-label="warranty" name="warranty1" value={selectedValue} onChange={handleChange}>
+                                        <FormControlLabel 
+                                            value="Add warranty" control={<Icon />} label="Add warranty:" />
+                                        <FormControlLabel 
+                                            value="No add warranty" control={<GreenRadio />} label="No add warranty" 
+                                            onChange={() => dispatch(addedAdditionalWarrantiesNo(id))} />
+                                        <FormControlLabel 
+                                            value="+ 12 month" control={<GreenRadio />} label={`+12 month ($${(price * 0.05).toFixed(2)})`}
+                                            onChange={() => dispatch(addedAdditionalWarranties12Month(id))} />
+                                        <FormControlLabel 
+                                            value="+ 24 month" control={<GreenRadio />} label={`+24 month ($${(price * 0.1).toFixed(2)})`}
+                                            onChange={() => dispatch(addedAdditionalWarranties24Month(id))} />
+                                    </RadioGroup>
+                                </Grid> */}
                             </Grid>
                         )
                     })

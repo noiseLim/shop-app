@@ -88,7 +88,6 @@ const productListSlice = createSlice({
                     newItem
                 ],
                 totalPrice: ((Math.round(price * 100)) / 100),
-                // totalPrice: price,
                 totalQuantityProducts: state.totalQuantityProducts + newItem.qtty
             };
         },
@@ -154,9 +153,6 @@ const productListSlice = createSlice({
 
             return {
                 ...state,
-                items: state.items.map((item) => item.id === id
-                ? {...item, warrantiesPrice: 0}
-                : item),
                 totalPrice: ((Math.round(warrantiesPriceItem * 100)) / 100),
             }
         },
@@ -170,9 +166,6 @@ const productListSlice = createSlice({
 
             return {
                 ...state,
-                items: state.items.map((item) => item.id === id
-                ? {...item, warrantiesPrice: warrantiesPriceItem}
-                : item),
                 totalPrice: ((Math.round(warrantiesPriceItem * 100)) / 100),
             }
         },
@@ -186,9 +179,6 @@ const productListSlice = createSlice({
             
             return {
                 ...state,
-                items: state.items.map((item) => item.id === id
-                ? {...item, warrantiesPrice: warrantiesPriceItem}
-                : item),
                 totalPrice: ((Math.round(warrantiesPriceItem * 100)) / 100),
             }
         }
