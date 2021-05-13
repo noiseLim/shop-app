@@ -1,120 +1,106 @@
 :root {
-    --size: 5rem;
+  --size: 5rem;
 }
-
 
 body {
-    background: #2E282A;
+  background: #2e282a;
 }
-
 
 @-webkit-keyframes rotate {
-    from { 
-        transform: rotate(0);
-    }
-    to { 
-        transform: rotate(1080deg);
-    }
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1080deg);
+  }
 }
-
 
 @keyframes rotate {
-    from { 
-        transform: rotate(0);
-    }
-    to { 
-        transform: rotate(1080deg);
-    }
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1080deg);
+  }
 }
-
 
 .spinner {
-    margin-top: 50px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    height: var(--size);
-    width: var(--size);
+  margin-top: 50px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: var(--size);
+  width: var(--size);
 }
 
-
 .spinner > .dot {
-        position: absolute;
-        height: calc(var(--size) * .8);
-        width: calc(var(--size) * .8);
-        border-radius: 50%;
-    }
-
+  position: absolute;
+  height: calc(var(--size) * 0.8);
+  width: calc(var(--size) * 0.8);
+  border-radius: 50%;
+}
 
 .spinner > .dot:after {
-            content: '';
-            position: absolute;
-            height: calc(var(--size) * .1);
-            width: calc(var(--size) * .1);
-            border-radius: 50%;
-        }
-
+  content: "";
+  position: absolute;
+  height: calc(var(--size) * 0.1);
+  width: calc(var(--size) * 0.1);
+  border-radius: 50%;
+}
 
 .spinner > .dot:nth-of-type(1) {
-            top: 0;
-            left: 0;
-            -webkit-animation: rotate 4s cubic-bezier(.17,.67,.83,.67) infinite;
-                    animation: rotate 4s cubic-bezier(.17,.67,.83,.67) infinite;
-        }
-
+  top: 0;
+  left: 0;
+  -webkit-animation: rotate 4s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+  animation: rotate 4s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+}
 
 .spinner > .dot:nth-of-type(1):after {
-                top: 50%;
-                right: 0;
-                transform: translateY(-50%);
-                background: #00A6A6;
-            }
-
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #00a6a6;
+}
 
 .spinner > .dot:nth-of-type(2) {
-            top: 0;
-            right: 0;
-            -webkit-animation: rotate 3.8s cubic-bezier(.17,.67,.83,.67) infinite;
-                    animation: rotate 3.8s cubic-bezier(.17,.67,.83,.67) infinite;
-        }
-
+  top: 0;
+  right: 0;
+  -webkit-animation: rotate 3.8s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+  animation: rotate 3.8s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+}
 
 .spinner > .dot:nth-of-type(2):after {
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #FFC914;
-            }
-
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffc914;
+}
 
 .spinner > .dot:nth-of-type(3) {
-            bottom: 0;
-            right: 0;
-            -webkit-animation: rotate 4.1s cubic-bezier(.17,.67,.83,.67) infinite;
-                    animation: rotate 4.1s cubic-bezier(.17,.67,.83,.67) infinite;
-        }
-
+  bottom: 0;
+  right: 0;
+  -webkit-animation: rotate 4.1s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+  animation: rotate 4.1s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+}
 
 .spinner > .dot:nth-of-type(3):after {
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-                background: #76B041;
-            }
-
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: #76b041;
+}
 
 .spinner > .dot:nth-of-type(4) {
-            bottom: 0;
-            left: 0;
-            -webkit-animation: rotate 3.9s cubic-bezier(.17,.67,.83,.67) infinite;
-                    animation: rotate 3.9s cubic-bezier(.17,.67,.83,.67) infinite;
-        }
-
+  bottom: 0;
+  left: 0;
+  -webkit-animation: rotate 3.9s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+  animation: rotate 3.9s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+}
 
 .spinner > .dot:nth-of-type(4):after {
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #E4572E;
-            }
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e4572e;
+}

@@ -1,21 +1,20 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const navPanelSlice = createSlice({
-    name: 'navPanel',
-    initialState: {
-        category: []
+  name: "navPanel",
+  initialState: {
+    category: [],
+  },
+  reducers: {
+    getCategory: (state, action) => {
+      return {
+        ...state,
+        category: action.payload,
+      };
     },
-    reducers: {
-        getCategory: (state, action) => {
+  },
+});
 
-            return {
-                ...state,
-                category: action.payload,
-            };
-        },
-    }
-})
+export const { getCategory } = navPanelSlice.actions;
 
-export const {getCategory} = navPanelSlice.actions
-
-export default navPanelSlice.reducer
+export default navPanelSlice.reducer;

@@ -1,54 +1,54 @@
 .device {
-    &__title {
-        margin: 20px 10px;
-        padding: 20px;
-        font-size: 22px;
-        font-weight: 400;
-    }
-    &__img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    &__page {
-        position: relative;
-        background-color: #fff;
-        box-shadow: 5px 5px 45px rgba(0,0,0,.1);
-        border-radius: 8px;
-        margin: 20px 10px;
-        padding: 100px 20px;
-    }
-    &__logo img {
-        position: absolute;
-        top: -40px;
-        right: 40px;
-        background-color: #fff;
-        border: 1px solid rgb(246,246,246);
-        box-shadow: 5px 5px 45px rgba(0,0,0,.1);
-        border-radius: 8px;
-        margin: 20px 10px;
-        padding: 10px 80px;
-    }
-    &__price {
-        padding: 20px;
-        font-size: 30px;
-        font-weight: 600;
-    }
-    &__info {
-        padding: 20px;
-    }
-    &__cart {
-        padding: 20px;
-    }
-    &__btn {
-        width: 180px;
-        height: 60px;
-        border: none;
-        background-color: #29a745;
-        border-radius: 4px;
-        color: #fff;
-        font-size: 18px;
-        outline: none;
-        cursor: pointer;
-    }
+  &__title {
+    margin: 20px 10px;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 400;
+  }
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__page {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px 10px;
+    padding: 100px 20px;
+  }
+  &__logo img {
+    position: absolute;
+    top: -40px;
+    right: 40px;
+    background-color: #fff;
+    border: 1px solid rgb(246, 246, 246);
+    box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px 10px;
+    padding: 10px 80px;
+  }
+  &__price {
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  &__info {
+    padding: 20px;
+  }
+  &__cart {
+    padding: 20px;
+  }
+  &__btn {
+    width: 180px;
+    height: 60px;
+    border: none;
+    background-color: #29a745;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+  }
 }

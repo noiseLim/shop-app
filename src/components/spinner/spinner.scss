@@ -1,11 +1,11 @@
 .circularProgress {
-    color: #29a745;
+  color: #29a745;
 }
 .spinner {
-    &__grid {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 400px; 
-    }
+  &__grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
 }

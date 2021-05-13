@@ -1,146 +1,155 @@
 .product {
-    &__item, &__item_current {
-        width: 270px;
-        min-height: 400px;
-        background-color: #fff;
-        box-shadow: 5px 5px 45px rgba(0,0,0,.1);
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 20px;
-        max-height: 460px;
-    }
-    &__item_current {
-        width: 100%;
-        display: flex;
-        min-height: 200px;
-    }
-    &__item:hover &__btn {
-        background-color: rgb(17, 117, 39);
-        transition: 0.3s;
-    }
-    &__item:hover &__btn_change {
-        background-color: rgb(17, 117, 39);
-        transition: 0.3s;
-    }
-    &__item_current:hover &__btn_current {
-        background-color: rgb(17, 117, 39);
-        transition: 0.3s;
-    }
-    &__item_current:hover &__btn_change {
-        background-color: rgb(17, 117, 39);
-        transition: 0.3s;
-    }
-    &__img_wrapper, &__img_wrapper_current {
-        width: auto;
-        height: 200px;
-        text-align: center
-    }
-    &__img_wrapper_current {
-        width: 25%;
-        height: auto;
-        display: flex;
-        align-items: center;
-        padding: 5px;
-    }
-    &__img, &__img_current {
-        max-width: 100%;
-        object-fit: cover;
-        margin-bottom: 10px;
-        text-align: center;
-        max-height: 100%;
-    }
-    &__img_current {
-        margin-bottom: 0;
-    }
-    &__info_wrapper {
-        display: block;
-        width: 60%;
-        padding: 5px;
-        margin: auto;
-        align-items: center;
-    }
-    &__title, &__title_current {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        font-weight: 400;
-        text-align: center;
-        height: 80px;
-        color: #171717;
-        cursor: pointer;
-    }
-    &__title_current {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        text-align: left;
-        height: 50px;
-    }
-    &__title:hover, &__title_current:hover {
-        color: rgb(17, 117, 39);
-        transition: 0.5s;
-    }
-    &__info, &__info_current {
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 20px;
-        height: 80px;
-    }
-    &__info_current {
-        height: 20px;
-    }
-    &__btn_wrapper, &__btn_wrapper_current {
-        display: flex;
-    }
-    &__btn_wrapper_current {
-        display: block;
-        width: 15%;
-        padding: 5px;
-        text-align: center;
-    }
-    &__price, &__price_current {
-        font-size: 18px;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        margin: 0 auto;
-    }
-    &__price_current {
-        display: block;
-        margin: 40px 0 0 0;
-    }
-    &__btn, &__btn_current {
-        width: 100px;
-        height: 40px;
-        margin-left: 20px;
-        border: none;
-        background-color: #29a745;
-        border-radius: 4px;
-        color: #fff;
-        font-size: 14px;
-        outline: none;
-        cursor: pointer;
-    }
-    &__btn_current {
-        margin: 20px 0 0 0;
-    }
-    &__btn_change {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100px;
-        border: none;
-        background-color: #29a745;
-        border-radius: 4px;
-        font-size: 14px;
-        outline: none;
-    }
+  &__item,
+  &__item_current {
+    width: 270px;
+    min-height: 400px;
+    background-color: #fff;
+    box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-height: 460px;
+  }
+  &__item_current {
+    width: 100%;
+    display: flex;
+    min-height: 200px;
+  }
+  &__item:hover &__btn {
+    background-color: rgb(17, 117, 39);
+    transition: 0.3s;
+  }
+  &__item:hover &__btn_change {
+    background-color: rgb(17, 117, 39);
+    transition: 0.3s;
+  }
+  &__item_current:hover &__btn_current {
+    background-color: rgb(17, 117, 39);
+    transition: 0.3s;
+  }
+  &__item_current:hover &__btn_change {
+    background-color: rgb(17, 117, 39);
+    transition: 0.3s;
+  }
+  &__img_wrapper,
+  &__img_wrapper_current {
+    width: auto;
+    height: 200px;
+    text-align: center;
+  }
+  &__img_wrapper_current {
+    width: 25%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  }
+  &__img,
+  &__img_current {
+    max-width: 100%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    text-align: center;
+    max-height: 100%;
+  }
+  &__img_current {
+    margin-bottom: 0;
+  }
+  &__info_wrapper {
+    display: block;
+    width: 60%;
+    padding: 5px;
+    margin: auto;
+    align-items: center;
+  }
+  &__title,
+  &__title_current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    height: 80px;
+    color: #171717;
+    cursor: pointer;
+  }
+  &__title_current {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    height: 50px;
+  }
+  &__title:hover,
+  &__title_current:hover {
+    color: rgb(17, 117, 39);
+    transition: 0.5s;
+  }
+  &__info,
+  &__info_current {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    height: 80px;
+  }
+  &__info_current {
+    height: 20px;
+  }
+  &__btn_wrapper,
+  &__btn_wrapper_current {
+    display: flex;
+  }
+  &__btn_wrapper_current {
+    display: block;
+    width: 15%;
+    padding: 5px;
+    text-align: center;
+  }
+  &__price,
+  &__price_current {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+  &__price_current {
+    display: block;
+    margin: 40px 0 0 0;
+  }
+  &__btn,
+  &__btn_current {
+    width: 100px;
+    height: 40px;
+    margin-left: 20px;
+    border: none;
+    background-color: #29a745;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+  }
+  &__btn_current {
+    margin: 20px 0 0 0;
+  }
+  &__btn_change {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    border: none;
+    background-color: #29a745;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+  }
 }
 
 a {
-    text-decoration: none;
-    color: #171717;
+  text-decoration: none;
+  color: #171717;
 }
 
 // @media screen and (max-width: 1200px) {

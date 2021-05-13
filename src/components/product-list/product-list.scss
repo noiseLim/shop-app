@@ -1,43 +1,43 @@
 .product {
-    &__list {
-        padding: 0 10px;
-        list-style-type: none;
-    }
-    &__btn {
-        width: 100px;
-        height: 40px;
-        border: none;
-        background-color: #29a745;
-        border-radius: 4px;
-        color: #fff;
-        font-size: 14px;
-        cursor: pointer;
-    }
-    // &__btn:hover {
-    //     background-color: rgb(17, 117, 39);
-    //     transition: 0.3s;
-    // }
-    &__more {
-        padding: 50px 50px;
-        // float: right;
-    }
-    &__pages {
-        margin: 20px 0 80px 0;
-    }
-    &__page {
-        margin: 10px 0 50px 10px;
-    }
+  &__list {
+    padding: 0 10px;
+    list-style-type: none;
+  }
+  &__btn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: #29a745;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  // &__btn:hover {
+  //     background-color: rgb(17, 117, 39);
+  //     transition: 0.3s;
+  // }
+  &__more {
+    padding: 50px 50px;
+    // float: right;
+  }
+  &__pages {
+    margin: 20px 0 80px 0;
+  }
+  &__page {
+    margin: 10px 0 50px 10px;
+  }
 }
 .search {
-    &__search {
-        display: flex;
-        margin: 10px 0;
-    }
-    &__input {
-        padding: 5px;
-        width: 100%;
-    }
-    &__btn {
-        padding: 5px;
-    }
+  &__search {
+    display: flex;
+    margin: 10px 0;
+  }
+  &__input {
+    padding: 5px;
+    width: 100%;
+  }
+  &__btn {
+    padding: 5px;
+  }
 }

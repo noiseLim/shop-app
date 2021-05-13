@@ -1,5 +1,5 @@
 $pink: #fd6e72;
-$green: #29A745;
+$green: #29a745;
 $purple: #745260;
 $brown: #9e6d55;
 $teal: #abe7db;
@@ -14,7 +14,7 @@ $tail-wags: 14;
 $k-tail: (
   1: rotate(0),
   1.5: rotate(10deg),
-//   2: rotate(0),
+  //   2: rotate(0),
   2.5: rotate(-5deg),
   3: rotate(30deg),
   4: rotate(-2deg),
@@ -26,7 +26,7 @@ $k-tail: (
 $k-left-whisker: (
   1: rotate(0),
   1.5: rotate(0deg),
-//   2: rotate(0),
+  //   2: rotate(0),
   2.5: rotate(-5deg),
   3: rotate(0deg),
   4: rotate(0deg),
@@ -70,7 +70,7 @@ $k-left-ear: (
   9: rotate(-15deg),
   12: rotate(-15deg),
   14: rotate(-6deg),
-  $total-kf: rotateZ(-6deg)
+  $total-kf: rotateZ(-6deg),
 );
 
 $k-right-ear: (
@@ -79,27 +79,23 @@ $k-right-ear: (
   2: rotateZ(-19deg),
   4: rotateZ(-19deg),
   5: rotateZ(-30deg),
-  
   5.5: rotateZ(-19deg),
   5.6: rotateZ(-30deg),
   5.7: rotateZ(-19deg),
   6: rotateZ(-19deg),
   6.1: rotateZ(-30deg),
   6.2: rotateZ(-19deg),
-
   7: rotateZ(-9deg),
   8: rotateZ(-9deg),
-  
   9: rotateZ(-19deg),
   9.1: rotateZ(-30deg),
   9.2: rotateZ(-19deg),
   9.4: rotateZ(-19deg),
   9.5: rotateZ(-30deg),
   9.6: rotateZ(-19deg),
-  
   12: rotateZ(-19deg),
   14: rotateZ(-16deg),
-  $total-kf: rotateZ(-16deg)
+  $total-kf: rotateZ(-16deg),
 );
 
 $tail-interval: (11 - 7.5) / $tail-wags;
@@ -114,27 +110,26 @@ $tail-interval: (11 - 7.5) / $tail-wags;
   }
 }
 
-@include effect('tail', $k-tail);
-@include effect('body', $k-body);
+@include effect("tail", $k-tail);
+@include effect("body", $k-body);
 
-@include effect('left-whisker', $k-left-whisker);
-@include effect('right-whisker', $k-right-whisker);
+@include effect("left-whisker", $k-left-whisker);
+@include effect("right-whisker", $k-right-whisker);
 
-@include effect('left-ear', $k-left-ear);
-@include effect('right-ear', $k-right-ear);
-
+@include effect("left-ear", $k-left-ear);
+@include effect("right-ear", $k-right-ear);
 
 .cont {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.main{
+.main {
   height: 320px;
   width: 400px;
   position: relative;
-  
-  .stand{
+
+  .stand {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -144,35 +139,23 @@ $tail-interval: (11 - 7.5) / $tail-wags;
     border-radius: 20px;
     background-color: $green;
     z-index: 1;
-    &::after{
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translate(-50%);
-    height: 10px;
-    width: 50px;
-    border-radius: 20px;
-    background-color: $brown;
-    box-shadow:
-      0 10px 0 $brown,
-      0 20px 0 $brown,
-      0 30px 0 $brown,
-      0 40px 0 $brown,
-      0 50px 0 $brown,
-      0 60px 0 $brown,
-      0 70px 0 $brown,
-      0 80px 0 $brown,
-      0 90px 0 $brown,
-      0 100px 0 $brown,
-      0 110px 0 $brown,
-      0 120px 0 $brown,
-      0 130px 0 $brown,
-      0 140px 0 $brown,
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translate(-50%);
+      height: 10px;
+      width: 50px;
+      border-radius: 20px;
+      background-color: $brown;
+      box-shadow: 0 10px 0 $brown, 0 20px 0 $brown, 0 30px 0 $brown,
+        0 40px 0 $brown, 0 50px 0 $brown, 0 60px 0 $brown, 0 70px 0 $brown,
+        0 80px 0 $brown, 0 90px 0 $brown, 0 100px 0 $brown, 0 110px 0 $brown,
+        0 120px 0 $brown, 0 130px 0 $brown, 0 140px 0 $brown;
     }
-    
   }
-  .cat{
+  .cat {
     width: 110px;
     height: 50px;
     position: absolute;
@@ -181,19 +164,19 @@ $tail-interval: (11 - 7.5) / $tail-wags;
     border-top-left-radius: 50px * 2;
     border-top-right-radius: 50px * 2;
     animation: body $duration none infinite;
-    
-    .body{
-     width: 110px;
-    height: 50px;
-    background-color: $purple;
-    position: absolute;
-    // top: calc(50% - 50px);
-    // left: 130px;
-    border-top-left-radius: 50px * 2;
-    border-top-right-radius: 50px * 2;
-    animation: body $duration none infinite;
+
+    .body {
+      width: 110px;
+      height: 50px;
+      background-color: $purple;
+      position: absolute;
+      // top: calc(50% - 50px);
+      // left: 130px;
+      border-top-left-radius: 50px * 2;
+      border-top-right-radius: 50px * 2;
+      animation: body $duration none infinite;
     }
-    .head{
+    .head {
       content: "";
       width: 70px;
       height: 35px;
@@ -203,12 +186,12 @@ $tail-interval: (11 - 7.5) / $tail-wags;
       left: -40px;
       border-top-left-radius: 40px * 2;
       border-top-right-radius: 40px * 2;
-    //   border-radius: 10px 10px 0 10px;
+      //   border-radius: 10px 10px 0 10px;
     }
   }
 }
 
-.tail-container{
+.tail-container {
   position: absolute;
   right: 0;
   bottom: -13px;
@@ -223,7 +206,7 @@ $tail-interval: (11 - 7.5) / $tail-wags;
   border-bottom-right-radius: 5px;
   background: $purple;
   z-index: 0;
-  
+
   > .tail {
     animation: tail $duration none infinite;
     height: 100%;
@@ -236,62 +219,62 @@ $tail-interval: (11 - 7.5) / $tail-wags;
     // transform: rotate(30deg);
   }
 }
-.ear{
+.ear {
   position: absolute;
   left: 4px;
   top: -4px;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 12px solid transparent;
-  border-right:12px solid transparent;
-  border-bottom:20px solid $purple;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid $purple;
   transform: rotate(-30deg);
   animation: left-ear $duration both infinite;
-  
-   + .ear {
-     animation: right-ear $duration both infinite;
-     top: -12px;
-     left: 30px;
+
+  + .ear {
+    animation: right-ear $duration both infinite;
+    top: -12px;
+    left: 30px;
     //  transform: rotate(-20deg);
   }
 }
-  .nose{
-    position: absolute;
-    bottom: 10px;
-    left: -10px;
-    background-color: $pink;
-    height: 5px;
-    width: 5px;
-    border-radius: 50%;
+.nose {
+  position: absolute;
+  bottom: 10px;
+  left: -10px;
+  background-color: $pink;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
 }
-  .whisker-container {
-    position: absolute;
-    bottom: 5px;
-    left: -36px;
-    width: 20px;
-    height: 10px;
+.whisker-container {
+  position: absolute;
+  bottom: 5px;
+  left: -36px;
+  width: 20px;
+  height: 10px;
+  transform-origin: right;
+  animation: left-whisker $duration both infinite;
+
+  &:nth-child(2) {
+    left: -20px;
+    bottom: 12px;
     transform-origin: right;
-    animation: left-whisker $duration both infinite;
-
-    &:nth-child(2) {
-        left: -20px;
-        bottom:12px;
-        transform-origin: right;
-        transform: rotate(180deg);
-        animation: right-whisker $duration both infinite;
-    }
+    transform: rotate(180deg);
+    animation: right-whisker $duration both infinite;
+  }
 }
-                                
-.whisker {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    border: 1px solid $cream;
-    transform-origin: 100% 0;
-    transform: rotate(10deg);
 
-    &:last-child {
-        top: 0;
-        transform: rotate(-20deg);
-    }
+.whisker {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border: 1px solid $cream;
+  transform-origin: 100% 0;
+  transform: rotate(10deg);
+
+  &:last-child {
+    top: 0;
+    transform: rotate(-20deg);
+  }
 }
