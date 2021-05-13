@@ -1,3 +1,3 @@
-import ShopServiceContext from "./shop-service-context";
+import ShopServiceContext from './shop-service-context';
 
 export default ShopServiceContext;

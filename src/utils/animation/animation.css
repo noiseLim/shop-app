@@ -42,7 +42,7 @@ body {
 }
 
 .spinner > .dot:after {
-  content: "";
+  content: '';
   position: absolute;
   height: calc(var(--size) * 0.1);
   width: calc(var(--size) * 0.1);

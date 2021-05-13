@@ -110,14 +110,14 @@ $tail-interval: (11 - 7.5) / $tail-wags;
   }
 }
 
-@include effect("tail", $k-tail);
-@include effect("body", $k-body);
+@include effect('tail', $k-tail);
+@include effect('body', $k-body);
 
-@include effect("left-whisker", $k-left-whisker);
-@include effect("right-whisker", $k-right-whisker);
+@include effect('left-whisker', $k-left-whisker);
+@include effect('right-whisker', $k-right-whisker);
 
-@include effect("left-ear", $k-left-ear);
-@include effect("right-ear", $k-right-ear);
+@include effect('left-ear', $k-left-ear);
+@include effect('right-ear', $k-right-ear);
 
 .cont {
   display: flex;
@@ -140,7 +140,7 @@ $tail-interval: (11 - 7.5) / $tail-wags;
     background-color: $green;
     z-index: 1;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -10px;
       left: 50%;
@@ -177,7 +177,7 @@ $tail-interval: (11 - 7.5) / $tail-wags;
       animation: body $duration none infinite;
     }
     .head {
-      content: "";
+      content: '';
       width: 70px;
       height: 35px;
       background-color: $purple;

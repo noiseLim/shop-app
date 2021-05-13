@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const sortPanelSlice = createSlice({
-  name: "sortSlice",
+  name: 'sortSlice',
   initialState: {
     listView: false,
   },

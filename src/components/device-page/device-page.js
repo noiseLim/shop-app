@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 
-import WithShopService from "../hoc";
-import Spinner from "../spinner";
-import Error from "../error";
-import { currentLogo } from "../../utils/currentLogo";
+import WithShopService from '../hoc';
+import Spinner from '../spinner';
+import Error from '../error';
+import { currentLogo } from '../../utils/currentLogo';
 
-import "./device-page.scss";
+import './device-page.scss';
 
 const DevicePage = ({ ShopService }) => {
   const [product, setProduct] = useState({ info: [] });
@@ -35,20 +35,20 @@ const DevicePage = ({ ShopService }) => {
 
   return (
     <>
-      <div className="device__title">{title}</div>
-      <div className="device__page">
+      <div className='device__title'>{title}</div>
+      <div className='device__page'>
         <Grid container>
-          <Grid item xs={4} className="device__img">
+          <Grid item xs={4} className='device__img'>
             <img src={url} alt={title}></img>
           </Grid>
           <Grid item xs={8}>
-            <Grid className="device__logo">
+            <Grid className='device__logo'>
               <img src={currentLogo(categoryId)} alt={title}></img>
             </Grid>
-            <Grid className="device__price">${price}</Grid>
-            <Grid className="device__info">{info}</Grid>
-            <Grid className="device__cart">
-              <button className="device__btn">Add to cart</button>
+            <Grid className='device__price'>${price}</Grid>
+            <Grid className='device__info'>{info}</Grid>
+            <Grid className='device__cart'>
+              <button className='device__btn'>Add to cart</button>
             </Grid>
           </Grid>
         </Grid>

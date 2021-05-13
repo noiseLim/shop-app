@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const productListSlice = createSlice({
-  name: "productList",
+  name: 'productList',
   initialState: {
     products: [],
     currentPage: 1,
@@ -95,8 +95,8 @@ const productListSlice = createSlice({
         (item) => item.id === idRemoveFromCart
       );
       const price = (
-        state.items[itemRemoveFromCart]["price"] *
-        state.items[itemRemoveFromCart]["qtty"]
+        state.items[itemRemoveFromCart]['price'] *
+        state.items[itemRemoveFromCart]['qtty']
       ).toFixed(2);
       return {
         ...state,
@@ -106,7 +106,7 @@ const productListSlice = createSlice({
         ],
         totalPrice: Math.round((state.totalPrice - price) * 100) / 100,
         totalQuantityProducts:
-          state.totalQuantityProducts - state.items[itemRemoveFromCart]["qtty"],
+          state.totalQuantityProducts - state.items[itemRemoveFromCart]['qtty'],
       };
     },
     cleanCartAfterOrder: (state) => {
@@ -122,7 +122,7 @@ const productListSlice = createSlice({
       const itemCountToMinus = state.items.find(
         (item) => item.id === idCountToMinus
       );
-      const price = (state.totalPrice - itemCountToMinus["price"]).toFixed(2);
+      const price = (state.totalPrice - itemCountToMinus['price']).toFixed(2);
 
       if (itemCountToMinus.qtty > 1) {
         return {
@@ -142,7 +142,7 @@ const productListSlice = createSlice({
       const itemCountToPlus = state.items.find(
         (item) => item.id === idCountToPlus
       );
-      const price = (state.totalPrice + itemCountToPlus["price"]).toFixed(2);
+      const price = (state.totalPrice + itemCountToPlus['price']).toFixed(2);
 
       return {
         ...state,
@@ -155,58 +155,52 @@ const productListSlice = createSlice({
         totalQuantityProducts: state.totalQuantityProducts + 1,
       };
     },
-    addedAdditionalWarrantiesNo: (state, action) => {
-      const id = action.payload;
-      const item = state.items.find((item) => item.id === id);
-      const warrantiesPriceItem = +item.price.toFixed(2);
+    // addedAdditionalWarrantiesNo: (state, action) => {
+    //   const id = action.payload;
+    //   const item = state.items.find((item) => item.id === id);
+    //   const warrantiesPriceItem = +item.price.toFixed(2);
 
-      console.log(+(item.price * 0.05).toFixed(2));
-      console.log(warrantiesPriceItem);
+    //   return {
+    //     ...state,
+    //     items: state.items.map((item) =>
+    //       item.id === id ? { ...item, warrantiesPrice: 0 } : item
+    //     ),
+    //     totalPrice: Math.round(warrantiesPriceItem * 100) / 100,
+    //   };
+    // },
+    // addedAdditionalWarranties12Month: (state, action) => {
+    //   const id = action.payload;
+    //   const item = state.items.find((item) => item.id === id);
+    //   const warrantiesPriceItem = +(item.price + item.price * 0.05).toFixed(2);
 
-      return {
-        ...state,
-        items: state.items.map((item) =>
-          item.id === id ? { ...item, warrantiesPrice: 0 } : item
-        ),
-        totalPrice: Math.round(warrantiesPriceItem * 100) / 100,
-      };
-    },
-    addedAdditionalWarranties12Month: (state, action) => {
-      const id = action.payload;
-      const item = state.items.find((item) => item.id === id);
-      const warrantiesPriceItem = +(item.price + item.price * 0.05).toFixed(2);
+    //   return {
+    //     ...state,
+    //     items: state.items.map((item) =>
+    //       item.id === id
+    //         ? { ...item, warrantiesPrice: warrantiesPriceItem }
+    //         : item
+    //     ),
+    //     totalPrice: Math.round(warrantiesPriceItem * 100) / 100,
+    //   };
+    // },
+    // addedAdditionalWarranties24Month: (state, action) => {
+    //   const id = action.payload;
+    //   const item = state.items.find((item) => item.id === id);
+    //   const warrantiesPriceItem = +(item.price + item.price * 0.1).toFixed(2);
 
-      console.log(+(item.price * 0.05).toFixed(2));
-      console.log(warrantiesPriceItem);
+    //   console.log(+(item.price * 0.1).toFixed(2));
+    //   console.log(warrantiesPriceItem);
 
-      return {
-        ...state,
-        items: state.items.map((item) =>
-          item.id === id
-            ? { ...item, warrantiesPrice: warrantiesPriceItem }
-            : item
-        ),
-        totalPrice: Math.round(warrantiesPriceItem * 100) / 100,
-      };
-    },
-    addedAdditionalWarranties24Month: (state, action) => {
-      const id = action.payload;
-      const item = state.items.find((item) => item.id === id);
-      const warrantiesPriceItem = +(item.price + item.price * 0.1).toFixed(2);
-
-      console.log(+(item.price * 0.1).toFixed(2));
-      console.log(warrantiesPriceItem);
-
-      return {
-        ...state,
-        items: state.items.map((item) =>
-          item.id === id
-            ? { ...item, warrantiesPrice: warrantiesPriceItem }
-            : item
-        ),
-        totalPrice: Math.round(warrantiesPriceItem * 100) / 100,
-      };
-    },
+    //   return {
+    //     ...state,
+    //     items: state.items.map((item) =>
+    //       item.id === id
+    //         ? { ...item, warrantiesPrice: warrantiesPriceItem }
+    //         : item
+    //     ),
+    //     totalPrice: Math.round(warrantiesPriceItem * 100) / 100,
+    //   };
+    // },
   },
 });
 

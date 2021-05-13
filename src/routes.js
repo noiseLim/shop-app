@@ -5,7 +5,7 @@ import {
   MainPage,
   CartPage,
   RegistrationPage,
-} from "./components/pages";
+} from './components/pages';
 import {
   ADMIN_ROUTE,
   CART_ROUTE,
@@ -13,7 +13,7 @@ import {
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
   SHOP_ROUTE,
-} from "./utils/consts";
+} from './utils/consts';
 
 export const authRoutes = [
   {
@@ -40,7 +40,7 @@ export const publickRoutes = [
     Component: RegistrationPage,
   },
   {
-    path: DEVICE_ROUTE + "/:id",
+    path: DEVICE_ROUTE + '/:id',
     Component: ItemPage,
   },
 ];

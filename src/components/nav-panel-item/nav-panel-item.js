@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 // import {useSelector, useDispatch} from 'react-redux';
-import WithShopService from "../hoc";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import WithShopService from '../hoc';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
     paddingTop: 0,
@@ -31,13 +31,13 @@ const useStyles = makeStyles((theme) => ({
 
 const GreenCheckbox = withStyles({
   root: {
-    "&$checked": {
-      color: "rgb(41, 167, 69)",
+    '&$checked': {
+      color: 'rgb(41, 167, 69)',
     },
     padding: 4,
   },
   checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+})((props) => <Checkbox color='default' {...props} />);
 
 function NavPanelItem({ ShopService }) {
   // const dispatch = useDispatch();
@@ -82,11 +82,11 @@ function NavPanelItem({ ShopService }) {
                 className={classes.form}
                 control={
                   <GreenCheckbox
-                    edge="start"
+                    edge='start'
                     checked={checked.indexOf(value) !== -1}
                     tabIndex={-1}
                     disableRipple
-                    inputProps={{ "aria-labelledby": labelId }}
+                    inputProps={{ 'aria-labelledby': labelId }}
                   />
                 }
               />

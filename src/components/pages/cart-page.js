@@ -1,12 +1,12 @@
-import { Grid } from "@material-ui/core";
-import React from "react";
+import { Grid } from '@material-ui/core';
+import React from 'react';
 
-import CartTable from "../cart-table";
-import "./page.scss";
+import CartTable from '../cart-table';
+import './page.scss';
 
 const CartPage = () => {
   return (
-    <Grid container className="container__wrapper">
+    <Grid container className='container__wrapper'>
       <CartTable />
     </Grid>
   );

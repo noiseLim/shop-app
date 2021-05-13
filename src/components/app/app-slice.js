@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const appSlice = createSlice({
-  name: "app",
+  name: 'app',
   initialState: {
     _isAuth: true,
     _user: {},

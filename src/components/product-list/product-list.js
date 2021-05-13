@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Grid from "@material-ui/core/Grid";
-import Pagination from "@material-ui/lab/Pagination";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import Pagination from '@material-ui/lab/Pagination';
 
-import WithShopService from "../hoc";
+import WithShopService from '../hoc';
 import {
   productLoaded,
   productRequested,
@@ -12,15 +12,15 @@ import {
   getTotalCount,
   addedToCart,
   setBtnView,
-} from "./product-list-slice";
-import Error from "../error";
-import Spinner from "../spinner";
-import ProductListItem from "../product-list-item";
+} from './product-list-slice';
+import Error from '../error';
+import Spinner from '../spinner';
+import ProductListItem from '../product-list-item';
 
-import "./product-list.scss";
+import './product-list.scss';
 
 const ProductList = ({ ShopService }) => {
-  const [searchValue] = useState("");
+  const [searchValue] = useState('');
 
   const dispatch = useDispatch();
 
@@ -67,10 +67,10 @@ const ProductList = ({ ShopService }) => {
     return (
       <Grid
         container
-        direction="row"
-        justify="space-between"
-        alignItems="flex-start"
-        className="product__list"
+        direction='row'
+        justify='space-between'
+        alignItems='flex-start'
+        className='product__list'
       >
         {items}
       </Grid>
@@ -86,11 +86,11 @@ const ProductList = ({ ShopService }) => {
       <View items={items} />
       <Pagination
         count={pagesCount}
-        variant="outlined"
-        shape="rounded"
+        variant='outlined'
+        shape='rounded'
         page={currentPage}
         onChange={handleChange}
-        className="product__page"
+        className='product__page'
       ></Pagination>
     </>
   );

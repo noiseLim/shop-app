@@ -1,12 +1,12 @@
-import Apple from "../assets/apple.png";
-import Acer from "../assets/acer.png";
-import Asus from "../assets/asus.png";
-import MSI from "../assets/msi.png";
-import Lenovo from "../assets/lenovo.png";
-import Dell from "../assets/dell.png";
-import Huawei from "../assets/huawei.png";
-import HP from "../assets/hp.png";
-import Honor from "../assets/honor.png";
+import Apple from '../assets/apple.png';
+import Acer from '../assets/acer.png';
+import Asus from '../assets/asus.png';
+import MSI from '../assets/msi.png';
+import Lenovo from '../assets/lenovo.png';
+import Dell from '../assets/dell.png';
+import Huawei from '../assets/huawei.png';
+import HP from '../assets/hp.png';
+import Honor from '../assets/honor.png';
 
 export const currentLogo = (categoryId) => {
   switch (categoryId) {
@@ -29,6 +29,6 @@ export const currentLogo = (categoryId) => {
     case 9:
       return Honor;
     default:
-      return "oops";
+      return 'oops';
   }
 };

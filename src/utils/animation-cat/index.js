@@ -1,3 +1,3 @@
-import AnimationCat from "./animation-cat";
+import AnimationCat from './animation-cat';
 
 export default AnimationCat;

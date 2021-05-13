@@ -1,3 +1,3 @@
-import DevicePage from "./device-page";
+import DevicePage from './device-page';
 
 export default DevicePage;

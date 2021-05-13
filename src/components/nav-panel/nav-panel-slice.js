@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const navPanelSlice = createSlice({
-  name: "navPanel",
+  name: 'navPanel',
   initialState: {
     category: [],
   },

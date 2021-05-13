@@ -1,5 +1,5 @@
 export default class ShopService {
-  _apiBase = "http://localhost:3000";
+  _apiBase = 'http://localhost:3000';
 
   async getResource(url) {
     const res = await fetch(`${this._apiBase}${url}`);
@@ -37,14 +37,14 @@ export default class ShopService {
       order: order,
     };
     const response = await fetch(`${this._apiBase}/orders`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json;charset=utf-8",
+        'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify(newOrder),
     });
     if (!response.ok) {
-      throw new Error("json error");
+      throw new Error('json error');
     }
   }
 }

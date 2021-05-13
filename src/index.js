@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {BrowserRouter as Router} from 'react-router-dom';
-import {configureStore} from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { configureStore } from '@reduxjs/toolkit';
 
 import App from './components/app';
 import rootReducer from './reducers';
@@ -15,18 +15,18 @@ import './index.scss';
 const shopService = new ShopService();
 
 const store = configureStore({
-    reducer: rootReducer
+  reducer: rootReducer,
 });
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ErrorBoundry>
-            <ShopServiceContext.Provider value={shopService}>
-                <Router>
-                    <App/>
-                </Router>
-            </ShopServiceContext.Provider>
-        </ErrorBoundry>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <ErrorBoundry>
+      <ShopServiceContext.Provider value={shopService}>
+        <Router>
+          <App />
+        </Router>
+      </ShopServiceContext.Provider>
+    </ErrorBoundry>
+  </Provider>,
+  document.getElementById('root')
 );
