@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none',
     paddingLeft: 10,
     paddingRight: 10,
+    [theme.breakpoints.down(1180)]: {
+      maxWidth: 992,
+    },
   },
   badge: {
     color: 'rgb(41, 167, 69)',
@@ -253,6 +256,7 @@ const AppHeader = ({ ShopService }) => {
   function clickPress(e) {
     if (e.key === 'Enter') {
       searchHandler();
+      setSearchValue('');
     }
   }
 

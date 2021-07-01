@@ -68,7 +68,7 @@ const ProductList = ({ ShopService }) => {
       <Grid
         container
         direction='row'
-        justify='space-between'
+        justify='flex-start'
         alignItems='flex-start'
         className='product__list'
       >
