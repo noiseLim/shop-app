@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,9 +17,10 @@ import {
 } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme } from '@material-ui/core';
+import firebase from 'firebase';
 
 import { REGISTRATION_ROUTE, SHOP_ROUTE } from '../../utils/consts';
-// import WithShopService from '../hoc';
+import { AuthContext } from '../..';
 
 function Copyright() {
   return (
@@ -80,6 +81,13 @@ const GreenCheckbox = withStyles({
 
 const AuthPage = () => {
   const classes = useStyles();
+  const { auth } = useContext(AuthContext);
+
+  const login = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const { user } = await auth.signInWithPopup(provider);
+    console.log(user);
+  };
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -126,6 +134,7 @@ const AuthPage = () => {
             variant='contained'
             color='primary'
             className={classes.submit}
+            onClick={login}
           >
             Sign In
           </Button>
