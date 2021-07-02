@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import NavPanelItem from '../nav-panel-item';
-import WithShopService from '../hoc';
 import { getCategory } from './nav-panel-slice';
+import { Context } from '../..';
 
 import './nav-panel.scss';
 
@@ -38,9 +38,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavPanel = ({ ShopService }) => {
+const NavPanel = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const ShopService = useContext(Context);
   const categoryItems = useSelector((state) => state.navPanel.category);
 
   useEffect(() => {
@@ -76,4 +77,4 @@ const NavPanel = ({ ShopService }) => {
   );
 };
 
-export default WithShopService()(NavPanel);
+export default NavPanel;

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 
-import WithShopService from '../hoc';
 import Spinner from '../spinner';
 import Error from '../error';
 import { currentLogo } from '../../utils/currentLogo';
+import { Context } from '../..';
 
 import './device-page.scss';
 
-const DevicePage = ({ ShopService }) => {
+const DevicePage = () => {
   const [product, setProduct] = useState({ info: [] });
+  const ShopService = useContext(Context);
   // const dispatch = useDispatch();
   const loading = useSelector((state) => state.productList.loading);
   const error = useSelector((state) => state.productList.error);
@@ -57,4 +58,4 @@ const DevicePage = ({ ShopService }) => {
   );
 };
 
-export default WithShopService()(DevicePage);
+export default DevicePage;

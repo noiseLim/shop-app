@@ -19,6 +19,7 @@ import Container from '@material-ui/core/Container';
 import { createMuiTheme } from '@material-ui/core';
 
 import { REGISTRATION_ROUTE, SHOP_ROUTE } from '../../utils/consts';
+// import WithShopService from '../hoc';
 
 function Copyright() {
   return (
@@ -77,7 +78,7 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color='default' {...props} />);
 
-export default function AuthPage() {
+const AuthPage = () => {
   const classes = useStyles();
 
   return (
@@ -151,4 +152,6 @@ export default function AuthPage() {
       </Box>
     </Container>
   );
-}
+};
+
+export default AuthPage;

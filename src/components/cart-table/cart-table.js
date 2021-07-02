@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
@@ -13,14 +13,15 @@ import {
   removeFromCart,
   cleanCartAfterOrder,
 } from '../product-list/product-list-slice';
-import WithShopService from '../hoc';
 import AnimationCat from '../../utils/animation-cat';
+import { Context } from '../..';
 
 import './cart-table.scss';
 
-const CartTable = ({ ShopService }) => {
+const CartTable = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const ShopService = useContext(Context);
 
   const items = useSelector((state) => state.productList.items);
   const totalPrice = useSelector((state) => state.productList.totalPrice);
@@ -192,4 +193,4 @@ const generateOrder = (items) => {
   return newOrder;
 };
 
-export default WithShopService()(CartTable);
+export default CartTable;

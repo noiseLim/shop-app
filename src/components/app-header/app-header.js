@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -19,7 +19,6 @@ import Link from '@material-ui/core/Link';
 import { useHistory } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 
-import WithShopService from '../hoc';
 import {
   productLoaded,
   productRequested,
@@ -27,6 +26,7 @@ import {
 } from '../product-list/product-list-slice';
 import { setIsAuth } from '../app/app-slice';
 import { LOGIN_ROUTE, SHOP_ROUTE, CART_ROUTE } from '../../utils/consts';
+import { Context } from '../..';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -137,8 +137,9 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const AppHeader = ({ ShopService }) => {
+const AppHeader = () => {
   const history = useHistory();
+  const ShopService = useContext(Context);
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.app._isAuth);
@@ -357,4 +358,4 @@ const AppHeader = ({ ShopService }) => {
   );
 };
 
-export default WithShopService()(AppHeader);
+export default AppHeader;

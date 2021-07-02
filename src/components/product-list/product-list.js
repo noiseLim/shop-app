@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Pagination from '@material-ui/lab/Pagination';
 
-import WithShopService from '../hoc';
 import {
   productLoaded,
   productRequested,
@@ -11,18 +10,19 @@ import {
   setCurrentPage,
   getTotalCount,
   addedToCart,
-  setBtnView,
+  // setBtnView,
 } from './product-list-slice';
 import Error from '../error';
 import Spinner from '../spinner';
 import ProductListItem from '../product-list-item';
+import { Context } from '../..';
 
 import './product-list.scss';
 
-const ProductList = ({ ShopService }) => {
+const ProductList = () => {
   const [searchValue] = useState('');
-
   const dispatch = useDispatch();
+  const ShopService = useContext(Context);
 
   const productItems = useSelector((state) => state.productList.products);
   const currentPage = useSelector((state) => state.productList.currentPage);
@@ -96,4 +96,4 @@ const ProductList = ({ ShopService }) => {
   );
 };
 
-export default WithShopService()(ProductList);
+export default ProductList;

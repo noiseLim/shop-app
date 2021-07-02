@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import {useSelector, useDispatch} from 'react-redux';
-import WithShopService from '../hoc';
+// import WithShopService from '../hoc';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -39,7 +39,7 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color='default' {...props} />);
 
-function NavPanelItem({ ShopService }) {
+function NavPanelItem() {
   // const dispatch = useDispatch();
 
   const classes = useStyles();
@@ -99,4 +99,4 @@ function NavPanelItem({ ShopService }) {
   );
 }
 
-export default WithShopService()(NavPanelItem);
+export default NavPanelItem;
