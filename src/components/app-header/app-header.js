@@ -18,15 +18,16 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Link from '@material-ui/core/Link';
 import { useHistory } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import {
   productLoaded,
   productRequested,
   productError,
 } from '../product-list/product-list-slice';
-import { setIsAuth } from '../app/app-slice';
 import { LOGIN_ROUTE, SHOP_ROUTE, CART_ROUTE } from '../../utils/consts';
 import { Context } from '../..';
+import { AuthContext } from '../..';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -126,6 +127,11 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'rgb(41, 167, 69)',
     },
   },
+  profilePhoto: {
+    borderRadius: '100%',
+    width: 28,
+    height: 28,
+  },
 }));
 
 const StyledBadge = withStyles((theme) => ({
@@ -142,11 +148,14 @@ const AppHeader = () => {
   const ShopService = useContext(Context);
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.app._isAuth);
   const totalPrice = useSelector((state) => state.productList.totalPrice);
   const totalQuantityProducts = useSelector(
     (state) => state.productList.totalQuantityProducts
   );
+
+  const { auth } = useContext(AuthContext);
+  const [user] = useAuthState(auth);
+  console.log(user);
 
   useEffect(() => {
     dispatch(productRequested());
@@ -154,10 +163,6 @@ const AppHeader = () => {
       .then((res) => dispatch(productLoaded(res)))
       .catch((error) => dispatch(productError()));
   }, []);
-
-  // useEffect(() => {
-  //     setIsAuth()
-  // }, [isAuth])
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -194,15 +199,19 @@ const AppHeader = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {isAuth ? (
-        <div>
-          <MenuItem onClick={handleMenuClose}>Admin</MenuItem>
-          <Link href={LOGIN_ROUTE} underline='none' className={classes.link}>
-            <MenuItem onClick={handleMenuClose}>Sign In</MenuItem>
-          </Link>
-        </div>
+      {user ? (
+        <MenuItem
+          onClick={() => {
+            auth.signOut();
+            handleMenuClose();
+          }}
+        >
+          Sign out
+        </MenuItem>
       ) : (
-        <MenuItem onClick={() => dispatch(setIsAuth())}>Log in</MenuItem>
+        <Link href={LOGIN_ROUTE} underline='none' className={classes.link}>
+          <MenuItem onClick={user}>Sign in</MenuItem>
+        </Link>
       )}
     </Menu>
   );
@@ -336,7 +345,15 @@ const AppHeader = () => {
               onClick={handleProfileMenuOpen}
               color='inherit'
             >
-              <AccountCircle />
+              {user ? (
+                <img
+                  src={user.photoURL}
+                  alt='profile-foto'
+                  className={classes.profilePhoto}
+                />
+              ) : (
+                <AccountCircle />
+              )}
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

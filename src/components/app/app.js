@@ -1,15 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { authRoutes, publickRoutes } from '../../routes';
 import { SHOP_ROUTE } from '../../utils/consts';
 import AppHeader from '../app-header';
 import AppFooter from '../app-footer';
+import { AuthContext } from '../..';
 
 const App = () => {
-  const isAuth = useSelector((state) => state.app._isAuth);
+  const { auth } = useContext(AuthContext);
+  const [user] = useAuthState(auth);
+
   return (
     <>
       <div style={{ minHeight: 'calc(100vh - 50px)' }}>
@@ -17,7 +20,7 @@ const App = () => {
           <AppHeader />
         </Grid>
         <Switch>
-          {isAuth &&
+          {user &&
             authRoutes.map(({ path, Component }) => (
               <Route key={path} path={path} component={Component} exact />
             ))}

@@ -16,11 +16,14 @@ import {
   ThemeProvider,
 } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { createMuiTheme } from '@material-ui/core';
+import { createMuiTheme, IconButton } from '@material-ui/core';
 import firebase from 'firebase';
+import { Redirect } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { REGISTRATION_ROUTE, SHOP_ROUTE } from '../../utils/consts';
 import { AuthContext } from '../..';
+import googleLogo from '../../assets/google.png';
 
 function Copyright() {
   return (
@@ -68,6 +71,20 @@ const useStyles = makeStyles((theme) => ({
   link: {
     color: 'rgb(17, 117, 39)',
   },
+  googleButton: {
+    margin: theme.spacing(2, 0, 2),
+    backgroundColor: '#ffffff',
+    '&:hover': {
+      backgroundColor: 'rgb(229, 222, 222)',
+    },
+    color: 'rgb(17, 117, 39)',
+    border: '1px solid rgb(229, 222, 222)',
+  },
+  googleLogo: {
+    width: 18,
+    height: 18,
+    marginRight: 10,
+  },
 }));
 
 const GreenCheckbox = withStyles({
@@ -88,8 +105,11 @@ const AuthPage = () => {
     const { user } = await auth.signInWithPopup(provider);
     console.log(user);
   };
+  const [user] = useAuthState(auth);
 
-  return (
+  return user ? (
+    <Redirect to={SHOP_ROUTE} />
+  ) : (
     <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
@@ -129,7 +149,6 @@ const AuthPage = () => {
             label='Remember me'
           />
           <Button
-            type='submit'
             fullWidth
             variant='contained'
             color='primary'
@@ -137,6 +156,23 @@ const AuthPage = () => {
             onClick={login}
           >
             Sign In
+          </Button>
+          <Typography variant='body1' align='center'>
+            or
+          </Typography>
+          <Button
+            fullWidth
+            variant='contained'
+            color='primary'
+            className={classes.googleButton}
+            onClick={login}
+          >
+            <img
+              src={googleLogo}
+              alt='google-logo'
+              className={classes.googleLogo}
+            />
+            Continue with Google
           </Button>
           <Grid container>
             <Grid item xs>

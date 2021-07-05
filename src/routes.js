@@ -20,10 +20,6 @@ export const authRoutes = [
     path: ADMIN_ROUTE,
     Component: AdminPage,
   },
-  {
-    path: CART_ROUTE,
-    Component: CartPage,
-  },
 ];
 
 export const publickRoutes = [
@@ -42,5 +38,9 @@ export const publickRoutes = [
   {
     path: DEVICE_ROUTE + '/:id',
     Component: ItemPage,
+  },
+  {
+    path: CART_ROUTE,
+    Component: CartPage,
   },
 ];

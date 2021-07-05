@@ -14,14 +14,6 @@ import './index.scss';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-const shopService = new ShopService();
-export const Context = createContext(null);
-export const AuthContext = createContext(null);
-
-const store = configureStore({
-  reducer: rootReducer,
-});
-
 firebase.initializeApp({
   apiKey: 'AIzaSyC0c47e1qbiMIgCG8Ri2uUVepVUA1C7qoM',
   authDomain: 'authorisation-react.firebaseapp.com',
@@ -30,6 +22,14 @@ firebase.initializeApp({
   messagingSenderId: '358802366690',
   appId: '1:358802366690:web:b38e977a84b6bda692bebb',
   measurementId: 'G-K05P80F9YR',
+});
+
+const shopService = new ShopService();
+export const Context = createContext(null);
+export const AuthContext = createContext(null);
+
+const store = configureStore({
+  reducer: rootReducer,
 });
 
 const auth = firebase.auth();
