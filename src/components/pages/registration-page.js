@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme } from '@material-ui/core';
+import fire from '../app/fire';
 
 import { LOGIN_ROUTE, SHOP_ROUTE } from '../../utils/consts';
 
@@ -65,7 +66,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RegistrationPage() {
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
   const classes = useStyles();
+
+  // const clearErrors = () => {
+  //   setEmailError('');
+  //   setPasswordError('');
+  // };
+
+  const signUpWithEmailAndPassword = async () => {
+    // clearErrors();
+    await fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch((err) => {
+        switch (err.code) {
+          case 'auth/email-already-to-use':
+          case 'auth/invalid-email':
+            setEmailError(err.message);
+            break;
+          case 'auth/weak-password':
+            setPasswordError(err.message);
+            break;
+        }
+      });
+  };
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -80,7 +111,7 @@ export default function RegistrationPage() {
         <form className={classes.form} noValidate>
           <ThemeProvider theme={theme}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete='fname'
                   name='firstName'
@@ -90,6 +121,8 @@ export default function RegistrationPage() {
                   id='firstName'
                   label='First Name'
                   autoFocus
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -101,8 +134,10 @@ export default function RegistrationPage() {
                   label='Last Name'
                   name='lastName'
                   autoComplete='lname'
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   variant='outlined'
@@ -112,7 +147,10 @@ export default function RegistrationPage() {
                   label='Email Address'
                   name='email'
                   autoComplete='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
+                <p style={{ color: 'red' }}>{emailError}</p>
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -124,7 +162,10 @@ export default function RegistrationPage() {
                   type='password'
                   id='password'
                   autoComplete='current-password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
+                <p style={{ color: 'red' }}>{passwordError}</p>
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
@@ -142,6 +183,7 @@ export default function RegistrationPage() {
             variant='contained'
             color='primary'
             className={classes.submit}
+            onClick={signUpWithEmailAndPassword}
           >
             Sign Up
           </Button>

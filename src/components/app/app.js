@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -7,11 +7,10 @@ import { authRoutes, publickRoutes } from '../../routes';
 import { SHOP_ROUTE } from '../../utils/consts';
 import AppHeader from '../app-header';
 import AppFooter from '../app-footer';
-import { AuthContext } from '../..';
+import fire from '../app/fire';
 
 const App = () => {
-  const { auth } = useContext(AuthContext);
-  const [user] = useAuthState(auth);
+  const [user] = useAuthState(fire.auth());
 
   return (
     <>

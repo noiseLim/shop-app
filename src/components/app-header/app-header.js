@@ -27,7 +27,7 @@ import {
 } from '../product-list/product-list-slice';
 import { LOGIN_ROUTE, SHOP_ROUTE, CART_ROUTE } from '../../utils/consts';
 import { Context } from '../..';
-import { AuthContext } from '../..';
+import fire from '../app/fire';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -153,8 +153,7 @@ const AppHeader = () => {
     (state) => state.productList.totalQuantityProducts
   );
 
-  const { auth } = useContext(AuthContext);
-  const [user] = useAuthState(auth);
+  const [user] = useAuthState(fire.auth());
   console.log(user);
 
   useEffect(() => {
@@ -202,7 +201,7 @@ const AppHeader = () => {
       {user ? (
         <MenuItem
           onClick={() => {
-            auth.signOut();
+            fire.auth().signOut();
             handleMenuClose();
           }}
         >

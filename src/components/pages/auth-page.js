@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,21 +16,21 @@ import {
   ThemeProvider,
 } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { createMuiTheme, IconButton } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core';
 import firebase from 'firebase';
 import { Redirect } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { REGISTRATION_ROUTE, SHOP_ROUTE } from '../../utils/consts';
-import { AuthContext } from '../..';
 import googleLogo from '../../assets/google.png';
+import fire from '../app/fire';
 
 function Copyright() {
   return (
     <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
       <Link color='inherit' href={SHOP_ROUTE}>
-        Your Website
+        Shop App
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -97,15 +97,63 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color='default' {...props} />);
 
 const AuthPage = () => {
-  const classes = useStyles();
-  const { auth } = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [user, setUser] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
-  const login = async () => {
+  // const clearInputs = () => {
+  //   setEmail('');
+  //   setPassword('');
+  // };
+  // const clearErrors = () => {
+  //   setEmailError('');
+  //   setPasswordError('');
+  // };
+
+  const classes = useStyles();
+  const [user] = useAuthState(firebase.auth());
+
+  const loginWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    const { user } = await auth.signInWithPopup(provider);
+    const { user } = await fire.auth().signInWithPopup(provider);
     console.log(user);
   };
-  const [user] = useAuthState(auth);
+
+  const loginWithEmailAndPassword = async () => {
+    // clearErrors();
+    await fire
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch((err) => {
+        switch (err.code) {
+          case 'auth/invalid-email':
+          case 'auth/user-disabled':
+          case 'auth/user-not-found':
+            setEmailError(err.message);
+            break;
+          case 'auth/wrong.password':
+            setPasswordError(err.message);
+            break;
+        }
+        console.log(user);
+      });
+  };
+
+  // const authListener = () => {
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       clearInputs();
+  //       setUser(user);
+  //     } else {
+  //       setUser('');
+  //     }
+  //   });
+  // };
+  // useEffect(() => {
+  //   authListener();
+  // }, []);
 
   return user ? (
     <Redirect to={SHOP_ROUTE} />
@@ -131,7 +179,10 @@ const AuthPage = () => {
               name='email'
               autoComplete='email'
               autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
+            <p style={{ color: 'red' }}>{emailError}</p>
             <TextField
               variant='outlined'
               margin='normal'
@@ -141,8 +192,11 @@ const AuthPage = () => {
               label='Password'
               type='password'
               id='password'
+              value={password}
               autoComplete='current-password'
+              onChange={(e) => setPassword(e.target.value)}
             />
+            <p style={{ color: 'red' }}>{passwordError}</p>
           </ThemeProvider>
           <FormControlLabel
             control={<GreenCheckbox value='remember' />}
@@ -153,7 +207,7 @@ const AuthPage = () => {
             variant='contained'
             color='primary'
             className={classes.submit}
-            onClick={login}
+            onClick={loginWithEmailAndPassword}
           >
             Sign In
           </Button>
@@ -165,7 +219,7 @@ const AuthPage = () => {
             variant='contained'
             color='primary'
             className={classes.googleButton}
-            onClick={login}
+            onClick={loginWithGoogle}
           >
             <img
               src={googleLogo}
