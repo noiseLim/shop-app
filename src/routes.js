@@ -4,14 +4,12 @@ import {
   ItemPage,
   MainPage,
   CartPage,
-  RegistrationPage,
 } from './components/pages';
 import {
   ADMIN_ROUTE,
   CART_ROUTE,
   DEVICE_ROUTE,
   LOGIN_ROUTE,
-  REGISTRATION_ROUTE,
   SHOP_ROUTE,
 } from './utils/consts';
 
@@ -30,10 +28,6 @@ export const publickRoutes = [
   {
     path: LOGIN_ROUTE,
     Component: AuthPage,
-  },
-  {
-    path: REGISTRATION_ROUTE,
-    Component: RegistrationPage,
   },
   {
     path: DEVICE_ROUTE + '/:id',

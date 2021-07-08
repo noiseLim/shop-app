@@ -19,6 +19,7 @@ import Link from '@material-ui/core/Link';
 import { useHistory } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import HowToRegIcon from '@material-ui/icons/HowToReg';
 
 import {
   productLoaded,
@@ -80,11 +81,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   searchIcon: {
-    // padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
     zIndex: 1,
-    // pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -249,7 +248,19 @@ const AppHeader = () => {
           aria-haspopup='true'
           className={classes.badge}
         >
-          <AccountCircle />
+          {user && user.photoURL ? (
+            <img
+                src={user.photoURL}
+                alt='profile-foto'
+                className={classes.profilePhoto}
+            />
+            ) : ( 
+            user && !user.photoURL ? (
+                <HowToRegIcon />
+                ) : ( 
+                <AccountCircle />
+                )
+            )}
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -268,9 +279,12 @@ const AppHeader = () => {
       setSearchValue('');
     }
   }
+  const paddingStyle = {
+      paddingRight: isMenuOpen ? 17 : 0
+  }
 
   return (
-    <div className={classes.grow}>
+    <div className={classes.grow} style={paddingStyle}>
       <AppBar position='static' className={classes.app}>
         <Toolbar>
           <IconButton
@@ -336,7 +350,7 @@ const AppHeader = () => {
               </StyledBadge>
               <Typography className={classes.price}>${totalPrice}</Typography>
             </IconButton>
-            <IconButton
+            <IconButton 
               edge='end'
               aria-label='account of current user'
               aria-controls={menuId}
@@ -344,14 +358,18 @@ const AppHeader = () => {
               onClick={handleProfileMenuOpen}
               color='inherit'
             >
-              {user ? (
+              {user && user.photoURL ? (
                 <img
                   src={user.photoURL}
                   alt='profile-foto'
                   className={classes.profilePhoto}
                 />
-              ) : (
-                <AccountCircle />
+              ) : ( 
+                user && !user.photoURL ? (
+                    <HowToRegIcon />
+                  ) : ( 
+                    <AccountCircle />
+                  )
               )}
             </IconButton>
           </div>

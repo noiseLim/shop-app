@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,7 +7,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import {
@@ -21,22 +20,9 @@ import firebase from 'firebase';
 import { Redirect } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-import { REGISTRATION_ROUTE, SHOP_ROUTE } from '../../utils/consts';
+import { SHOP_ROUTE } from '../../utils/consts';
 import googleLogo from '../../assets/google.png';
 import fire from '../app/fire';
-
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' href={SHOP_ROUTE}>
-        Shop App
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createMuiTheme({
   palette: {
@@ -62,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(1, 0, 2),
     backgroundColor: 'rgb(41, 167, 69)',
     '&:hover': {
       backgroundColor: 'rgb(17, 117, 39)',
@@ -70,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: 'rgb(17, 117, 39)',
+    cursor: 'pointer',
   },
   googleButton: {
     margin: theme.spacing(2, 0, 2),
@@ -85,6 +72,12 @@ const useStyles = makeStyles((theme) => ({
     height: 18,
     marginRight: 10,
   },
+  ckeckboxContainer: {
+    display: 'flex',
+    justifyContent: 'flexStart',
+    alignItems: 'center',
+    height: 60,
+  },
 }));
 
 const GreenCheckbox = withStyles({
@@ -94,23 +87,14 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-})((props) => <Checkbox color='default' {...props} />);
+})((props) => <Checkbox color="default" {...props} />);
 
 const AuthPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [user, setUser] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
-  // const clearInputs = () => {
-  //   setEmail('');
-  //   setPassword('');
-  // };
-  // const clearErrors = () => {
-  //   setEmailError('');
-  //   setPasswordError('');
-  // };
+  const [hasAccount, setHasAccount] = useState(true);
 
   const classes = useStyles();
   const [user] = useAuthState(firebase.auth());
@@ -122,7 +106,6 @@ const AuthPage = () => {
   };
 
   const loginWithEmailAndPassword = async () => {
-    // clearErrors();
     await fire
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -133,122 +116,174 @@ const AuthPage = () => {
           case 'auth/user-not-found':
             setEmailError(err.message);
             break;
-          case 'auth/wrong.password':
+          case 'auth/wrong-password':
             setPasswordError(err.message);
+            break;
+          default:
+            // do nothing;
             break;
         }
         console.log(user);
+        console.log(err.code);
       });
   };
-
-  // const authListener = () => {
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       clearInputs();
-  //       setUser(user);
-  //     } else {
-  //       setUser('');
-  //     }
-  //   });
-  // };
-  // useEffect(() => {
-  //   authListener();
-  // }, []);
+  const signUpWithEmailAndPassword = async () => {
+    await fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch((err) => {
+        switch (err.code) {
+          case 'auth/email-already-in-use':
+          case 'auth/invalid-email':
+            setEmailError(err.message);
+            break;
+          case 'auth/weak-password':
+            setPasswordError(err.message);
+            break;
+          default:
+            // do nothing;
+            break;
+        }
+      });
+  };
 
   return user ? (
     <Redirect to={SHOP_ROUTE} />
   ) : (
-    <Container component='main' maxWidth='xs'>
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component='h1' variant='h5'>
-          Sign in
+        <Typography component="h1" variant="h5">
+          {hasAccount ? 'Sign in' : 'Sign Out'}
         </Typography>
         <form className={classes.form} noValidate>
           <ThemeProvider theme={theme}>
             <TextField
-              variant='outlined'
-              margin='normal'
+              variant="outlined"
+              margin="normal"
               required
               fullWidth
-              id='email'
-              label='Email Address'
-              name='email'
-              autoComplete='email'
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
               autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <p style={{ color: 'red' }}>{emailError}</p>
             <TextField
-              variant='outlined'
-              margin='normal'
+              variant="outlined"
+              margin="normal"
               required
               fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
               value={password}
-              autoComplete='current-password'
+              autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
             <p style={{ color: 'red' }}>{passwordError}</p>
           </ThemeProvider>
-          <FormControlLabel
-            control={<GreenCheckbox value='remember' />}
-            label='Remember me'
-          />
-          <Button
-            fullWidth
-            variant='contained'
-            color='primary'
-            className={classes.submit}
-            onClick={loginWithEmailAndPassword}
-          >
-            Sign In
-          </Button>
-          <Typography variant='body1' align='center'>
-            or
-          </Typography>
-          <Button
-            fullWidth
-            variant='contained'
-            color='primary'
-            className={classes.googleButton}
-            onClick={loginWithGoogle}
-          >
-            <img
-              src={googleLogo}
-              alt='google-logo'
-              className={classes.googleLogo}
-            />
-            Continue with Google
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href='#' variant='body2' className={classes.link}>
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                href={REGISTRATION_ROUTE}
-                variant='body2'
-                className={classes.link}
+
+          {hasAccount ? (
+            <>
+              <Grid item xs={12} className={classes.ckeckboxContainer}>
+                <FormControlLabel
+                  control={<GreenCheckbox value="remember" />}
+                  label="Remember me"
+                />
+              </Grid>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={loginWithEmailAndPassword}
               >
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2" className={classes.link}>
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <p className={classes.link}>
+                    Don't have an account?{' '}
+                    <span
+                      style={{ color: 'red' }}
+                      onClick={() => setHasAccount(!hasAccount)}
+                    >
+                      Sign Up
+                    </span>
+                  </p>
+                </Grid>
+              </Grid>
+              <Typography
+                style={{ paddingTop: 16 }}
+                variant="body1"
+                align="center"
+              >
+                or
+              </Typography>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.googleButton}
+                onClick={loginWithGoogle}
+              >
+                <img
+                  src={googleLogo}
+                  alt="google-logo"
+                  className={classes.googleLogo}
+                />
+                Continue with Google
+              </Button>
+            </>
+          ) : (
+            <>
+              <Grid item xs={12} className={classes.ckeckboxContainer}>
+                <FormControlLabel
+                  control={
+                    <Checkbox value="allowExtraEmails" color="primary" />
+                  }
+                  label="I want to receive inspiration, marketing promotions and updates via email."
+                />
+              </Grid>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={signUpWithEmailAndPassword}
+              >
+                Sign Up
+              </Button>
+              <Grid container justify="flex-end">
+                <Grid item>
+                  <p className={classes.link}>
+                    Already have an account?{' '}
+                    <span
+                      style={{ color: 'red' }}
+                      onClick={() => setHasAccount(!hasAccount)}
+                    >
+                      Sign in
+                    </span>
+                  </p>
+                </Grid>
+              </Grid>
+            </>
+          )}
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 };
