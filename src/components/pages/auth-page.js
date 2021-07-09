@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(1, 0, 2),
+    margin: theme.spacing(2, 0, 2),
     backgroundColor: 'rgb(41, 167, 69)',
     '&:hover': {
       backgroundColor: 'rgb(17, 117, 39)',
@@ -72,12 +72,6 @@ const useStyles = makeStyles((theme) => ({
     height: 18,
     marginRight: 10,
   },
-  ckeckboxContainer: {
-    display: 'flex',
-    justifyContent: 'flexStart',
-    alignItems: 'center',
-    height: 60,
-  },
 }));
 
 const GreenCheckbox = withStyles({
@@ -87,7 +81,7 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-})((props) => <Checkbox color="default" {...props} />);
+})((props) => <Checkbox color='default' {...props} />);
 
 const AuthPage = () => {
   const [email, setEmail] = useState('');
@@ -95,6 +89,7 @@ const AuthPage = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [hasAccount, setHasAccount] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   const classes = useStyles();
   const [user] = useAuthState(firebase.auth());
@@ -150,59 +145,59 @@ const AuthPage = () => {
   return user ? (
     <Redirect to={SHOP_ROUTE} />
   ) : (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           {hasAccount ? 'Sign in' : 'Sign Out'}
         </Typography>
         <form className={classes.form} noValidate>
           <ThemeProvider theme={theme}>
             <TextField
-              variant="outlined"
-              margin="normal"
+              variant='outlined'
+              margin='normal'
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id='email'
+              label='Email Address'
+              name='email'
+              autoComplete='email'
               autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <p style={{ color: 'red' }}>{emailError}</p>
             <TextField
-              variant="outlined"
-              margin="normal"
+              variant='outlined'
+              margin='normal'
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
+              name='password'
+              label='Password'
+              type={checked ? 'none' : 'password'}
+              id='password'
               value={password}
-              autoComplete="current-password"
+              autoComplete='current-password'
               onChange={(e) => setPassword(e.target.value)}
             />
             <p style={{ color: 'red' }}>{passwordError}</p>
           </ThemeProvider>
-
+          <Grid item xs={12}>
+            <FormControlLabel
+              control={<GreenCheckbox value='remember' />}
+              label='Show password'
+              onChange={() => setChecked(!checked)}
+            />
+          </Grid>
           {hasAccount ? (
             <>
-              <Grid item xs={12} className={classes.ckeckboxContainer}>
-                <FormControlLabel
-                  control={<GreenCheckbox value="remember" />}
-                  label="Remember me"
-                />
-              </Grid>
               <Button
                 fullWidth
-                variant="contained"
-                color="primary"
+                variant='contained'
+                color='primary'
                 className={classes.submit}
                 onClick={loginWithEmailAndPassword}
               >
@@ -210,7 +205,7 @@ const AuthPage = () => {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2" className={classes.link}>
+                  <Link href='#' variant='body2' className={classes.link}>
                     Forgot password?
                   </Link>
                 </Grid>
@@ -228,21 +223,21 @@ const AuthPage = () => {
               </Grid>
               <Typography
                 style={{ paddingTop: 16 }}
-                variant="body1"
-                align="center"
+                variant='body1'
+                align='center'
               >
                 or
               </Typography>
               <Button
                 fullWidth
-                variant="contained"
-                color="primary"
+                variant='contained'
+                color='primary'
                 className={classes.googleButton}
                 onClick={loginWithGoogle}
               >
                 <img
                   src={googleLogo}
-                  alt="google-logo"
+                  alt='google-logo'
                   className={classes.googleLogo}
                 />
                 Continue with Google
@@ -250,24 +245,16 @@ const AuthPage = () => {
             </>
           ) : (
             <>
-              <Grid item xs={12} className={classes.ckeckboxContainer}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
               <Button
                 fullWidth
-                variant="contained"
-                color="primary"
+                variant='contained'
+                color='primary'
                 className={classes.submit}
                 onClick={signUpWithEmailAndPassword}
               >
                 Sign Up
               </Button>
-              <Grid container justify="flex-end">
+              <Grid container justify='flex-end'>
                 <Grid item>
                   <p className={classes.link}>
                     Already have an account?{' '}

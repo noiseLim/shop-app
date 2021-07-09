@@ -250,17 +250,15 @@ const AppHeader = () => {
         >
           {user && user.photoURL ? (
             <img
-                src={user.photoURL}
-                alt='profile-foto'
-                className={classes.profilePhoto}
+              src={user.photoURL}
+              alt='profile-foto'
+              className={classes.profilePhoto}
             />
-            ) : ( 
-            user && !user.photoURL ? (
-                <HowToRegIcon />
-                ) : ( 
-                <AccountCircle />
-                )
-            )}
+          ) : user && !user.photoURL ? (
+            <HowToRegIcon />
+          ) : (
+            <AccountCircle />
+          )}
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -280,8 +278,8 @@ const AppHeader = () => {
     }
   }
   const paddingStyle = {
-      paddingRight: isMenuOpen ? 17 : 0
-  }
+    paddingRight: isMenuOpen ? 17 : 0,
+  };
 
   return (
     <div className={classes.grow} style={paddingStyle}>
@@ -350,7 +348,7 @@ const AppHeader = () => {
               </StyledBadge>
               <Typography className={classes.price}>${totalPrice}</Typography>
             </IconButton>
-            <IconButton 
+            <IconButton
               edge='end'
               aria-label='account of current user'
               aria-controls={menuId}
@@ -364,12 +362,10 @@ const AppHeader = () => {
                   alt='profile-foto'
                   className={classes.profilePhoto}
                 />
-              ) : ( 
-                user && !user.photoURL ? (
-                    <HowToRegIcon />
-                  ) : ( 
-                    <AccountCircle />
-                  )
+              ) : user && !user.photoURL ? (
+                <HowToRegIcon />
+              ) : (
+                <AccountCircle />
               )}
             </IconButton>
           </div>
