@@ -1,7 +1,7 @@
 .product {
   &__item,
   &__item_current {
-    width: 270px;
+    flex: 1;
     min-height: 400px;
     background-color: #fff;
     box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.1);
@@ -10,6 +10,7 @@
     max-height: 460px;
   }
   &__item_current {
+    flex: none;
     width: 100%;
     display: flex;
     min-height: 200px;
@@ -150,10 +151,10 @@ a {
   color: #171717;
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1200px) {
   .product {
     &__item {
-      min-width: 344px;
+      min-width: 347px;
     }
     &__img_wrapper {
       width: 230px;

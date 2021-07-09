@@ -43,12 +43,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgb(41, 167, 69)',
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: 1180,
+    maxWidth: 1200,
     boxShadow: 'none',
     paddingLeft: 10,
     paddingRight: 10,
-    [theme.breakpoints.down(1180)]: {
-      maxWidth: 992,
+    [theme.breakpoints.down(1200)]: {
+      maxWidth: 972,
     },
   },
   badge: {

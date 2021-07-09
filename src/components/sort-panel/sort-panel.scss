@@ -3,7 +3,7 @@
     background-color: #fff;
     box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin: 20px 10px;
+    margin: 20px 0;
   }
   &__btn_wrapper {
     padding: 20px;
@@ -12,5 +12,13 @@
   &__btn {
     color: #29a745;
     cursor: pointer;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .sort {
+    &__panel {
+      max-width: 972px;
+    }
   }
 }

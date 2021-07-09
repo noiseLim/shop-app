@@ -1,6 +1,6 @@
 .container {
   &__wrapper {
-    max-width: 1180px;
+    max-width: 1200px;
     padding: 0 10px;
     box-sizing: content-box;
     margin-top: 64px;
@@ -10,10 +10,11 @@
   }
 }
 
-@media screen and (max-width: 1180px) {
+@media (min-width: 992px) and (max-width: 1199px) {
   .container {
     &__wrapper {
-      max-width: 992px;
+      padding: 0 10px;
+      max-width: 972px;
     }
   }
 }
