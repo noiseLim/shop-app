@@ -30,6 +30,7 @@ const ProductList = () => {
   const limitPage = useSelector((state) => state.productList.limitPage);
   const loading = useSelector((state) => state.productList.loading);
   const error = useSelector((state) => state.productList.error);
+  const listView = useSelector((state) => state.sortPanel.listView);
 
   const pagesCount = Math.ceil(totalCount / limitPage);
 
@@ -64,16 +65,12 @@ const ProductList = () => {
   });
 
   const View = ({ items }) => {
-    return (
-      <Grid
-        container
-        direction='row'
-        justify='flex-start'
-        alignItems='flex-start'
-        className='product__list'
-      >
+    return listView ? (
+      <Grid container className='product__list'>
         {items}
       </Grid>
+    ) : (
+      <div className='product__list'>{items}</div>
     );
   };
 

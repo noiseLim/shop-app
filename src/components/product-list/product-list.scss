@@ -1,8 +1,7 @@
 .product {
   &__list {
-    // padding: 0 10px;
+    display: grid;
     list-style-type: none;
-    gap: 20px;
   }
   &__btn {
     width: 100px;
@@ -37,5 +36,14 @@
   }
   &__btn {
     padding: 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .product {
+    &__list {
+      grid-gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+    }
   }
 }

@@ -1,8 +1,7 @@
 .product {
   &__item,
   &__item_current {
-    flex: 1;
-    min-height: 400px;
+
     background-color: #fff;
     box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -149,17 +148,4 @@
 a {
   text-decoration: none;
   color: #171717;
-}
-
-@media screen and (max-width: 1200px) {
-  .product {
-    &__item {
-      min-width: 347px;
-    }
-    &__img_wrapper {
-      width: 230px;
-      margin: 0 auto;
-      text-align: center;
-    }
-  }
 }

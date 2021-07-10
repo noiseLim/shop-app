@@ -13,7 +13,7 @@ const MainPage = () => {
       <Grid item xs={12}>
         <SortPanel />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={3} className='navPanel'>
         <NavPanel />
       </Grid>
       <Grid item xs={9}>
