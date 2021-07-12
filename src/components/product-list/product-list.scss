@@ -2,6 +2,8 @@
   &__list {
     display: grid;
     list-style-type: none;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
   }
   &__btn {
     width: 100px;
@@ -39,11 +41,11 @@
   }
 }
 
-@media (min-width: 768px) {
-  .product {
-    &__list {
-      grid-gap: 20px;
-      grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
-    }
-  }
-}
+// @media (min-width: 768px) {
+//   .product {
+//     &__list {
+//       grid-gap: 20px;
+//       grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+//     }
+//   }
+// }

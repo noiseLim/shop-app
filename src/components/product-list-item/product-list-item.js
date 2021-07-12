@@ -19,40 +19,58 @@ const ProductListItem = ({ productItem, onAddToCart }) => {
     setBtnView(true);
   };
 
-  return (
-    <li className={listView ? 'product__item_current' : 'product__item'}>
-      <div
-        className={
-          listView ? 'product__img_wrapper_current' : 'product__img_wrapper'
-        }
-      >
-        <img
-          className={listView ? 'product__img_current' : 'product__img'}
-          src={url}
-          alt={title}
-        ></img>
+  return listView ? (
+    <li className='product__item_current'>
+      <div className='product__img_wrapper_current'>
+        <img className='product__img_current' src={url} alt={title}></img>
       </div>
-      <div className={listView ? 'product__info_wrapper' : ''}>
+      <div className='product__info_wrapper'>
         <div
-          className={listView ? 'product__title_current' : 'product__title'}
+          className='product__title_current'
           onClick={() => history.push(DEVICE_ROUTE + '/' + productItem.id)}
         >
           {title}
         </div>
-        <div className={listView ? 'product__info_current' : 'product__info'}>
-          {info}
-        </div>
+        <div className='product__info_current'>{info}</div>
       </div>
-      <div
-        className={
-          listView ? 'product__btn_wrapper_current' : 'product__btn_wrapper'
-        }
-      >
-        <div className={listView ? 'product__price_current' : 'product__price'}>
-          ${price}
-        </div>
+      <div className='product__btn_wrapper_current'>
+        <div className='product__price_current'>${price}</div>
         <button
-          className={listView ? 'product__btn_current' : 'product__btn'}
+          className='product__btn_current'
+          onClick={(e) => {
+            e.preventDefault();
+            onAddToCart();
+            onBtnView();
+          }}
+        >
+          {btnView ? (
+            <div className='product__btn_change'>
+              <CheckIcon />
+            </div>
+          ) : (
+            <div className='product__btn_change'>Add to cart</div>
+          )}
+        </button>
+      </div>
+    </li>
+  ) : (
+    <li className='product__item'>
+      <div className='product__img_wrapper'>
+        <img className='product__img' src={url} alt={title}></img>
+      </div>
+      <div>
+        <div
+          className='product__title'
+          onClick={() => history.push(DEVICE_ROUTE + '/' + productItem.id)}
+        >
+          {title}
+        </div>
+        <div className='product__info'>{info}</div>
+      </div>
+      <div className='product__btn_wrapper'>
+        <div className='product__price'>${price}</div>
+        <button
+          className='product__btn'
           onClick={(e) => {
             e.preventDefault();
             onAddToCart();

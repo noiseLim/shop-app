@@ -20,6 +20,8 @@ import { useHistory } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
+import Slide from '@material-ui/core/Slide';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import {
   productLoaded,
@@ -142,7 +144,7 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const AppHeader = () => {
+const AppHeader = (props) => {
   const history = useHistory();
   const ShopService = useContext(Context);
   const [searchValue, setSearchValue] = useState('');
@@ -281,110 +283,123 @@ const AppHeader = () => {
     paddingRight: isMenuOpen ? 17 : 0,
   };
 
+  function HideOnScroll(props) {
+    const { children, window } = props;
+    const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+    return (
+      <Slide appear={false} direction='down' in={!trigger}>
+        {children}
+      </Slide>
+    );
+  }
+
   return (
-    <div className={classes.grow} style={paddingStyle}>
-      <AppBar position='static' className={classes.app}>
-        <Toolbar>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='open drawer'
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            href={SHOP_ROUTE}
-            underline='none'
-            className={classes.title}
-            variant='h6'
-            noWrap
-            onClick={() => history.push(SHOP_ROUTE)}
-          >
-            Shop App
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+    <HideOnScroll {...props}>
+      <div className={classes.grow} style={paddingStyle}>
+        <AppBar position='static' className={classes.app}>
+          <Toolbar>
+            <IconButton
+              edge='start'
+              className={classes.menuButton}
+              color='inherit'
+              aria-label='open drawer'
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              href={SHOP_ROUTE}
+              underline='none'
+              className={classes.title}
+              variant='h6'
+              noWrap
+              onClick={() => history.push(SHOP_ROUTE)}
+            >
+              Shop App
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <IconButton
+                  aria-label='search'
+                  color='inherit'
+                  onClick={() => searchHandler()}
+                >
+                  <SearchIcon />
+                </IconButton>
+              </div>
+              <InputBase
+                placeholder='Search…'
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                type='text'
+                onKeyPress={clickPress}
+              />
+            </div>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
               <IconButton
-                aria-label='search'
+                aria-label='show favotites'
                 color='inherit'
-                onClick={() => searchHandler()}
+                className={classes.icon}
               >
-                <SearchIcon />
+                <StyledBadge badgeContent={4}>
+                  <FavoriteIcon />
+                </StyledBadge>
+              </IconButton>
+              <IconButton
+                aria-label='cart'
+                color='inherit'
+                className={classes.icon}
+                onClick={() => history.push(CART_ROUTE)}
+              >
+                <StyledBadge badgeContent={totalQuantityProducts}>
+                  <ShoppingCartIcon />
+                </StyledBadge>
+                <Typography className={classes.price}>${totalPrice}</Typography>
+              </IconButton>
+              <IconButton
+                edge='end'
+                aria-label='account of current user'
+                aria-controls={menuId}
+                aria-haspopup='true'
+                onClick={handleProfileMenuOpen}
+                color='inherit'
+              >
+                {user && user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt='profile-foto'
+                    className={classes.profilePhoto}
+                  />
+                ) : user && !user.photoURL ? (
+                  <HowToRegIcon />
+                ) : (
+                  <AccountCircle />
+                )}
               </IconButton>
             </div>
-            <InputBase
-              placeholder='Search…'
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              type='text'
-              onKeyPress={clickPress}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton
-              aria-label='show favotites'
-              color='inherit'
-              className={classes.icon}
-            >
-              <StyledBadge badgeContent={4}>
-                <FavoriteIcon />
-              </StyledBadge>
-            </IconButton>
-            <IconButton
-              aria-label='cart'
-              color='inherit'
-              className={classes.icon}
-              onClick={() => history.push(CART_ROUTE)}
-            >
-              <StyledBadge badgeContent={totalQuantityProducts}>
-                <ShoppingCartIcon />
-              </StyledBadge>
-              <Typography className={classes.price}>${totalPrice}</Typography>
-            </IconButton>
-            <IconButton
-              edge='end'
-              aria-label='account of current user'
-              aria-controls={menuId}
-              aria-haspopup='true'
-              onClick={handleProfileMenuOpen}
-              color='inherit'
-            >
-              {user && user.photoURL ? (
-                <img
-                  src={user.photoURL}
-                  alt='profile-foto'
-                  className={classes.profilePhoto}
-                />
-              ) : user && !user.photoURL ? (
-                <HowToRegIcon />
-              ) : (
-                <AccountCircle />
-              )}
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label='show more'
-              aria-controls={mobileMenuId}
-              aria-haspopup='true'
-              onClick={handleMobileMenuOpen}
-              color='inherit'
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label='show more'
+                aria-controls={mobileMenuId}
+                aria-haspopup='true'
+                onClick={handleMobileMenuOpen}
+                color='inherit'
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
+    </HideOnScroll>
   );
 };
 

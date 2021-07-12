@@ -13,10 +13,10 @@ const MainPage = () => {
       <Grid item xs={12}>
         <SortPanel />
       </Grid>
-      <Grid item xs={3} className='navPanel'>
+      <Grid item xs={3} className='nav-panel'>
         <NavPanel />
       </Grid>
-      <Grid item xs={9}>
+      <Grid item xs={9} id='product-list'>
         <ProductList />
       </Grid>
     </Grid>
