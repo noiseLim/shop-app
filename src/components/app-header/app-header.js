@@ -144,6 +144,17 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
+function HideOnScroll(props) {
+  const { children } = props;
+  const trigger = useScrollTrigger();
+
+  return (
+    <Slide appear={false} direction='down' in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
 const AppHeader = (props) => {
   const history = useHistory();
   const ShopService = useContext(Context);
@@ -282,17 +293,6 @@ const AppHeader = (props) => {
   const paddingStyle = {
     paddingRight: isMenuOpen ? 17 : 0,
   };
-
-  function HideOnScroll(props) {
-    const { children, window } = props;
-    const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-    return (
-      <Slide appear={false} direction='down' in={!trigger}>
-        {children}
-      </Slide>
-    );
-  }
 
   return (
     <HideOnScroll {...props}>
