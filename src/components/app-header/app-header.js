@@ -166,7 +166,6 @@ const AppHeader = (props) => {
   );
 
   const [user] = useAuthState(fire.auth());
-  console.log(user);
 
   useEffect(() => {
     dispatch(productRequested());
