@@ -7,4 +7,15 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #f6f6f6;
   min-width: 320px;
+
+  width: 100vw;
+  overflow-y: overlay;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgb(17, 117, 39);
 }

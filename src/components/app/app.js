@@ -18,8 +18,8 @@ import { Toolbar } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    bottom: 32,
+    right: 44,
   },
   fab: {
     color: '#ffffff',

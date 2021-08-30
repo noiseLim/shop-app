@@ -289,13 +289,10 @@ const AppHeader = (props) => {
       setSearchValue('');
     }
   }
-  const paddingStyle = {
-    paddingRight: isMenuOpen ? 17 : 0,
-  };
 
   return (
     <HideOnScroll {...props}>
-      <div className={classes.grow} style={paddingStyle}>
+      <div className={classes.grow}>
         <AppBar position='static' className={classes.app}>
           <Toolbar>
             <IconButton
