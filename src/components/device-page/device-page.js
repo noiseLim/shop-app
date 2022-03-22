@@ -7,6 +7,7 @@ import Spinner from '../spinner';
 import Error from '../error';
 import { currentLogo } from '../../utils/currentLogo';
 import { Context } from '../..';
+import ProductCardTab from '../product-card-tab';
 
 import './device-page.scss';
 
@@ -54,6 +55,7 @@ const DevicePage = () => {
           </Grid>
         </Grid>
       </div>
+      <ProductCardTab />
     </>
   );
 };
