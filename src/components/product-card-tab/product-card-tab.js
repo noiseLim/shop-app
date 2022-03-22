@@ -1,20 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import {
+  makeStyles,
+  AppBar,
+  Tabs,
+  Tab,
+  Typography,
+  Box,
+} from '@material-ui/core';
 
 // icons
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
-import FormatListBulletedOutlinedIcon from '@material-ui/icons/FormatListBulletedOutlined';
-import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
-import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import {
+  DescriptionOutlined,
+  FormatListBulletedOutlined,
+  StarBorderOutlined,
+  ChatBubbleOutlineOutlined,
+  ThumbUpAltOutlined,
+  SystemUpdateAltOutlined,
+  AddCircleOutlineOutlined,
+} from '@material-ui/icons';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,9 +59,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     margin: '0 10px',
   },
-  // tabs: {
-  //   color: 'red',
-  // },
+  tabs: {
+    '& .MuiTab-textColorPrimary.Mui-selected': {
+      color: 'rgb(17, 117, 39)',
+    },
+    '& .PrivateTabIndicator-colorPrimary-67': {
+      backgroundColor: 'rgb(17, 117, 39)',
+    },
+  },
 }));
 
 const ProductCardTab = () => {
@@ -80,41 +89,37 @@ const ProductCardTab = () => {
           textColor='primary'
           aria-label='scrollable force tabs example'
           centered
+          className={classes.tabs}
         >
           <Tab
             label='Description'
-            icon={<DescriptionOutlinedIcon />}
-            // className={classes.tabs}
+            icon={<DescriptionOutlined />}
             {...a11yProps(0)}
           />
           <Tab
             label='Characteristics'
-            icon={<FormatListBulletedOutlinedIcon />}
+            icon={<FormatListBulletedOutlined />}
             {...a11yProps(1)}
           />
           <Tab
             label='Opinion'
-            icon={<StarBorderOutlinedIcon />}
+            icon={<StarBorderOutlined />}
             {...a11yProps(2)}
           />
           <Tab
             label='Communicator'
-            icon={<ChatBubbleOutlineOutlinedIcon />}
+            icon={<ChatBubbleOutlineOutlined />}
             {...a11yProps(3)}
           />
-          <Tab
-            label='Review'
-            icon={<ThumbUpAltOutlinedIcon />}
-            {...a11yProps(4)}
-          />
+          <Tab label='Review' icon={<ThumbUpAltOutlined />} {...a11yProps(4)} />
           <Tab
             label='Drivers and files'
-            icon={<SystemUpdateAltOutlinedIcon />}
+            icon={<SystemUpdateAltOutlined />}
             {...a11yProps(5)}
           />
           <Tab
             label='Accessories'
-            icon={<AddCircleOutlineOutlinedIcon />}
+            icon={<AddCircleOutlineOutlined />}
             {...a11yProps(6)}
           />
         </Tabs>
