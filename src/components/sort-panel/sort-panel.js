@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ViewStreamIcon from '@material-ui/icons/ViewStream';
-import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
 import { setListView } from './sort-panel-slice';
 

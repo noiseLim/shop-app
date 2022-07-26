@@ -18,7 +18,7 @@ import {
   ThumbUpAltOutlined,
   SystemUpdateAltOutlined,
   AddCircleOutlineOutlined,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

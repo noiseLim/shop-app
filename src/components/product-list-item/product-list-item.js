@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import CheckIcon from '@material-ui/icons/Check';
+import CheckIcon from '@mui/icons-material/Check';
 
 import { DEVICE_ROUTE } from '../../utils/consts';
 

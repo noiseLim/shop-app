@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import RemoveIcon from '@material-ui/icons/Remove';
-import AddIcon from '@material-ui/icons/Add';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import { DEVICE_ROUTE, SHOP_ROUTE } from '../../utils/consts';
 import {

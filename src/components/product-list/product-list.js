@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-import Pagination from '@material-ui/lab/Pagination';
+import Pagination from '@mui/material/Pagination';
 
 import {
   productLoaded,
